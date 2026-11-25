@@ -2,6 +2,8 @@
  * 验证 chinesetianzi 模块的 chinesetianzi 行为。
  * Tests chinesetianzi behavior covering chinesetianzi.
  */
+import { paperTranslator } from '../../i18n/index'
+import { paperName } from './registry'
 import chinesetianzi from './chinesetianzi'
 import { describe, expect, test } from 'vitest'
 import {
@@ -14,6 +16,16 @@ import {
 } from '../testing/paperTestKit'
 
 describe('chinesetianzi', () => {
+  test.each(['zh-CN', 'en'] as const)(
+    'uses the sidebar name for the gallery preset in %s',
+    (locale) => {
+      const [preset] = chinesetianzi.presets
+      expect(paperTranslator(chinesetianzi, locale)(preset.name)).toBe(
+        paperName(chinesetianzi, locale),
+      )
+    },
+  )
+
   test('declares the calligraphy paper with the recommended 18 mm cell', () => {
     expect(chinesetianzi.type).toBe('chinesetianzi')
     expect(chinesetianzi.group).toBe('calligraphy')

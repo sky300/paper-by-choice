@@ -15,6 +15,9 @@ import {
   TemplateGallery,
   collectGalleryEntries,
 } from './gallery/TemplateGallery'
+import { paperName } from '../core/papers/registry'
+import { paperTranslator } from '../i18n/index'
+import type { Locale } from '../core/types'
 import { Workspace } from './layout/Workspace'
 
 const settings = createSettings('lined')
@@ -22,9 +25,9 @@ const doc = buildDocument({ settings, locale: 'zh-CN' })
 
 afterEach(cleanup)
 
-function wrap(ui: React.ReactNode) {
+function wrap(ui: React.ReactNode, locale: Locale = 'zh-CN') {
   return render(
-    <LocaleProvider initialLocale="zh-CN">
+    <LocaleProvider initialLocale={locale}>
       <SettingsProvider initial={settings}>{ui}</SettingsProvider>
     </LocaleProvider>,
   )
@@ -95,6 +98,29 @@ describe('TemplateGallery', () => {
       container.querySelectorAll('.gallery-grid > .gallery-card'),
     ).toHaveLength(collectGalleryEntries().length)
   })
+
+  test.each(['zh-CN', 'en'] as const)(
+    'shows the sidebar paper name and preserves variant names in %s',
+    (locale) => {
+      const { container } = wrap(
+        <TemplateGallery onChoose={() => {}} onClose={() => {}} />,
+        locale,
+      )
+      const entries = collectGalleryEntries()
+      const titles = container.querySelectorAll('.gallery-card strong')
+      expect(titles).toHaveLength(entries.length)
+      entries.forEach(({ paper, preset }, index) => {
+        const title = titles[index].textContent
+        const name = paperName(paper, locale)
+        if (preset === paper.presets[0]) {
+          expect(title).toBe(name)
+        } else {
+          expect(title).toContain(name)
+          expect(title).toContain(paperTranslator(paper, locale)(preset.name))
+        }
+      })
+    },
+  )
 
   test('filters cards by search text', () => {
     const { container } = wrap(

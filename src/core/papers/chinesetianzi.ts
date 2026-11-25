@@ -45,7 +45,6 @@ export default definePaper<Options>({
         '田字格的边长。常用 15–20 mm：低年级或写大字用 20 mm 以上，练小楷可降到 12 mm。格内十字辅助线帮孩子找准笔画中心。',
       'field.guides': '显示十字辅助线',
       'field.guideColor': '辅助线颜色',
-      'preset.chinesetianzi.name': '经典田字格',
       'preset.chinesetianzi.description': '暖棕色格线配棕色十字，适合书法练习',
     },
     en: {
@@ -55,7 +54,6 @@ export default definePaper<Options>({
         'The side length of each tianzi cell. 15–20 mm is typical: 20 mm or more for young children and large characters, down to 12 mm for small regular script. The cross guides help centre each stroke.',
       'field.guides': 'Show cross guides',
       'field.guideColor': 'Guide colour',
-      'preset.chinesetianzi.name': 'Classic Tianzi grid',
       'preset.chinesetianzi.description': 'Warm brown lines with a brown cross',
     },
   },
@@ -74,7 +72,7 @@ export default definePaper<Options>({
   presets: [
     {
       id: 'chinesetianzi',
-      name: 'preset.chinesetianzi.name',
+      name: 'name',
       description: 'preset.chinesetianzi.description',
       patch: {},
     },

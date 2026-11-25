@@ -126,9 +126,24 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
         ) : (
           <div className="gallery-grid">
             {filtered.map((entry) => {
+              const isDefault = entry.preset === entry.paper.presets[0]
               const active =
-                settings.paperType === entry.paper.type &&
-                entry.preset.id === entry.paper.presets[0].id
+                settings.paperType === entry.paper.type && isDefault
+              const pt = paperTranslator(entry.paper, locale)
+              const name = paperName(entry.paper, locale)
+              const presetName = pt(entry.preset.name)
+              const description = pt(entry.preset.description)
+              // 默认卡片与侧边栏同名，变体保留其专属名称。
+              // Match the sidebar for default cards and keep distinct variant names.
+              const title = isDefault
+                ? name
+                : presetName.toLowerCase().startsWith(name.toLowerCase())
+                  ? presetName
+                  : `${name} · ${presetName}`
+              const detail =
+                isDefault && presetName !== name
+                  ? `${presetName} · ${description}`
+                  : description
               return (
                 <button
                   key={`${entry.paper.type}:${entry.preset.id}`}
@@ -144,15 +159,8 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
                     }}
                   />
                   <span className="gallery-meta">
-                    <strong>
-                      {paperTranslator(entry.paper, locale)(entry.preset.name)}
-                    </strong>
-                    <small>
-                      {paperTranslator(
-                        entry.paper,
-                        locale,
-                      )(entry.preset.description)}
-                    </small>
+                    <strong>{title}</strong>
+                    <small>{detail}</small>
                   </span>
                 </button>
               )
