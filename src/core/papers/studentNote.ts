@@ -1,4 +1,8 @@
 /**
+ * 布局学生笔记纸。
+ * Lays out student note sheets.
+ */
+/**
  * Student note paper.
  *
  * A header title box for the course and date, a binding rule 25 mm from the

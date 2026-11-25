@@ -1,3 +1,7 @@
+/**
+ * 验证 pdf 模块的 paintScene、patchPlacement、buildPdf 行为。
+ * Tests pdf behavior covering paintScene, patchPlacement, buildPdf.
+ */
 import { describe, expect, test, vi } from 'vitest'
 import {
   PDFArray,

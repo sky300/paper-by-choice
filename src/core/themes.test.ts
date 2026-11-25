@@ -1,3 +1,7 @@
+/**
+ * 验证 themes 模块。对应实现定义纸张排版的配色及字体主题。
+ * Tests themes, whose implementation defines paper rendering palettes and typography.
+ */
 import type { ThemeKey } from './types'
 import { expect, test } from 'vitest'
 import { THEMES, resolveTheme } from './themes'

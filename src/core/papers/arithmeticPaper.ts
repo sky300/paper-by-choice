@@ -1,4 +1,9 @@
-/** Arithmetic practice paper: ruled rows with two narrow side columns. */
+/**
+ * 绘制带姓名栏与日期栏的算术纸。
+ * Draws arithmetic practice with name and date fields.
+ *
+ * Arithmetic practice paper: ruled rows with two narrow side columns.
+ */
 import { line, rect } from '../scene/builders'
 import type { SceneItem } from '../scene/types'
 import { definePaper } from './define'

@@ -1,4 +1,8 @@
 /**
+ * 创建统一的场景图元。
+ * Creates shared scene primitives.
+ */
+/**
  * Scene item constructors.
  *
  * Thin wrappers over the item interfaces in `types.ts`, so papers write

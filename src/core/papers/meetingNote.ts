@@ -1,4 +1,8 @@
 /**
+ * 布局会议记录区。
+ * Lays out meeting notes.
+ */
+/**
  * Meeting-note paper: an information header followed by three stacked
  * sections (agenda, discussion points, action items), the last with
  * checkboxes on every ruled line.

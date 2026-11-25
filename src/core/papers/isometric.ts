@@ -1,4 +1,8 @@
 /**
+ * 绘制等距网格。
+ * Draws an isometric grid.
+ */
+/**
  * Isometric (30°/60°) grid paper.
  *
  * Three line families — horizontal and two diagonals — tile the writing area

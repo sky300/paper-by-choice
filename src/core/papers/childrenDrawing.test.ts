@@ -1,3 +1,7 @@
+/**
+ * 验证 childrenDrawing 模块的 children_drawing: declaration、children_drawing: rendering、children_drawing: messages 行为。
+ * Tests childrenDrawing behavior covering children_drawing: declaration, children_drawing: rendering, children_drawing: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import childrenDrawing from './childrenDrawing'
 import { paperName } from './registry'

@@ -1,4 +1,8 @@
 /**
+ * 绘制吉他六线谱。
+ * Draws guitar tablature.
+ */
+/**
  * Guitar tablature paper.
  *
  * Each system is a row of four blank chord grids above a framed six-line TAB

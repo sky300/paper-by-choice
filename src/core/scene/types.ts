@@ -1,4 +1,8 @@
 /**
+ * 定义场景图元、坐标与绘制属性。
+ * Defines scene primitives, coordinates, and styling.
+ */
+/**
  * Scene primitives.
  *
  * A paper's `render()` never writes SVG, Canvas or PDF directly. It returns a

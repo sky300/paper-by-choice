@@ -1,4 +1,8 @@
 /**
+ * 声明纸型、选项、预设及渲染接口。
+ * Declares interfaces for papers, options, presets, and rendering.
+ */
+/**
  * Paper contract.
  *
  * A paper is a self-contained module: it declares its spacing parameter, the

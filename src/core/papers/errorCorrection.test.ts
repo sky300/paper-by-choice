@@ -1,3 +1,7 @@
+/**
+ * 验证 errorCorrection 模块的 errorCorrection 行为。
+ * Tests errorCorrection behavior covering errorCorrection.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

@@ -1,4 +1,9 @@
-/** Live preview of the composed pages, with a zoom control. */
+/**
+ * 生成纸页预览并处理缩放。
+ * Renders paper previews and handles zoom.
+ *
+ * Live preview of the composed pages, with a zoom control.
+ */
 import { useMemo, useState, type JSX } from 'react'
 import { UiIcon } from '../controls/UiIcon'
 import { useLocale } from '../i18n/LocaleProvider'

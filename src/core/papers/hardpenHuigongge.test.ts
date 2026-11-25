@@ -1,3 +1,7 @@
+/**
+ * 验证 hardpenHuigongge 模块的 hardpenHuigongge 行为。
+ * Tests hardpenHuigongge behavior covering hardpenHuigongge.
+ */
 import hardpenHuigongge from './hardpenHuigongge'
 import { describe, expect, test } from 'vitest'
 import {

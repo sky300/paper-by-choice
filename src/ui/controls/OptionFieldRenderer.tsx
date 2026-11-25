@@ -1,4 +1,8 @@
 /**
+ * 按纸型选项声明映射控件。
+ * Maps declared paper options to form controls.
+ */
+/**
  * Turns one paper `OptionField` declaration into the matching control.
  *
  * Labels, hints and choice names are translated by the paper-scoped

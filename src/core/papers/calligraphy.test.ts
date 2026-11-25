@@ -1,3 +1,7 @@
+/**
+ * 验证 calligraphy 模块的 calligraphy 行为。
+ * Tests calligraphy behavior covering calligraphy.
+ */
 import calligraphy from './calligraphy'
 import { describe, expect, test } from 'vitest'
 import {

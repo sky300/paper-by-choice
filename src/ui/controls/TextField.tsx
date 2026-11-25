@@ -1,4 +1,8 @@
 /**
+ * 提供文本输入控件。
+ * Provides a text input.
+ */
+/**
  * Controlled single-line text field.
  */
 import { useId } from 'react'

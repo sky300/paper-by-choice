@@ -1,3 +1,7 @@
+/**
+ * 验证纸面外观配置。
+ * Tests paper appearance controls.
+ */
 // @vitest-environment happy-dom
 import {
   cleanup,

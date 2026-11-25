@@ -1,4 +1,9 @@
-/** Template gallery: every preset of every paper, as a searchable modal. */
+/**
+ * 显示、筛选并应用纸张模板。
+ * Displays, filters, and applies paper templates.
+ *
+ * Template gallery: every preset of every paper, as a searchable modal.
+ */
 import { useEffect, useMemo, useRef, useState, type JSX } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 import { useSettings } from '../store/SettingsProvider'

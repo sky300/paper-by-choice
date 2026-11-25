@@ -1,3 +1,7 @@
+/**
+ * 验证 registry 模块的 PAPER_ORDER、collectPapers、papers 行为。
+ * Tests registry behavior covering PAPER_ORDER, collectPapers, papers.
+ */
 import { describe, expect, test } from 'vitest'
 import type { AnyPaper, PaperMessages } from './contract'
 import {
@@ -18,15 +22,15 @@ function stub(type: string, extra: Partial<AnyPaper> = {}): AnyPaper {
 
 describe('PAPER_ORDER', () => {
   test('lists every paper type once, in declaration order', () => {
-    expect(PAPER_ORDER).toHaveLength(41)
-    expect(new Set(PAPER_ORDER).size).toBe(41)
+    expect(PAPER_ORDER).toHaveLength(48)
+    expect(new Set(PAPER_ORDER).size).toBe(48)
     expect(PAPER_ORDER.slice(0, 4)).toEqual([
       'lined',
       'vertical_lined',
       'grid',
       'dot',
     ])
-    expect(PAPER_ORDER.at(-1)).toBe('chinese_english_word_practice')
+    expect(PAPER_ORDER.at(-1)).toBe('chinese_preview_card')
   })
 })
 
@@ -111,8 +115,8 @@ describe('papersByGroup', () => {
     expect(basic.every((paper) => paper.group === 'basic')).toBe(true)
   })
 
-  test('splits the registry between the four groups', () => {
-    const groups = ['basic', 'worksheet', 'calligraphy', 'creative'] as const
+  test('splits the registry between the five groups', () => {
+    const groups = ['basic', 'worksheet', 'english', 'calligraphy', 'creative'] as const
     const counted = groups.reduce(
       (sum, group) => sum + papersByGroup(group).length,
       0,

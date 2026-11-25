@@ -1,4 +1,8 @@
 /**
+ * 绘制五线谱。
+ * Draws music staff paper.
+ */
+/**
  * Blank manuscript paper.
  *
  * Five-line staffs laid from the top of the writing area downwards. The

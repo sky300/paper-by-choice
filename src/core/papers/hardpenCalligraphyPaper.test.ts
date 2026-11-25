@@ -1,3 +1,7 @@
+/**
+ * 验证 hardpenCalligraphyPaper 模块的 hardpenCalligraphyPaper 行为。
+ * Tests hardpenCalligraphyPaper behavior covering hardpenCalligraphyPaper.
+ */
 import hardpenCalligraphyPaper from './hardpenCalligraphyPaper'
 import { describe, expect, test } from 'vitest'
 import {

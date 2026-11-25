@@ -1,4 +1,8 @@
 /**
+ * 布局分镜框与注释区。
+ * Lays out storyboard frames and notes.
+ */
+/**
  * Storyboard paper: a grid of empty frames with an optional caption strip
  * beneath each frame. Frames exactly fill the writing area.
  */

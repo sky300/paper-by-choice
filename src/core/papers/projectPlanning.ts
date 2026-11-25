@@ -1,4 +1,8 @@
 /**
+ * 组合项目信息、甘特图和任务列表。
+ * Lays out project details, a Gantt chart, and a task list.
+ */
+/**
  * Project-planning paper: a title band, an information box, a 5 × 14-day
  * Gantt chart and a checklist of tasks with ruled blanks.
  */

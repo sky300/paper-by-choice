@@ -1,4 +1,8 @@
 /**
+ * 集中定义各纸型的默认线条、间距和页边距。
+ * Defines default line appearance, spacing, and margins for every paper.
+ */
+/**
  * Per-paper default looks.
  *
  * These are the reference tool's "switch to this paper" presets: the complete
@@ -28,7 +32,21 @@ export function pxToMm(px: number): number {
   return Math.round(px * PX_TO_MM * 100) / 100
 }
 
-/** The 41 paper looks in registry order. */
+// 英文练习纸共用等宽页边距，每种纸型单独设定书写间距。
+// English worksheets share even margins and set spacing for each format.
+function englishLook(spacing: number): PaperLook {
+  return {
+    spacing,
+    lineColor: '#526275',
+    lineWidthPx: 0.65,
+    lineStyle: 'solid',
+    margins: { top: 18, right: 18, bottom: 18, left: 18 },
+    theme: 'default',
+    background: { color: '#ffffff', patternColor: '#e0e0e0', patternOpacity: 0.2 },
+  }
+}
+
+/** The 48 paper looks in registry order. */
 export const PAPER_LOOKS: Record<PaperType, PaperLook> = {
   lined: {
     spacing: 8,
@@ -264,19 +282,14 @@ export const PAPER_LOOKS: Record<PaperType, PaperLook> = {
       patternOpacity: 0.2,
     },
   },
-  english_paper: {
-    spacing: 5,
-    lineColor: '#ff6b6b',
-    lineWidthPx: 0.5,
-    lineStyle: 'solid',
-    margins: { top: 25, right: 25, bottom: 25, left: 25 },
-    theme: 'default',
-    background: {
-      color: '#ffffff',
-      patternColor: '#e0e0e0',
-      patternOpacity: 0.2,
-    },
-  },
+  english_paper: englishLook(4),
+  english_primary: englishLook(15.875),
+  english_double_line: englishLook(16),
+  english_slanted: englishLook(10),
+  english_tracing: englishLook(5),
+  english_dictation: englishLook(10),
+  english_vocabulary: englishLook(14),
+  english_draw_write: englishLook(4),
   practice_paper: {
     spacing: 8,
     lineColor: '#6b7280',

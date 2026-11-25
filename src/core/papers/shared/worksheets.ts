@@ -1,4 +1,8 @@
 /**
+ * 布局作业纸页眉与共用格线。
+ * Lays out shared worksheet headers and rules.
+ */
+/**
  * Shared building blocks for the Chinese school worksheet papers.
  * All geometry is in millimetres; strings come from `ctx.t()` at the call site.
  */

@@ -1,4 +1,8 @@
 /**
+ * 布局并绘制纸张水印。
+ * Positions and renders page watermarks.
+ */
+/**
  * Watermark layer: a grid of repeated text that covers and overhangs the
  * whole page, rotated as one group around the page centre. Scenes have no
  * transform item, so each text position is rotated explicitly and each text

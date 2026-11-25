@@ -1,3 +1,7 @@
+/**
+ * 验证纸型由独立模块声明并通过注册器加载。
+ * Checks that papers are declared in independent modules and loaded by the registry.
+ */
 import { describe, expect, test } from 'vitest'
 import chinesetianzi from './chinesetianzi'
 import crossgrid from './crossgrid'

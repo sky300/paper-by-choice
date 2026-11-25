@@ -1,4 +1,8 @@
 /**
+ * 生成带品牌信息的定制纸。
+ * Draws stationery with custom branding.
+ */
+/**
  * Branded letter paper: a header band with a logo placeholder, ruled body
  * lines, a thick accent rule down the left edge and a footer band that can
  * carry a user-supplied brand line.

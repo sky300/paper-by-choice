@@ -1,3 +1,7 @@
+/**
+ * 验证 branded 模块的 branded 行为。
+ * Tests branded behavior covering branded.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

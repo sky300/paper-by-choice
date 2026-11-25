@@ -1,3 +1,7 @@
+/**
+ * 验证所有纸型及预设能够导出。
+ * Verifies export across all papers and presets.
+ */
 // @vitest-environment node
 /// <reference types="node" />
 import { describe, expect, test } from 'vitest'
@@ -73,7 +77,7 @@ describe('real exports', () => {
   })
 
   test('every registered paper can build a document without throwing', () => {
-    expect(papers).toHaveLength(41)
+    expect(papers).toHaveLength(48)
     for (const paper of papers) {
       const doc = buildDocument({
         settings: createSettings(paper.type),

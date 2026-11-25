@@ -1,3 +1,7 @@
+/**
+ * 验证 App 模块。对应实现挂载应用的对外入口。
+ * Tests App, whose implementation exposes the application root.
+ */
 // @vitest-environment happy-dom
 import { render, screen } from '@testing-library/react'
 import { expect, test } from 'vitest'

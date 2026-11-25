@@ -1,4 +1,8 @@
 /**
+ * 配置纸面底色和纹理。
+ * Configures paper colors and textures.
+ */
+/**
  * Background colour, built-in textures and a locally-held custom image.
  *
  * Images are read as data URLs with FileReader and never leave the browser;

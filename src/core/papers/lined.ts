@@ -1,4 +1,8 @@
 /**
+ * 绘制横线纸。
+ * Draws horizontal ruled paper.
+ */
+/**
  * Ruled paper.
  *
  * Horizontal lines at the spacing the user chose, from one pitch below the

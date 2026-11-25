@@ -1,3 +1,7 @@
+/**
+ * 验证 cjkCells 模块的 cellLattice、fixedLattice、latticeLines 行为。
+ * Tests cjkCells behavior covering cellLattice, fixedLattice, latticeLines.
+ */
 import { createInkKit } from '../kit'
 import { describe, expect, test } from 'vitest'
 import {

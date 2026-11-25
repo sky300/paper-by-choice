@@ -1,4 +1,8 @@
 /**
+ * 组合五线谱和吉他六线谱。
+ * Combines musical staff and guitar tablature.
+ */
+/**
  * Combined staff and TAB paper.
  *
  * Each system stacks a row of blank chord grids, a five-line staff and a

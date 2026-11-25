@@ -1,4 +1,8 @@
 /**
+ * 通过浏览器保存导出文件。
+ * Saves generated files through the browser.
+ */
+/**
  * Browser downloads for generated files.
  *
  * All DOM and URL access lives inside the functions, so this module is safe to

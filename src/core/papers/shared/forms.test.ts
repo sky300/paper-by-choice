@@ -1,3 +1,7 @@
+/**
+ * 验证 forms 模块的 shared/forms: checkbox、shared/forms: fieldUnderline、shared/forms: labelledField 行为。
+ * Tests forms behavior covering shared/forms: checkbox, shared/forms: fieldUnderline, shared/forms: labelledField.
+ */
 import { describe, expect, test } from 'vitest'
 import type { Font, Paint, Stroke } from '../../scene/types'
 import {

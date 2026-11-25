@@ -1,4 +1,8 @@
 /**
+ * 将场景绘制到 Canvas 供 PNG 导出。
+ * Draws scenes to canvas for PNG export.
+ */
+/**
  * Canvas raster renderer.
  *
  * Turns a scene into pixels by replaying each item as 2D-context calls in

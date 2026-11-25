@@ -1,3 +1,7 @@
+/**
+ * 验证 grid 模块的 grid 行为。
+ * Tests grid behavior covering grid.
+ */
 import grid from './grid'
 import { COLUMNS_DEFAULTS, COLUMNS_FIELDS } from './shared/columns'
 import { describe, expect, test } from 'vitest'

@@ -1,3 +1,7 @@
+/**
+ * 验证 svg 模块的 formatNumber、escapeXml、sceneToSvg 行为。
+ * Tests svg behavior covering formatNumber, escapeXml, sceneToSvg.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   arc,

@@ -1,3 +1,7 @@
+/**
+ * 验证 InfoModal 模块的行为（显示使用指南或关于信息）。
+ * Tests the InfoModal module, which displays the guide and about dialogs.
+ */
 // @vitest-environment happy-dom
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { afterEach, describe, expect, test, vi } from 'vitest'

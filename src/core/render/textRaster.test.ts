@@ -1,3 +1,7 @@
+/**
+ * 验证 textRaster 模块的 patchLayout、createTextRasterizer 行为。
+ * Tests textRaster behavior covering patchLayout, createTextRasterizer.
+ */
 import { describe, expect, test } from 'vitest'
 import { text } from '../scene/builders'
 import type { TextItem } from '../scene/types'

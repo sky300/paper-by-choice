@@ -1,4 +1,8 @@
 /**
+ * 逐个验证注册纸型的声明、选项和场景约束。
+ * Checks declarations, options, and scene bounds across registered papers.
+ */
+/**
  * Generic invariants every registered paper must satisfy. The suite walks
  * whatever papers are currently in the registry, so a paper added in another
  * batch is checked here without editing this file.
@@ -13,7 +17,7 @@ import {
   renderPaper,
 } from '../testing/paperTestKit'
 
-const GROUPS = ['basic', 'worksheet', 'calligraphy', 'creative']
+const GROUPS = ['basic', 'worksheet', 'english', 'calligraphy', 'creative']
 
 /** Every message key the spacing, fields and presets of a paper refer to. */
 function referencedKeys(paper: AnyPaper): string[] {

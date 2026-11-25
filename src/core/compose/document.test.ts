@@ -1,3 +1,7 @@
+/**
+ * 验证 document 模块的 contentArea、paperScene: single column、paperScene: two columns 行为。
+ * Tests document behavior covering contentArea, paperScene: single column, paperScene: two columns.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   buildDocument,

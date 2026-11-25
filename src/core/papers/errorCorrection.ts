@@ -1,4 +1,8 @@
 /**
+ * 布局错题整理区。
+ * Lays out error-correction areas.
+ */
+/**
  * Error-correction worksheet: two identical half-page forms, each with a
  * labelled left column and a blank right column for the corrected solution.
  */

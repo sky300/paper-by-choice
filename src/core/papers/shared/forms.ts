@@ -1,4 +1,8 @@
 /**
+ * 绘制表单分区与填空线。
+ * Draws form sections and fill-in rules.
+ */
+/**
  * Form-paper building blocks: titled sections, labelled blanks, checkboxes,
  * ruled rows and table lattices. Pure millimetre geometry shared by the
  * planning and worksheet papers of batch B4.

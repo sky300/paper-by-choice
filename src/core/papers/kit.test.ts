@@ -1,3 +1,7 @@
+/**
+ * 验证 kit 模块的 dashFor、createInkKit、createFontKit 行为。
+ * Tests kit behavior covering dashFor, createInkKit, createFontKit.
+ */
 import { resolveTheme } from '../themes'
 import type { LineSettings } from '../types'
 import { describe, expect, test } from 'vitest'

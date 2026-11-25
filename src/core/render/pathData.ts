@@ -1,4 +1,8 @@
 /**
+ * 解析形状的矢量路径指令。
+ * Parses vector path commands.
+ */
+/**
  * Path data tools shared by the vector renderers.
  *
  * The scene expresses strokes, fills and curves in millimetres with colours

@@ -1,3 +1,7 @@
+/**
+ * 验证 encoding 模块的 base64url、utf8 行为。
+ * Tests encoding behavior covering base64url, utf8.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   base64UrlToBytes,

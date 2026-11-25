@@ -1,5 +1,9 @@
 /**
- * Paper type picker, grouped into the four catalogue sections.
+ * 按分类展示并切换纸型。
+ * Groups and selects paper types.
+ */
+/**
+ * Paper type picker, grouped into the catalogue sections.
  *
  * Each button is labelled with the paper's own name and described by its
  * first preset; the pressed state comes straight from the settings store.
@@ -12,10 +16,11 @@ import { Section } from '../controls/Section'
 import { useLocale } from '../i18n/LocaleProvider'
 import { useSettings } from '../store/SettingsProvider'
 
-/** The four groups in display order. */
+/** The groups in display order. */
 const GROUPS: readonly { key: PaperGroup; label: string }[] = [
   { key: 'basic', label: 'group.basic' },
   { key: 'worksheet', label: 'group.worksheet' },
+  { key: 'english', label: 'group.english' },
   { key: 'calligraphy', label: 'group.calligraphy' },
   { key: 'creative', label: 'group.creative' },
 ]

@@ -1,3 +1,7 @@
+/**
+ * 定义可切换的界面风格。
+ * Defines switchable interface styles.
+ */
 export const INTERFACE_STYLES = ['violet', 'warm', 'teal'] as const
 export type InterfaceStyle = (typeof INTERFACE_STYLES)[number]
 

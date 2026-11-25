@@ -1,4 +1,8 @@
 /**
+ * 创建、合并与校验纸张设置。
+ * Creates, merges, and validates paper settings.
+ */
+/**
  * Settings model: application defaults, paper/preset switching, convergent
  * validation, import/export and share-link encoding.
  *
@@ -32,13 +36,19 @@ import {
   utf8Encode,
 } from './encoding'
 
-/** LocalStorage keys for the persisted settings and the language preference. */
+/**
+ * 浏览器中保存纸张设置及语言偏好的键。
+ * LocalStorage keys for the persisted settings and the language preference.
+ */
 export const STORAGE_KEYS = {
   settings: 'paper-by-choice.settings.v1',
   locale: 'paper-by-choice.locale',
 } as const
 
-/** Ranges, steps and defaults of the numeric controls, in millimetres unless noted. */
+/**
+ * 数值控件的范围、步长与默认值，未标注时单位为毫米。
+ * Ranges, steps and defaults of the numeric controls, in millimetres unless noted.
+ */
 export const LIMITS = {
   customSize: { min: 50, max: 1000 },
   lineWidth: { min: 0.05, max: 1, step: 0.01, default: 0.13 }, // mm
@@ -205,14 +215,20 @@ export function spacingBounds(type: PaperType) {
   return { min: Math.min(min, initial), max: Math.max(max, initial) }
 }
 
-/** Snaps a spacing value to the paper's step and clamps it into the paper's range. */
+/**
+ * 按照当前纸型的步长对间距取整，并限制在其有效范围内。
+ * Snaps a spacing value to the paper's step and clamps it into the paper's range.
+ */
 export function clampSpacing(type: PaperType, value: number): number {
   const { min, max } = spacingBounds(type)
   const { step } = getPaper(type).spacing
   return snapToStep(value, min, max, step)
 }
 
-/** Builds the full settings of one paper from `APP_DEFAULTS` and a preset patch. */
+/**
+ * 结合应用默认值和预设覆盖项，构造完整纸张设置。
+ * Builds the full settings of one paper from `APP_DEFAULTS` and a preset patch.
+ */
 function buildSettings(
   type: PaperType,
   paper: AnyPaper,
@@ -269,7 +285,10 @@ function preserve(base: Settings, current: Settings): Settings {
   }
 }
 
-/** Switches paper type to its default preset while keeping explicit page settings. */
+/**
+ * 切换到新纸型的默认预设，同时保留用户主动设置的页面属性。
+ * Switches paper type to its default preset while keeping explicit page settings.
+ */
 export function switchPaperType(current: Settings, next: PaperType): Settings {
   return preserve(createSettings(next), current)
 }
@@ -318,7 +337,10 @@ export function resolveOptionsFor(settings: Settings): Record<string, unknown> {
 /* Convergent validation                                               */
 /* ------------------------------------------------------------------ */
 
-/** Turns raw data of any origin into a fresh, fully trusted `Settings` object. */
+/**
+ * 对来自存储、链接或导入文件的数据重新校验并补齐缺失字段。
+ * Turns raw data of any origin into a fresh, fully trusted `Settings` object.
+ */
 export function sanitizeSettings(raw: unknown): Settings {
   if (!isPlainObject(raw)) return createSettings('lined')
 
@@ -521,7 +543,10 @@ export function sanitizeSettings(raw: unknown): Settings {
   }
 }
 
-/** Actual page size in millimetres; a custom size is never swapped by orientation. */
+/**
+ * 计算真实纸张尺寸，单位为毫米，自定义尺寸直接使用用户输入的宽高。
+ * Actual page size in millimetres; a custom size is never swapped by orientation.
+ */
 export function resolvePageSize(settings: Settings): {
   width: number
   height: number
@@ -570,7 +595,10 @@ export class SettingsImportError extends Error {
   }
 }
 
-/** Parses an exported settings file, validating its envelope and sanitising the payload. */
+/**
+ * 读取设置导出文件，检查文件格式并清理内部数据。
+ * Parses an exported settings file, validating its envelope and sanitising the payload.
+ */
 export function parseSettingsImport(text: string): {
   name?: string
   settings: Settings

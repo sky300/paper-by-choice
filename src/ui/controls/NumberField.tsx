@@ -1,4 +1,8 @@
 /**
+ * 接收和提交带范围约束的数值。
+ * Accepts and commits bounded numbers.
+ */
+/**
  * Controlled numeric input with a typing-friendly draft.
  *
  * Intermediate text is kept locally so out-of-range or blank states never

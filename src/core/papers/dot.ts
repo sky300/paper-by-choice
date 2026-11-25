@@ -1,4 +1,8 @@
 /**
+ * 绘制点阵纸。
+ * Draws dot-grid paper.
+ */
+/**
  * Dot matrix paper.
  *
  * The lattice starts at the top-left margin; dots scale with line width. The column layout is declared but applied by the

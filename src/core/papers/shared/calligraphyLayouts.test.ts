@@ -1,3 +1,7 @@
+/**
+ * 验证 calligraphyLayouts 模块的 resolveLayout、all eight styles、horizontal_lines 行为。
+ * Tests calligraphyLayouts behavior covering resolveLayout, all eight styles, horizontal_lines.
+ */
 import type { Box } from '../../scene/types'
 import type { RenderContext } from '../contract'
 import { createFontKit, createInkKit } from '../kit'

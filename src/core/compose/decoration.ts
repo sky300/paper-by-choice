@@ -1,4 +1,8 @@
 /**
+ * 绘制边框及纸面装饰。
+ * Draws borders and page decorations.
+ */
+/**
  * Page decoration: an optional frame around the page or the writing area.
  * Styles are built from independent edges so each side can be switched off,
  * and the whole layer is wrapped in one group with the decoration opacity.

@@ -1,3 +1,7 @@
+/**
+ * 验证 SettingsProvider 模块的行为（提供纸张设置状态和修改操作）。
+ * Tests the SettingsProvider module, which provides paper settings state and update actions.
+ */
 // @vitest-environment happy-dom
 import { cleanup, renderHook } from '@testing-library/react'
 import { type ReactNode } from 'react'

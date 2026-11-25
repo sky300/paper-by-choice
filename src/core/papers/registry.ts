@@ -1,4 +1,8 @@
 /**
+ * 注册全部纸型、排序并解析纸型预设。
+ * Registers and orders papers and resolves their presets.
+ */
+/**
  * Paper registry.
  *
  * A paper registers itself by existing: every `*.ts` file next to this module,
@@ -10,7 +14,7 @@ import type { AnyPaper } from './contract'
 import { isPlainObject } from './kit'
 import type { Locale, PaperGroup, PaperType } from '../types'
 
-/** The 41 paper types in canonical order: the order in which `PaperType` declares them. */
+/** The 48 paper types in canonical order: the order in which `PaperType` declares them. */
 export const PAPER_ORDER: readonly PaperType[] = [
   // basic
   'lined',
@@ -32,8 +36,17 @@ export const PAPER_ORDER: readonly PaperType[] = [
   'pinyin_tianzi',
   'composition_paper',
   'arithmetic_paper',
-  'english_paper',
   'practice_paper',
+  // English worksheets
+  'english_paper',
+  'english_primary',
+  'english_double_line',
+  'english_slanted',
+  'english_tracing',
+  'english_dictation',
+  'english_vocabulary',
+  'english_draw_write',
+  'chinese_english_word_practice',
   // calligraphy practice
   'calligraphy_practice',
   'mizige',
@@ -56,7 +69,6 @@ export const PAPER_ORDER: readonly PaperType[] = [
   'branded',
   'error_correction',
   'chinese_preview_card',
-  'chinese_english_word_practice',
 ]
 
 /** Whether a default export is shaped like a paper: an object with a string `type`. */

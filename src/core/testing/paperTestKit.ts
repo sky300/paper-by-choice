@@ -1,4 +1,8 @@
 /**
+ * 提供纸型测试的共享场景与断言辅助函数。
+ * Provides shared paper-scene fixtures and assertion helpers.
+ */
+/**
  * Test kit for papers.
  *
  * `renderPaper` assembles a complete render context the way the application

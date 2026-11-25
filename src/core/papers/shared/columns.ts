@@ -1,4 +1,8 @@
 /**
+ * 拆分可写区域并绘制分栏线。
+ * Splits writable areas and draws column dividers.
+ */
+/**
  * Left / right column layout, shared by the papers that can be split in two.
  *
  * The compose layer reads these options to split the writing area and draw

@@ -1,3 +1,7 @@
+/**
+ * 验证几何纸型的网格尺寸和排版。
+ * Tests grid dimensions and alignment for geometric papers.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

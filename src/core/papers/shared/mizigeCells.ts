@@ -1,4 +1,8 @@
 /**
+ * 绘制可复用的米字格单元。
+ * Draws reusable Mi calligraphy cells.
+ */
+/**
  * Shared helpers for the geometry-grid papers (isometric, hexagonal, Seyes,
  * storyboard, mizige). Pure functions over millimetre boxes.
  */

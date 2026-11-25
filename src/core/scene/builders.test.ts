@@ -1,3 +1,7 @@
+/**
+ * 验证 builders 模块的 pt and box、line、rect and square 行为。
+ * Tests builders behavior covering pt and box, line, rect and square.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   arc,

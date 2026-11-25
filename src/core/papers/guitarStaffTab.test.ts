@@ -1,3 +1,7 @@
+/**
+ * 验证 guitarStaffTab 模块的 guitarStaffTab 行为。
+ * Tests guitarStaffTab behavior covering guitarStaffTab.
+ */
 import guitarStaffTab from './guitarStaffTab'
 import { describe, expect, test } from 'vitest'
 import { expectInside, renderPaper, textsOf } from '../testing/paperTestKit'

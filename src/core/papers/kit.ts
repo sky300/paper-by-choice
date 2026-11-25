@@ -1,4 +1,8 @@
 /**
+ * 构造纸型渲染所用的线条与字体工具。
+ * Builds stroke and font helpers for paper renderers.
+ */
+/**
  * Paper kit: the toolbox every paper is built from.
  *
  * Strokes and fonts derived from the user's line settings and the theme,

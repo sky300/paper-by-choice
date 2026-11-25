@@ -1,3 +1,7 @@
+/**
+ * 验证 pathData 模块的 resolvePaint、polyToPath、toPathData 行为。
+ * Tests pathData behavior covering resolvePaint, polyToPath, toPathData.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   arc,

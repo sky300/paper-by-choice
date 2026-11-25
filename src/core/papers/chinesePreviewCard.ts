@@ -1,4 +1,8 @@
 /**
+ * 生成语文预习卡。
+ * Draws Chinese language preview cards.
+ */
+/**
  * Chinese preview card: an 8-column table with a coloured header and body
  * rows whose cells carry practice squares and midlines for handwriting.
  */

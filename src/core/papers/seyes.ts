@@ -1,4 +1,8 @@
 /**
+ * 绘制法式 Séyès 练习格。
+ * Draws French Séyès ruling.
+ */
+/**
  * Séyès (French ruling) paper.
  *
  * A fixed 8 mm square grid, centred in the writing area, with three faint

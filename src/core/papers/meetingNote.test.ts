@@ -1,3 +1,7 @@
+/**
+ * 验证 meetingNote 模块的 meetingNote 行为。
+ * Tests meetingNote behavior covering meetingNote.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

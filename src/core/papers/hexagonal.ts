@@ -1,4 +1,8 @@
 /**
+ * 绘制六边形网格。
+ * Draws a hexagonal grid.
+ */
+/**
  * Hexagonal (honeycomb-ish) grid paper.
  *
  * A faint backing panel with a thin border, then staggered hexagon outlines.

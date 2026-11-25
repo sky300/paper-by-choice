@@ -1,3 +1,7 @@
+/**
+ * 验证 watermark 模块的 rotatePoint、watermarkScene: when it draws、watermarkScene: grid 行为。
+ * Tests watermark behavior covering rotatePoint, watermarkScene: when it draws, watermarkScene: grid.
+ */
 import { describe, expect, test } from 'vitest'
 import { rotatePoint, watermarkScene } from './watermark'
 import type { PageSize } from './document'

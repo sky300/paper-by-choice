@@ -1,4 +1,8 @@
 /**
+ * 分配书法练习纸的共用布局。
+ * Allocates shared calligraphy layouts.
+ */
+/**
  * Drawing routines for the eight layouts of the parameterized calligraphy
  * practice paper. Everything here is pure arithmetic in millimetres: a layout
  * plus a render context become a flat scene that stays inside the writing area.

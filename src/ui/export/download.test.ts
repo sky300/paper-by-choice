@@ -1,3 +1,7 @@
+/**
+ * 验证 download 模块的行为（通过浏览器保存导出文件）。
+ * Tests the download module, which saves generated files through the browser.
+ */
 // @vitest-environment happy-dom
 import { afterEach, describe, expect, test, vi } from 'vitest'
 import { downloadBlob, downloadText } from './download'

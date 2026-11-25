@@ -1,3 +1,7 @@
+/**
+ * 验证 blank 模块的 blank: declaration、blank: rendering、blank: messages 行为。
+ * Tests blank behavior covering blank: declaration, blank: rendering, blank: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import blank from './blank'
 import { paperName } from './registry'

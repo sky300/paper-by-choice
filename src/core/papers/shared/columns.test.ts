@@ -1,3 +1,7 @@
+/**
+ * 验证 columns 模块的 COLUMNS_DEFAULTS、COLUMNS_FIELDS、COLUMNS_MESSAGES 行为。
+ * Tests columns behavior covering COLUMNS_DEFAULTS, COLUMNS_FIELDS, COLUMNS_MESSAGES.
+ */
 import { resolveOptions } from '../kit'
 import { describe, expect, test } from 'vitest'
 import { COLUMNS_DEFAULTS, COLUMNS_FIELDS, COLUMNS_MESSAGES } from './columns'

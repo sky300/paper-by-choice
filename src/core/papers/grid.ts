@@ -1,4 +1,8 @@
 /**
+ * 生成等距方格。
+ * Draws a square grid.
+ */
+/**
  * Square grid paper.
  *
  * A centred lattice of square cells inside the writing area; the number of

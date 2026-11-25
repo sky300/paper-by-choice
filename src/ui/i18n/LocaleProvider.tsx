@@ -1,4 +1,8 @@
 /**
+ * 保存和提供当前界面语言。
+ * Stores and provides the active interface locale.
+ */
+/**
  * UI language context.
  *
  * The saved preference wins over browser detection. Changing the locale also

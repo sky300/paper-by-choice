@@ -1,3 +1,7 @@
+/**
+ * 验证 background 模块的 backgroundScene: constants、backgroundScene: base fill、backgroundScene: built-in textures 行为。
+ * Tests background behavior covering backgroundScene: constants, backgroundScene: base fill, backgroundScene: built-in textures.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   GRAPH_MAJOR_EVERY,

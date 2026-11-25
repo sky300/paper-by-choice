@@ -1,3 +1,7 @@
+/**
+ * 验证水印和页面配置。
+ * Tests watermark and page controls.
+ */
 // @vitest-environment happy-dom
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type { ReactElement } from 'react'

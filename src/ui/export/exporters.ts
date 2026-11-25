@@ -1,4 +1,8 @@
 /**
+ * 调用渲染器并组织 PDF、SVG、PNG 导出。
+ * Orchestrates PDF, SVG, and PNG exports.
+ */
+/**
  * Browser-side export entry points.
  *
  * The geometry comes from `buildDocument`; this module only serialises it into

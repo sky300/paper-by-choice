@@ -1,4 +1,8 @@
 /**
+ * 展示当前纸型的专属设置。
+ * Displays settings specific to the current paper.
+ */
+/**
  * Paper-specific options, generated from the current paper's field schema.
  *
  * Papers with no declared fields return `null` so the panel shows nothing.

@@ -1,3 +1,7 @@
+/**
+ * 验证 sketch 模块的 sketch 行为。
+ * Tests sketch behavior covering sketch.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

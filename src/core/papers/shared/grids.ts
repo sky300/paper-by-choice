@@ -1,4 +1,8 @@
 /**
+ * 计算并绘制可复用的网格几何。
+ * Calculates and draws reusable grid geometry.
+ */
+/**
  * Rule and lattice builders shared by the grid-like papers: ruled lines,
  * square cells and dot matrices. All of them stay inside the writing area
  * and leave out whatever would lie on its far edge.

@@ -1,3 +1,7 @@
+/**
+ * 验证 mizigeCells 模块的 mizigeCells shared helpers 行为。
+ * Tests mizigeCells behavior covering mizigeCells shared helpers.
+ */
 import { describe, expect, test } from 'vitest'
 import { box } from '../../scene/builders'
 import { shapesOf } from '../../testing/paperTestKit'

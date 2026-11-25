@@ -1,4 +1,8 @@
 /**
+ * 生成草图纸。
+ * Draws sketch paper.
+ */
+/**
  * Sketch paper: a dot matrix, a frame around the writing area and a 100 mm
  * scale bar in the lower-left corner for drawing to scale.
  */

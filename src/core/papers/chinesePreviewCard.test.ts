@@ -1,3 +1,7 @@
+/**
+ * 验证 chinesePreviewCard 模块的 chinesePreviewCard 行为。
+ * Tests chinesePreviewCard behavior covering chinesePreviewCard.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

@@ -1,4 +1,8 @@
 /**
+ * 将场景转换为 SVG。
+ * Converts a scene to SVG.
+ */
+/**
  * SVG serializer.
  *
  * Turns a scene into one standalone `<svg>` element whose user units are

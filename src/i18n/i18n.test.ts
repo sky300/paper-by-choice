@@ -1,3 +1,7 @@
+/**
+ * 验证翻译字典与语言回退。
+ * Tests translation dictionaries and fallback.
+ */
 import type { AnyPaper, PaperMessages } from '../core/papers/contract'
 import type { Locale } from '../core/types'
 import { expect, test } from 'vitest'

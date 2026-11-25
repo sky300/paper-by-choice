@@ -1,4 +1,8 @@
 /**
+ * 配置纸张边框与装饰。
+ * Configures page borders and decorations.
+ */
+/**
  * Page decoration: border style, scope, geometry and per-side toggles.
  *
  * Some styles imply sensible defaults (corner ornaments, all four sides),

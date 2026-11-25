@@ -1,4 +1,9 @@
-/** Informational modal: "Guide" and "About me", in the current language. */
+/**
+ * 显示使用指南或关于信息。
+ * Displays the guide and about dialogs.
+ *
+ * Informational modal: "Guide" and "About this project", in the current language.
+ */
 import { useEffect, useRef, type JSX } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 
@@ -102,7 +107,18 @@ function About(): JSX.Element {
         <li>{t('info.about.f3')}</li>
         <li>{t('info.about.f4')}</li>
       </ul>
-      <p className="info-sign">{t('info.about.sign')}</p>
+      <dl className="info-contact">
+        <dt>{t('info.about.repository')}</dt>
+        <dd>
+          <a href="https://github.com/sky300/paper-by-choice">
+            github.com/sky300/paper-by-choice
+          </a>
+        </dd>
+        <dt>{t('info.about.contact')}</dt>
+        <dd>
+          <a href="mailto:skyow300@gmail.com">skyow300@gmail.com</a>
+        </dd>
+      </dl>
     </>
   )
 }

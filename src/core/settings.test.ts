@@ -1,3 +1,7 @@
+/**
+ * 验证 settings 模块的 constants、createSettings、clampSpacing 行为。
+ * Tests settings behavior covering constants, createSettings, clampSpacing.
+ */
 import { describe, expect, test } from 'vitest'
 import { resolveTheme } from './themes'
 import {

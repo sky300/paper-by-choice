@@ -1,3 +1,7 @@
+/**
+ * 验证 studentNote 模块的 student_note: declaration、student_note: rendering、student_note: messages 行为。
+ * Tests studentNote behavior covering student_note: declaration, student_note: rendering, student_note: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import studentNote from './studentNote'
 import { paperName } from './registry'

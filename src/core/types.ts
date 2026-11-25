@@ -1,4 +1,8 @@
 /**
+ * 定义纸张设置与页面数据类型。
+ * Defines application settings and page data types.
+ */
+/**
  * Application data model. Pure types and lookup tables of allowed values; no
  * behaviour lives here.
  */
@@ -22,7 +26,7 @@ export type Translator = (
 /* Paper catalogue                                                     */
 /* ------------------------------------------------------------------ */
 
-export type PaperGroup = 'basic' | 'worksheet' | 'calligraphy' | 'creative'
+export type PaperGroup = 'basic' | 'worksheet' | 'english' | 'calligraphy' | 'creative'
 
 export type PaperType =
   // basic
@@ -45,8 +49,17 @@ export type PaperType =
   | 'pinyin_tianzi'
   | 'composition_paper'
   | 'arithmetic_paper'
-  | 'english_paper'
   | 'practice_paper'
+  // English worksheets
+  | 'english_paper'
+  | 'english_primary'
+  | 'english_double_line'
+  | 'english_slanted'
+  | 'english_tracing'
+  | 'english_dictation'
+  | 'english_vocabulary'
+  | 'english_draw_write'
+  | 'chinese_english_word_practice'
   // calligraphy practice
   | 'calligraphy_practice'
   | 'mizige'
@@ -69,7 +82,6 @@ export type PaperType =
   | 'branded'
   | 'error_correction'
   | 'chinese_preview_card'
-  | 'chinese_english_word_practice'
 
 export type PaperSizeKey =
   | 'a4'

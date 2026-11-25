@@ -1,3 +1,7 @@
+/**
+ * 验证 calligraphyPractice 模块的 calligraphy_practice: declaration、calligraphy_practice: rendering 行为。
+ * Tests calligraphyPractice behavior covering calligraphy_practice: declaration, calligraphy_practice: rendering.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import calligraphyPractice from './calligraphyPractice'
 import { CALLIGRAPHY_GRID_STYLES } from './shared/calligraphyLayouts'

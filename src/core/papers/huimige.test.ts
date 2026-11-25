@@ -1,3 +1,7 @@
+/**
+ * 验证 huimige 模块的 huimige 行为。
+ * Tests huimige behavior covering huimige.
+ */
 import huimige from './huimige'
 import { describe, expect, test } from 'vitest'
 import {

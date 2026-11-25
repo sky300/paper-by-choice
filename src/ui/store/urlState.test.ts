@@ -1,3 +1,7 @@
+/**
+ * 验证 urlState 模块的行为（处理旧分享链接里的设置片段）。
+ * Tests the urlState module, which handles settings fragments from shared links.
+ */
 import { describe, expect, test } from 'vitest'
 import { createSettings, encodeSettingsHash } from '../../core/settings'
 import {

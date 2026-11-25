@@ -1,4 +1,8 @@
 /**
+ * 配置水印文字与位置。
+ * Configures watermark text and placement.
+ */
+/**
  * Watermark text and its appearance; the text starts empty by design.
  */
 import type { JSX } from 'react'

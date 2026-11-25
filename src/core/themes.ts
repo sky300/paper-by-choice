@@ -1,4 +1,8 @@
 /**
+ * 定义纸张排版的配色及字体主题。
+ * Defines paper rendering palettes and typography.
+ */
+/**
  * Theme palettes. A theme is data only: papers and the page composer pick
  * colours and font stacks from it, they never hard-code their own.
  */

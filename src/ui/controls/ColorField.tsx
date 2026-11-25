@@ -1,4 +1,8 @@
 /**
+ * 显示颜色选择器与预设色板。
+ * Displays color inputs and preset swatches.
+ */
+/**
  * Controlled colour field: a native picker, hex text and optional swatches.
  *
  * The picker falls back to `#000000` for an invalid hex value so the DOM

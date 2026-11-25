@@ -1,3 +1,7 @@
+/**
+ * 验证 exporters 模块的行为（调用渲染器并组织 PDF、SVG、PNG 导出）。
+ * Tests the exporters module, which orchestrates PDF, SVG, and PNG exports.
+ */
 // @vitest-environment happy-dom
 import { describe, expect, test, vi } from 'vitest'
 import { createSettings } from '../../core/settings'

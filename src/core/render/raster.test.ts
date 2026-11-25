@@ -1,3 +1,7 @@
+/**
+ * 验证 raster 模块的 dotsPerMm、fitDpi、drawScene / line 行为。
+ * Tests raster behavior covering dotsPerMm, fitDpi, drawScene / line.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   arc,

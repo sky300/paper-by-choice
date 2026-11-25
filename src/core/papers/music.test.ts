@@ -1,3 +1,7 @@
+/**
+ * 验证 music 模块的 music 行为。
+ * Tests music behavior covering music.
+ */
 import music from './music'
 import { describe, expect, test } from 'vitest'
 import {

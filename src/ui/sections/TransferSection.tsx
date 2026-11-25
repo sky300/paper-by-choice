@@ -1,4 +1,8 @@
 /**
+ * 导入和导出纸张设置。
+ * Imports and exports paper settings.
+ */
+/**
  * Import and export of the whole settings object.
  *
  * Export writes the app's JSON envelope; import validates it and reports the

@@ -1,3 +1,7 @@
+/**
+ * 验证 color 模块的 parseHexColor、rgbToHex 行为。
+ * Tests color behavior covering parseHexColor, rgbToHex.
+ */
 import { describe, expect, test } from 'vitest'
 import { parseHexColor, rgbToHex } from './color'
 

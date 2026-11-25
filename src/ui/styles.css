@@ -1143,11 +1143,23 @@ h3 {
   margin-bottom: 6px;
 }
 
-.info-sign {
+.info-contact {
+  display: grid;
+  gap: 4px;
   margin: 24px 0 0;
-  text-align: right;
-  color: var(--text-muted);
-  font-style: italic;
+}
+
+.info-contact dt {
+  font-weight: 600;
+}
+
+.info-contact dd {
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+
+.info-contact a {
+  color: var(--accent);
 }
 
 @media (max-width: 560px) {

@@ -1,4 +1,9 @@
-/** Export bar: PDF / SVG / PNG / print, with a PNG resolution selector. */
+/**
+ * 提供导出格式、清晰度和打印操作。
+ * Provides export, resolution, and print actions.
+ *
+ * Export bar: PDF / SVG / PNG / print, with a PNG resolution selector.
+ */
 import { useEffect, useState, type JSX } from 'react'
 import { UiIcon } from '../controls/UiIcon'
 import { useLocale } from '../i18n/LocaleProvider'

@@ -1,3 +1,7 @@
+/**
+ * 验证 creativeLog 模块的 creativeLog 行为。
+ * Tests creativeLog behavior covering creativeLog.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

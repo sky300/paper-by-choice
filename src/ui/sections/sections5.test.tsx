@@ -1,3 +1,7 @@
+/**
+ * 验证设置导入和导出。
+ * Tests settings import and export.
+ */
 // @vitest-environment happy-dom
 import {
   cleanup,

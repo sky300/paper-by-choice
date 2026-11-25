@@ -1,4 +1,8 @@
 /**
+ * 生成无格线的空白纸。
+ * Generates blank paper.
+ */
+/**
  * Blank paper: deliberately nothing to draw.
  *
  * The column layout is still declared so the compose layer can split the page

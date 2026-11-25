@@ -1,4 +1,9 @@
-/** Footer: privacy note, printing guidance and project credit. */
+/**
+ * 显示版权信息及使用提示。
+ * Displays copyright and usage notes.
+ *
+ * Footer: privacy note, printing guidance and project credit.
+ */
 import type { JSX } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 

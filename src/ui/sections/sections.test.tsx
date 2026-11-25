@@ -1,3 +1,7 @@
+/**
+ * 验证基本纸型配置。
+ * Tests basic paper controls.
+ */
 // @vitest-environment happy-dom
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type { ReactElement } from 'react'
@@ -64,10 +68,11 @@ function show(ui: ReactElement, settings?: Settings) {
 }
 
 describe('PaperTypeSection', () => {
-  test('renders the four groups and every registered paper', () => {
+  test('renders the five groups and every registered paper', () => {
     show(<PaperTypeSection />)
     expect(screen.getByText('基础纸型')).toBeTruthy()
     expect(screen.getByText('中文作业纸')).toBeTruthy()
+    expect(screen.getByText('英文作业纸')).toBeTruthy()
     expect(screen.getByText('书法练习纸')).toBeTruthy()
     expect(screen.getByText('笔记与表单')).toBeTruthy()
     expect(document.querySelectorAll('.paper-option')).toHaveLength(

@@ -1,4 +1,9 @@
-/** Vertical ruled paper: the portrait sibling of `lined`. */
+/**
+ * 绘制竖线纸。
+ * Draws vertical ruled paper.
+ *
+ * Vertical ruled paper: the portrait sibling of `lined`.
+ */
 import { definePaper } from './define'
 import { line } from '../scene/builders'
 import { countThatFit } from '../scene/geometry'

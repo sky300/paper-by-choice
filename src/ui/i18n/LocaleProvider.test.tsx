@@ -1,3 +1,7 @@
+/**
+ * 验证 LocaleProvider 模块的行为（保存和提供当前界面语言）。
+ * Tests the LocaleProvider module, which stores and provides the active interface locale.
+ */
 // @vitest-environment happy-dom
 import { cleanup, renderHook } from '@testing-library/react'
 import { type ReactNode } from 'react'

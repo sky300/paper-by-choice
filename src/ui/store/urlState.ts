@@ -1,4 +1,8 @@
 /**
+ * 处理旧分享链接里的设置片段。
+ * Handles settings fragments from shared links.
+ */
+/**
  * Share-link state: the settings object encoded into the URL fragment.
  *
  * Encoding and validation live in `core/settings`; this module only handles

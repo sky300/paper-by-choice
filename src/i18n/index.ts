@@ -1,4 +1,8 @@
 /**
+ * 加载翻译字典并创建翻译函数。
+ * Loads translation dictionaries and supplies translators.
+ */
+/**
  * Internationalisation: UI dictionaries, message lookup and locale detection.
  *
  * `core` modules may import the *types* from here; the dictionaries themselves

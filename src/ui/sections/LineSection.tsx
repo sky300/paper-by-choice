@@ -1,4 +1,8 @@
 /**
+ * 配置格线颜色、宽度、样式和间距。
+ * Configures rule color, width, pattern, and spacing.
+ */
+/**
  * Line settings: spacing, colour, style and width.
  *
  * The spacing label, hint and range come from the current paper's declaration;

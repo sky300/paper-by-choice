@@ -1,4 +1,8 @@
 /**
+ * 解析渲染器所需的颜色值。
+ * Parses colors for output renderers.
+ */
+/**
  * Colour helpers.
  *
  * Scenes only carry `#rrggbb` colours, so parsing is strict and everything

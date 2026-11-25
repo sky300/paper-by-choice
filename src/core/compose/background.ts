@@ -1,4 +1,8 @@
 /**
+ * 生成纸张底色、纹理与背景图片。
+ * Composes paper colors, textures, and background images.
+ */
+/**
  * Page background: a full-page colour fill plus an optional texture or a
  * user-supplied image. Built-in textures cover the whole page, ignoring the
  * margins, and live in one group so their opacity is applied exactly once.

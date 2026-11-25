@@ -1,3 +1,7 @@
+/**
+ * 逐个验证纸型的 SVG 输出。
+ * Checks SVG output across paper types.
+ */
 // @vitest-environment node
 /// <reference types="node" />
 import { describe, expect, test } from 'vitest'
@@ -18,9 +22,9 @@ const OUT_DIR = join(process.cwd(), '.dev', 'checks', 'svg')
  * human can open them, and asserts the structure of each one.
  */
 describe('SVG rendering of every paper', () => {
-  test('all 41 papers produce a valid stand-alone SVG', () => {
+  test('all 48 papers produce a valid stand-alone SVG', () => {
     mkdirSync(OUT_DIR, { recursive: true })
-    expect(papers).toHaveLength(41)
+    expect(papers).toHaveLength(48)
 
     for (const paper of papers) {
       const settings = createSettings(paper.type)

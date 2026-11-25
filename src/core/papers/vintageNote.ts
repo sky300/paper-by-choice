@@ -1,4 +1,8 @@
 /**
+ * 生成复古笔记纸。
+ * Draws vintage note paper.
+ */
+/**
  * Vintage note paper.
  *
  * A blank title strip at the top, ruled writing lines below it, one accent

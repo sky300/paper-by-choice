@@ -1,4 +1,8 @@
 /**
+ * 将场景渲染为 PDF 页面。
+ * Renders scenes to PDF pages.
+ */
+/**
  * Vector PDF renderer.
  *
  * Lines and curves stay vector, so the file scales losslessly in any

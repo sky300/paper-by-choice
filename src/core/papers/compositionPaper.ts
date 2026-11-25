@@ -1,4 +1,9 @@
-/** Composition paper: square cells in rows separated by a small gap. */
+/**
+ * 生成分行排列的作文方格。
+ * Draws Chinese composition squares.
+ *
+ * Composition paper: square cells in rows separated by a small gap.
+ */
 import { line, rect } from '../scene/builders'
 import type { SceneItem } from '../scene/types'
 import { definePaper } from './define'

@@ -1,4 +1,8 @@
 /**
+ * 提供尺寸、定位和取整运算。
+ * Provides sizing, positioning, and rounding calculations.
+ */
+/**
  * Geometry helpers for scenes.
  *
  * Pure arithmetic in millimetres on plain numbers and scene items, shared by

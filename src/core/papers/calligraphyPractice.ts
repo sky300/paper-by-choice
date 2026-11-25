@@ -1,4 +1,8 @@
 /**
+ * 绘制书法练字格。
+ * Draws calligraphy practice cells.
+ */
+/**
  * Parameterized calligraphy practice paper: eight layouts driven by one
  * `layout` option object, plus 43 named presets taken from the W table.
  * The drawing itself lives in `shared/calligraphyLayouts.ts`.

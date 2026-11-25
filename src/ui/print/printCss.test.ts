@@ -1,3 +1,7 @@
+/**
+ * 验证 printCss 模块的行为（生成适用纸张尺寸的打印样式）。
+ * Tests the printCss module, which builds print CSS for the selected paper dimensions.
+ */
 // @vitest-environment happy-dom
 import { describe, expect, test } from 'vitest'
 import { buildPrintCss } from './printCss'

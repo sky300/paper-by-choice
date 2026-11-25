@@ -1,4 +1,9 @@
-/** Top bar: brand, language switch, template gallery and the mobile panel toggle. */
+/**
+ * 显示站点标题、导航及界面入口。
+ * Displays the site identity, navigation, and interface actions.
+ *
+ * Top bar: brand, language switch, template gallery and the mobile panel toggle.
+ */
 import type { JSX, Ref } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 import { UiIcon } from '../controls/UiIcon'

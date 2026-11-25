@@ -1,4 +1,8 @@
 /**
+ * 配置纸张四边的页边距。
+ * Configures the four paper margins.
+ */
+/**
  * The four page margins in a 2×2 grid.
  */
 import type { JSX } from 'react'

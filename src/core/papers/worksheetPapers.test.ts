@@ -1,3 +1,7 @@
+/**
+ * 验证作业纸的页眉、方格与布局。
+ * Tests worksheet headers, grids, and layout.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

@@ -1,4 +1,8 @@
 /**
+ * 显示可展开的配置区块。
+ * Displays a collapsible settings section.
+ */
+/**
  * Collapsible control-panel section built on native `<details>`.
  *
  * Native disclosure gives keyboard and screen-reader support without state;

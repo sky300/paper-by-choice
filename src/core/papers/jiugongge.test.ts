@@ -1,3 +1,7 @@
+/**
+ * 验证 jiugongge 模块的 jiugongge 行为。
+ * Tests jiugongge behavior covering jiugongge.
+ */
 import jiugongge from './jiugongge'
 import { describe, expect, test } from 'vitest'
 import {

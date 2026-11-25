@@ -1,4 +1,8 @@
 /**
+ * 绘制汉字练习方格和常用辅助线。
+ * Draws shared CJK practice cells and guides.
+ */
+/**
  * Cell builders shared by the CJK calligraphy practice papers: square cells,
  * their lattice lines, inner "cell in a cell" boxes, thirds, crosses and
  * diagonals. All geometry stays inside the box it is given.

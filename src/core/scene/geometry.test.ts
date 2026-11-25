@@ -1,3 +1,7 @@
+/**
+ * 验证 geometry 模块的 clamp、roundTo、snapToStep 行为。
+ * Tests geometry behavior covering clamp, roundTo, snapToStep.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   centeredStart,

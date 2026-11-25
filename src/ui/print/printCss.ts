@@ -1,4 +1,9 @@
-/** Print stylesheet: exact @page size and rules that swap the screen UI for sheets. */
+/**
+ * 生成适用纸张尺寸的打印样式。
+ * Builds print CSS for the selected paper dimensions.
+ *
+ * Print stylesheet: exact @page size and rules that swap the screen UI for sheets.
+ */
 import { formatNumber } from '../../core/render/svg'
 
 /** CSS text injected into a <style> element at runtime. */

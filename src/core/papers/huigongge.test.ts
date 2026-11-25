@@ -1,3 +1,7 @@
+/**
+ * 验证 huigongge 模块的 huigongge 行为。
+ * Tests huigongge behavior covering huigongge.
+ */
 import huigongge from './huigongge'
 import { describe, expect, test } from 'vitest'
 import {

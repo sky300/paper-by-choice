@@ -1,3 +1,7 @@
+/**
+ * 验证 chineseEnglishWordPractice 模块的 chineseEnglishWordPractice 行为。
+ * Tests chineseEnglishWordPractice behavior covering chineseEnglishWordPractice.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

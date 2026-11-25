@@ -1,3 +1,7 @@
+/**
+ * 验证 define 模块的 definePaper 行为。
+ * Tests define behavior covering definePaper.
+ */
 import { line } from '../scene/builders'
 import type { Scene } from '../scene/types'
 import { resolveTheme } from '../themes'

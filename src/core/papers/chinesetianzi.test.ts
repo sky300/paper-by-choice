@@ -1,3 +1,7 @@
+/**
+ * 验证 chinesetianzi 模块的 chinesetianzi 行为。
+ * Tests chinesetianzi behavior covering chinesetianzi.
+ */
 import chinesetianzi from './chinesetianzi'
 import { describe, expect, test } from 'vitest'
 import {

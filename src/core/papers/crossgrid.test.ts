@@ -1,3 +1,7 @@
+/**
+ * 验证 crossgrid 模块的 crossgrid 行为。
+ * Tests crossgrid behavior covering crossgrid.
+ */
 import crossgrid from './crossgrid'
 import { describe, expect, test } from 'vitest'
 import {

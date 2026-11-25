@@ -1,3 +1,7 @@
+/**
+ * 验证 guitarTab 模块的 guitarTab 行为。
+ * Tests guitarTab behavior covering guitarTab.
+ */
 import guitarTab from './guitarTab'
 import { describe, expect, test } from 'vitest'
 import { expectInside, renderPaper, shapesOf } from '../testing/paperTestKit'

@@ -1,3 +1,7 @@
+/**
+ * 验证 guides 模块的 crossGuides、diagonalGuides、borderOf 行为。
+ * Tests guides behavior covering crossGuides, diagonalGuides, borderOf.
+ */
 import { createInkKit } from '../kit'
 import { describe, expect, test } from 'vitest'
 import { borderOf, crossGuides, diagonalGuides } from './guides'

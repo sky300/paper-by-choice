@@ -1,4 +1,8 @@
 /**
+ * 编解码可分享的纸张设置。
+ * Encodes and decodes shareable paper settings.
+ */
+/**
  * Platform-independent base64url and UTF-8 codecs for share links.
  *
  * Implemented with pure JavaScript and Web-standard `TextEncoder` /

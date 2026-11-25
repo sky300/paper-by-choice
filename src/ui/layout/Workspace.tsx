@@ -1,4 +1,9 @@
-/** The whole application: header, control panel, preview, exports and print. */
+/**
+ * 组织设置区与预览区的响应式布局。
+ * Arranges responsive settings and preview panels.
+ *
+ * The whole application: header, control panel, preview, exports and print.
+ */
 import { flushSync } from 'react-dom'
 import { useEffect, useMemo, useRef, useState, type JSX } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'

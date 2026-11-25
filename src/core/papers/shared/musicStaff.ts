@@ -1,4 +1,8 @@
 /**
+ * 绘制五线谱与吉他谱的共用线组。
+ * Draws shared music and tablature rules.
+ */
+/**
  * Notation building blocks shared by the three staff papers: five-line staffs,
  * six-line TAB groups, blank chord grids, bar lines and clef text marks.
  * All geometry is in millimetres and stays where the caller places it.

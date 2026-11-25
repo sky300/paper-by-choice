@@ -1,3 +1,7 @@
+/**
+ * 验证 paperTestKit 模块的 renderPaper、horizontalPositions、verticalPositions 行为。
+ * Tests paperTestKit behavior covering renderPaper, horizontalPositions, verticalPositions.
+ */
 import { circle, group, line, rect, text } from '../scene/builders'
 import { THEMES } from '../themes'
 import { describe, expect, test } from 'vitest'

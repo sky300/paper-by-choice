@@ -1,3 +1,7 @@
+/**
+ * 验证 grids 模块的 horizontalRules、verticalRules、cellGrid 行为。
+ * Tests grids behavior covering horizontalRules, verticalRules, cellGrid.
+ */
 import { createInkKit } from '../kit'
 import { describe, expect, test } from 'vitest'
 import { cellGrid, dotGrid, horizontalRules, verticalRules } from './grids'

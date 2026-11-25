@@ -1,4 +1,9 @@
-/** Observes the content width of an element, with a resize-event fallback. */
+/**
+ * 观察预览容器的可用宽度。
+ * Observes the available preview width.
+ *
+ * Observes the content width of an element, with a resize-event fallback.
+ */
 import { useEffect, useRef, useState, type RefObject } from 'react'
 
 export function useElementWidth<T extends HTMLElement>(): [

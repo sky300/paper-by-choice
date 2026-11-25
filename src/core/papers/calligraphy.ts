@@ -1,4 +1,8 @@
 /**
+ * 绘制基础书法练习纸。
+ * Draws basic calligraphy guide sheets.
+ */
+/**
  * Calligraphy practice paper.
  *
  * A top-left aligned lattice of squares; each cell may carry a "rice" guide

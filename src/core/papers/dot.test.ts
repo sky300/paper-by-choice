@@ -1,3 +1,7 @@
+/**
+ * 验证 dot 模块的 dot 行为。
+ * Tests dot behavior covering dot.
+ */
 import dot from './dot'
 import { COLUMNS_DEFAULTS, COLUMNS_FIELDS } from './shared/columns'
 import { describe, expect, test } from 'vitest'

@@ -1,4 +1,8 @@
 /**
+ * 定义界面可选颜色预设。
+ * Defines selectable interface color swatches.
+ */
+/**
  * Preset colour palettes for the control panel.
  *
  * Labels are dictionary keys so the swatch names follow the UI language;

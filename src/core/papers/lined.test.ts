@@ -1,3 +1,7 @@
+/**
+ * 验证 lined 模块的 lined: declaration、lined: rendering、lined: messages 行为。
+ * Tests lined behavior covering lined: declaration, lined: rendering, lined: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import lined from './lined'
 import { paperName } from './registry'

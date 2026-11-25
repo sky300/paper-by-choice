@@ -1,4 +1,8 @@
 /**
+ * 布局创意记录区。
+ * Lays out creative log areas.
+ */
+/**
  * Creative-log paper: a cross divides the writing area into four labelled
  * quadrants, overlaid with a sparse dashed grid that avoids the centre lines.
  */

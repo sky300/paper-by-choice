@@ -1,4 +1,8 @@
 /**
+ * 管理纸张规格、方向和打印单位。
+ * Handles paper sizes, orientations, and print units.
+ */
+/**
  * Built-in paper sizes. Pure data and lookups; sanitising of the custom size
  * lives in `settings.ts`.
  */

@@ -1,4 +1,8 @@
 /**
+ * 计算并绘制共用书写辅助线。
+ * Calculates and draws shared writing guides.
+ */
+/**
  * Construction guides shared by the papers that practise writing in a box:
  * midlines, diagonals and the outline of a cell.
  */

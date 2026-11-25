@@ -1,3 +1,7 @@
+/**
+ * 配置 Vite 应用构建及 Vitest 测试。
+ * Configures Vite builds and Vitest.
+ */
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vitest/config'
 

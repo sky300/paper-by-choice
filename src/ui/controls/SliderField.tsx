@@ -1,4 +1,8 @@
 /**
+ * 提供滑动范围控件。
+ * Provides a range slider.
+ */
+/**
  * Controlled range slider with a readable current-value output.
  *
  * A `%` unit displays 0–1 values as whole percentages; otherwise the value

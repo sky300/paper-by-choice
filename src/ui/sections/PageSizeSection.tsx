@@ -1,4 +1,8 @@
 /**
+ * 切换纸张尺寸和方向。
+ * Selects paper size and orientation.
+ */
+/**
  * Paper size and orientation controls.
  *
  * A custom size is entered as final width / height in millimetres, so the

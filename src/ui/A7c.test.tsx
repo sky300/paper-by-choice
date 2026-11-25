@@ -1,3 +1,7 @@
+/**
+ * 验证预览、模板库和导出集成。
+ * Tests preview, gallery, and export integration.
+ */
 // @vitest-environment happy-dom
 import { render, screen, fireEvent, act, cleanup } from '@testing-library/react'
 import { describe, expect, test, vi, afterEach } from 'vitest'
@@ -105,14 +109,24 @@ describe('TemplateGallery', () => {
 })
 
 describe('Workspace', () => {
-  test('links the brand to the app home and credits its creator', () => {
+  test('links the brand home and shows project contact links', () => {
     wrap(<Workspace />)
     expect(
       screen.getByRole('link', { name: '纸随心' }).getAttribute('href'),
     ).toBe(import.meta.env.BASE_URL)
     expect(screen.getByText('© 2026 · Powered by skyow')).toBeDefined()
-    fireEvent.click(screen.getByRole('button', { name: '关于我' }))
-    expect(screen.getByText('创建者 skyow')).toBeDefined()
+    fireEvent.click(screen.getByRole('button', { name: '关于本项目' }))
+    expect(
+      screen
+        .getByRole('link', { name: 'github.com/sky300/paper-by-choice' })
+        .getAttribute('href'),
+    ).toBe('https://github.com/sky300/paper-by-choice')
+    expect(
+      screen
+        .getByRole('link', { name: 'skyow300@gmail.com' })
+        .getAttribute('href'),
+    ).toBe('mailto:skyow300@gmail.com')
+    expect(screen.queryByText('创建者 skyow')).toBeNull()
   })
 
   test('opens the paper settings drawer and closes it with Escape', () => {

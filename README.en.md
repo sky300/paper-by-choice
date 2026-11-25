@@ -98,6 +98,327 @@ Adding a paper means adding one file: `src/core/papers/<name>.ts` default-export
 
 React 19 · TypeScript 5.9 · Vite 8 · pdf-lib · Vitest. The only runtime dependencies are React, React DOM and pdf-lib.
 
+## English worksheets
+
+The **English worksheets** group includes four-line handwriting, US primary handwriting, double-line placement, two-tone slanted placement, tracing, dictation, vocabulary, draw-and-write, and Chinese–English translation drills. The four-line paper includes sky/grass/ground and grayscale placement presets.
+
+- **Paper size** defaults to A4 (210 × 297 mm) from [ISO 216](https://www.iso.org/standard/36631.html). The new worksheets use adjustable 18 mm margins on all sides and dark slate lines on white paper.
+- **Four-line handwriting** uses 4 mm between adjacent rules (12 mm total), with a 9 mm compact preset. See the minimum ruling height for primary-school English exercise books in [GB 40070—2021, section 6.2.1](https://www.ndcpa.gov.cn/jbkzzx/c100202/2019681064660144128/qAABzXz4.pdf).
+- **US primary handwriting** uses a 15.875 mm or 19.05 mm row pitch, inspired by [Zaner-Bloser’s nominal 5/8-inch and 3/4-inch sizes](https://media.zaner-bloser.com/pdfs/zaner-bloser-handwriting-c2020-renewal-form.pdf). This project sets the internal rule proportions.
+- **Other defaults** are set by this project. Double-line placement uses a 16 mm row pitch and a 6 mm gap between rules. Dictation and vocabulary rows default to 10 mm and 14 mm. The placement bands also have a grayscale option.
+
+## Project structure
+
+The tables cover every TypeScript and TSX file, including tests.
+
+### `src`
+
+| File | Purpose |
+| --- | --- |
+| [`App.test.tsx`](src/App.test.tsx) | Tests the App module, which exposes the application root |
+| [`App.tsx`](src/App.tsx) | Exposes the application root |
+| [`main.tsx`](src/main.tsx) | Bootstraps React and global styles |
+
+### `src/core/compose`
+
+| File | Purpose |
+| --- | --- |
+| [`background.test.ts`](src/core/compose/background.test.ts) | Tests the background module, which composes paper colors, textures, and background images |
+| [`background.ts`](src/core/compose/background.ts) | Composes paper colors, textures, and background images |
+| [`decoration.test.ts`](src/core/compose/decoration.test.ts) | Tests the decoration module, which draws borders and page decorations |
+| [`decoration.ts`](src/core/compose/decoration.ts) | Draws borders and page decorations |
+| [`document.test.ts`](src/core/compose/document.test.ts) | Tests the document module, which combines the paper, background, decorations, and watermark |
+| [`document.ts`](src/core/compose/document.ts) | Combines the paper, background, decorations, and watermark |
+| [`watermark.test.ts`](src/core/compose/watermark.test.ts) | Tests the watermark module, which positions and renders page watermarks |
+| [`watermark.ts`](src/core/compose/watermark.ts) | Positions and renders page watermarks |
+
+### `src/core`
+
+| File | Purpose |
+| --- | --- |
+| [`encoding.test.ts`](src/core/encoding.test.ts) | Tests the encoding module, which encodes and decodes shareable paper settings |
+| [`encoding.ts`](src/core/encoding.ts) | Encodes and decodes shareable paper settings |
+| [`paperLooks.ts`](src/core/paperLooks.ts) | Defines default line appearance, spacing, and margins for every paper |
+| [`paperSizes.test.ts`](src/core/paperSizes.test.ts) | Tests the paperSizes module, which handles paper sizes, orientations, and print units |
+| [`paperSizes.ts`](src/core/paperSizes.ts) | Handles paper sizes, orientations, and print units |
+| [`settings.test.ts`](src/core/settings.test.ts) | Tests the settings module, which creates, merges, and validates paper settings |
+| [`settings.ts`](src/core/settings.ts) | Creates, merges, and validates paper settings |
+| [`themes.test.ts`](src/core/themes.test.ts) | Tests the themes module, which defines paper rendering palettes and typography |
+| [`themes.ts`](src/core/themes.ts) | Defines paper rendering palettes and typography |
+| [`types.ts`](src/core/types.ts) | Defines application settings and page data types |
+
+### `src/core/papers`
+
+| File | Purpose |
+| --- | --- |
+| [`arithmeticPaper.ts`](src/core/papers/arithmeticPaper.ts) | Draws arithmetic practice with name and date fields |
+| [`b6Declaration.test.ts`](src/core/papers/b6Declaration.test.ts) | Tests independent paper declarations and registration |
+| [`blank.test.ts`](src/core/papers/blank.test.ts) | Tests the blank module, which generates blank paper |
+| [`blank.ts`](src/core/papers/blank.ts) | Generates blank paper |
+| [`branded.test.ts`](src/core/papers/branded.test.ts) | Tests the branded module, which draws stationery with custom branding |
+| [`branded.ts`](src/core/papers/branded.ts) | Draws stationery with custom branding |
+| [`calligraphy.test.ts`](src/core/papers/calligraphy.test.ts) | Tests the calligraphy module, which draws basic calligraphy guide sheets |
+| [`calligraphy.ts`](src/core/papers/calligraphy.ts) | Draws basic calligraphy guide sheets |
+| [`calligraphyPractice.test.ts`](src/core/papers/calligraphyPractice.test.ts) | Tests the calligraphyPractice module, which draws calligraphy practice cells |
+| [`calligraphyPractice.ts`](src/core/papers/calligraphyPractice.ts) | Draws calligraphy practice cells |
+| [`childrenDrawing.test.ts`](src/core/papers/childrenDrawing.test.ts) | Tests the childrenDrawing module, which lays out drawing areas for children |
+| [`childrenDrawing.ts`](src/core/papers/childrenDrawing.ts) | Lays out drawing areas for children |
+| [`chineseEnglishWordPractice.test.ts`](src/core/papers/chineseEnglishWordPractice.test.ts) | Tests the chineseEnglishWordPractice module, which draws Chinese–English translation drills |
+| [`chineseEnglishWordPractice.ts`](src/core/papers/chineseEnglishWordPractice.ts) | Draws Chinese–English translation drills |
+| [`chinesePreviewCard.test.ts`](src/core/papers/chinesePreviewCard.test.ts) | Tests the chinesePreviewCard module, which draws Chinese language preview cards |
+| [`chinesePreviewCard.ts`](src/core/papers/chinesePreviewCard.ts) | Draws Chinese language preview cards |
+| [`chinesetianzi.test.ts`](src/core/papers/chinesetianzi.test.ts) | Tests the chinesetianzi module, which draws Tian character cells and internal guides |
+| [`chinesetianzi.ts`](src/core/papers/chinesetianzi.ts) | Draws Tian character cells and internal guides |
+| [`compositionPaper.ts`](src/core/papers/compositionPaper.ts) | Draws Chinese composition squares |
+| [`contract.ts`](src/core/papers/contract.ts) | Declares interfaces for papers, options, presets, and rendering |
+| [`cornell.test.ts`](src/core/papers/cornell.test.ts) | Tests the cornell module, which lays out Cornell cue, note, and summary areas |
+| [`cornell.ts`](src/core/papers/cornell.ts) | Lays out Cornell cue, note, and summary areas |
+| [`creativeLog.test.ts`](src/core/papers/creativeLog.test.ts) | Tests the creativeLog module, which lays out creative log areas |
+| [`creativeLog.ts`](src/core/papers/creativeLog.ts) | Lays out creative log areas |
+| [`crossgrid.test.ts`](src/core/papers/crossgrid.test.ts) | Tests the crossgrid module, which draws crossed calligraphy guides |
+| [`crossgrid.ts`](src/core/papers/crossgrid.ts) | Draws crossed calligraphy guides |
+| [`define.test.ts`](src/core/papers/define.test.ts) | Tests the define module, which adapts strongly typed definitions to the shared registry |
+| [`define.ts`](src/core/papers/define.ts) | Adapts strongly typed definitions to the shared registry |
+| [`dot.test.ts`](src/core/papers/dot.test.ts) | Tests the dot module, which draws dot-grid paper |
+| [`dot.ts`](src/core/papers/dot.ts) | Draws dot-grid paper |
+| [`englishDictation.ts`](src/core/papers/englishDictation.ts) | Lays out numbered English dictation and corrections |
+| [`englishDoubleLine.ts`](src/core/papers/englishDoubleLine.ts) | Draws double-line guides for lowercase letter bodies |
+| [`englishDrawWrite.ts`](src/core/papers/englishDrawWrite.ts) | Combines a drawing area with English writing guides |
+| [`englishPaper.ts`](src/core/papers/englishPaper.ts) | Draws four-line handwriting and its color and grayscale presets |
+| [`englishPrimary.ts`](src/core/papers/englishPrimary.ts) | Draws US primary handwriting guides with a dashed midline |
+| [`englishSlanted.ts`](src/core/papers/englishSlanted.ts) | Draws English placement paper with a red baseline and pale slanted guides |
+| [`englishTracing.ts`](src/core/papers/englishTracing.ts) | Lays out model, tracing, and independent writing rows |
+| [`englishVocabulary.ts`](src/core/papers/englishVocabulary.ts) | Draws a word, meaning, and example table |
+| [`englishWorksheets.test.ts`](src/core/papers/englishWorksheets.test.ts) | Tests English worksheet grouping, pitch, and tracing |
+| [`errorCorrection.test.ts`](src/core/papers/errorCorrection.test.ts) | Tests the errorCorrection module, which lays out error-correction areas |
+| [`errorCorrection.ts`](src/core/papers/errorCorrection.ts) | Lays out error-correction areas |
+| [`exportVerification.test.ts`](src/core/papers/exportVerification.test.ts) | Checks paper and preset exports |
+| [`geometryPapers.test.ts`](src/core/papers/geometryPapers.test.ts) | Tests geometric paper sizing and layout |
+| [`grid.test.ts`](src/core/papers/grid.test.ts) | Tests the grid module, which draws a square grid |
+| [`grid.ts`](src/core/papers/grid.ts) | Draws a square grid |
+| [`guitarStaffTab.test.ts`](src/core/papers/guitarStaffTab.test.ts) | Tests the guitarStaffTab module, which combines musical staff and guitar tablature |
+| [`guitarStaffTab.ts`](src/core/papers/guitarStaffTab.ts) | Combines musical staff and guitar tablature |
+| [`guitarTab.test.ts`](src/core/papers/guitarTab.test.ts) | Tests the guitarTab module, which draws guitar tablature |
+| [`guitarTab.ts`](src/core/papers/guitarTab.ts) | Draws guitar tablature |
+| [`hardpenCalligraphyPaper.test.ts`](src/core/papers/hardpenCalligraphyPaper.test.ts) | Tests the hardpenCalligraphyPaper module, which lays out hard-pen calligraphy paper |
+| [`hardpenCalligraphyPaper.ts`](src/core/papers/hardpenCalligraphyPaper.ts) | Lays out hard-pen calligraphy paper |
+| [`hardpenHuigongge.test.ts`](src/core/papers/hardpenHuigongge.test.ts) | Tests the hardpenHuigongge module, which draws rectangular nested calligraphy cells |
+| [`hardpenHuigongge.ts`](src/core/papers/hardpenHuigongge.ts) | Draws rectangular nested calligraphy cells |
+| [`hexagonal.ts`](src/core/papers/hexagonal.ts) | Draws a hexagonal grid |
+| [`huigongge.test.ts`](src/core/papers/huigongge.test.ts) | Tests the huigongge module, which draws nested calligraphy cells |
+| [`huigongge.ts`](src/core/papers/huigongge.ts) | Draws nested calligraphy cells |
+| [`huimige.test.ts`](src/core/papers/huimige.test.ts) | Tests the huimige module, which draws nested cells with diagonal guides |
+| [`huimige.ts`](src/core/papers/huimige.ts) | Draws nested cells with diagonal guides |
+| [`isometric.ts`](src/core/papers/isometric.ts) | Draws an isometric grid |
+| [`jiugongge.test.ts`](src/core/papers/jiugongge.test.ts) | Tests the jiugongge module, which draws nine-cell calligraphy guides |
+| [`jiugongge.ts`](src/core/papers/jiugongge.ts) | Draws nine-cell calligraphy guides |
+| [`kit.test.ts`](src/core/papers/kit.test.ts) | Tests the kit module, which builds stroke and font helpers for paper renderers |
+| [`kit.ts`](src/core/papers/kit.ts) | Builds stroke and font helpers for paper renderers |
+| [`lined.test.ts`](src/core/papers/lined.test.ts) | Tests the lined module, which draws horizontal ruled paper |
+| [`lined.ts`](src/core/papers/lined.ts) | Draws horizontal ruled paper |
+| [`meetingNote.test.ts`](src/core/papers/meetingNote.test.ts) | Tests the meetingNote module, which lays out meeting notes |
+| [`meetingNote.ts`](src/core/papers/meetingNote.ts) | Lays out meeting notes |
+| [`minimalJournal.test.ts`](src/core/papers/minimalJournal.test.ts) | Tests the minimalJournal module, which draws minimalist journal paper |
+| [`minimalJournal.ts`](src/core/papers/minimalJournal.ts) | Draws minimalist journal paper |
+| [`mizige.ts`](src/core/papers/mizige.ts) | Draws Mi character cells with diagonal guides |
+| [`music.test.ts`](src/core/papers/music.test.ts) | Tests the music module, which draws music staff paper |
+| [`music.ts`](src/core/papers/music.ts) | Draws music staff paper |
+| [`paperContract.test.ts`](src/core/papers/paperContract.test.ts) | Checks paper contracts and scene bounds |
+| [`pinyinPaper.ts`](src/core/papers/pinyinPaper.ts) | Lays out Mandarin pinyin rows |
+| [`pinyinTianzi.ts`](src/core/papers/pinyinTianzi.ts) | Combines pinyin guides with square Tian cells |
+| [`practicePaper.ts`](src/core/papers/practicePaper.ts) | Draws general practice paper |
+| [`projectPlanning.test.ts`](src/core/papers/projectPlanning.test.ts) | Tests the projectPlanning module, which lays out project details, a Gantt chart, and a task list |
+| [`projectPlanning.ts`](src/core/papers/projectPlanning.ts) | Lays out project details, a Gantt chart, and a task list |
+| [`registry.test.ts`](src/core/papers/registry.test.ts) | Tests the registry module, which registers and orders papers and resolves their presets |
+| [`registry.ts`](src/core/papers/registry.ts) | Registers and orders papers and resolves their presets |
+| [`seyes.ts`](src/core/papers/seyes.ts) | Draws French Séyès ruling |
+| [`sketch.test.ts`](src/core/papers/sketch.test.ts) | Tests the sketch module, which draws sketch paper |
+| [`sketch.ts`](src/core/papers/sketch.ts) | Draws sketch paper |
+| [`storyboard.ts`](src/core/papers/storyboard.ts) | Lays out storyboard frames and notes |
+| [`studentNote.test.ts`](src/core/papers/studentNote.test.ts) | Tests the studentNote module, which lays out student note sheets |
+| [`studentNote.ts`](src/core/papers/studentNote.ts) | Lays out student note sheets |
+| [`svgRendering.test.ts`](src/core/papers/svgRendering.test.ts) | Checks SVG output across papers |
+| [`verticalLined.ts`](src/core/papers/verticalLined.ts) | Draws vertical ruled paper |
+| [`vintageNote.test.ts`](src/core/papers/vintageNote.test.ts) | Tests the vintageNote module, which draws vintage note paper |
+| [`vintageNote.ts`](src/core/papers/vintageNote.ts) | Draws vintage note paper |
+| [`worksheetPapers.test.ts`](src/core/papers/worksheetPapers.test.ts) | Checks worksheet headers and layout |
+
+### `src/core/papers/shared`
+
+| File | Purpose |
+| --- | --- |
+| [`calligraphyLayouts.test.ts`](src/core/papers/shared/calligraphyLayouts.test.ts) | Tests the calligraphyLayouts module, which allocates shared calligraphy layouts |
+| [`calligraphyLayouts.ts`](src/core/papers/shared/calligraphyLayouts.ts) | Allocates shared calligraphy layouts |
+| [`cjkCells.test.ts`](src/core/papers/shared/cjkCells.test.ts) | Tests the cjkCells module, which draws shared CJK practice cells and guides |
+| [`cjkCells.ts`](src/core/papers/shared/cjkCells.ts) | Draws shared CJK practice cells and guides |
+| [`columns.test.ts`](src/core/papers/shared/columns.test.ts) | Tests the columns module, which splits writable areas and draws column dividers |
+| [`columns.ts`](src/core/papers/shared/columns.ts) | Splits writable areas and draws column dividers |
+| [`englishGuides.ts`](src/core/papers/shared/englishGuides.ts) | Shares English writing guides, headers, and tracing text wrapping |
+| [`forms.test.ts`](src/core/papers/shared/forms.test.ts) | Tests the forms module, which draws form sections and fill-in rules |
+| [`forms.ts`](src/core/papers/shared/forms.ts) | Draws form sections and fill-in rules |
+| [`grids.test.ts`](src/core/papers/shared/grids.test.ts) | Tests the grids module, which calculates and draws reusable grid geometry |
+| [`grids.ts`](src/core/papers/shared/grids.ts) | Calculates and draws reusable grid geometry |
+| [`guides.test.ts`](src/core/papers/shared/guides.test.ts) | Tests the guides module, which calculates and draws shared writing guides |
+| [`guides.ts`](src/core/papers/shared/guides.ts) | Calculates and draws shared writing guides |
+| [`mizigeCells.test.ts`](src/core/papers/shared/mizigeCells.test.ts) | Tests the mizigeCells module, which draws reusable Mi calligraphy cells |
+| [`mizigeCells.ts`](src/core/papers/shared/mizigeCells.ts) | Draws reusable Mi calligraphy cells |
+| [`musicStaff.test.ts`](src/core/papers/shared/musicStaff.test.ts) | Tests the musicStaff module, which draws shared music and tablature rules |
+| [`musicStaff.ts`](src/core/papers/shared/musicStaff.ts) | Draws shared music and tablature rules |
+| [`worksheets.ts`](src/core/papers/shared/worksheets.ts) | Lays out shared worksheet headers and rules |
+
+### `src/core/render`
+
+| File | Purpose |
+| --- | --- |
+| [`color.test.ts`](src/core/render/color.test.ts) | Tests the color module, which parses colors for output renderers |
+| [`color.ts`](src/core/render/color.ts) | Parses colors for output renderers |
+| [`pathData.test.ts`](src/core/render/pathData.test.ts) | Tests the pathData module, which parses vector path commands |
+| [`pathData.ts`](src/core/render/pathData.ts) | Parses vector path commands |
+| [`pdf.test.ts`](src/core/render/pdf.test.ts) | Tests the pdf module, which renders scenes to PDF pages |
+| [`pdf.ts`](src/core/render/pdf.ts) | Renders scenes to PDF pages |
+| [`raster.test.ts`](src/core/render/raster.test.ts) | Tests the raster module, which draws scenes to canvas for PNG export |
+| [`raster.ts`](src/core/render/raster.ts) | Draws scenes to canvas for PNG export |
+| [`svg.test.ts`](src/core/render/svg.test.ts) | Tests the svg module, which converts a scene to SVG |
+| [`svg.ts`](src/core/render/svg.ts) | Converts a scene to SVG |
+| [`textRaster.test.ts`](src/core/render/textRaster.test.ts) | Tests the textRaster module, which rasterizes text that needs browser fonts in PDF |
+| [`textRaster.ts`](src/core/render/textRaster.ts) | Rasterizes text that needs browser fonts in PDF |
+
+### `src/core/scene`
+
+| File | Purpose |
+| --- | --- |
+| [`builders.test.ts`](src/core/scene/builders.test.ts) | Tests the builders module, which creates shared scene primitives |
+| [`builders.ts`](src/core/scene/builders.ts) | Creates shared scene primitives |
+| [`geometry.test.ts`](src/core/scene/geometry.test.ts) | Tests the geometry module, which provides sizing, positioning, and rounding calculations |
+| [`geometry.ts`](src/core/scene/geometry.ts) | Provides sizing, positioning, and rounding calculations |
+| [`types.ts`](src/core/scene/types.ts) | Defines scene primitives, coordinates, and drawing attributes |
+
+### `src/core/testing`
+
+| File | Purpose |
+| --- | --- |
+| [`paperTestKit.test.ts`](src/core/testing/paperTestKit.test.ts) | Tests the paperTestKit module, which provides shared paper-scene fixtures and assertion helpers |
+| [`paperTestKit.ts`](src/core/testing/paperTestKit.ts) | Provides shared paper-scene fixtures and assertion helpers |
+
+### `src/i18n`
+
+| File | Purpose |
+| --- | --- |
+| [`en.ts`](src/i18n/en.ts) | Supplies English interface messages |
+| [`i18n.test.ts`](src/i18n/i18n.test.ts) | Tests translation dictionaries and fallback |
+| [`index.ts`](src/i18n/index.ts) | Loads translation dictionaries and supplies translators |
+| [`zh-CN.ts`](src/i18n/zh-CN.ts) | Supplies Simplified Chinese interface messages |
+
+### `src/ui`
+
+| File | Purpose |
+| --- | --- |
+| [`A7c.test.tsx`](src/ui/A7c.test.tsx) | Tests preview, gallery, and export integration |
+| [`App.tsx`](src/ui/App.tsx) | Assembles the editor, settings, and preview |
+| [`InfoModal.test.tsx`](src/ui/InfoModal.test.tsx) | Tests the InfoModal module, which displays the guide and about dialogs |
+| [`interfaceStyle.ts`](src/ui/interfaceStyle.ts) | Defines switchable interface styles |
+| [`palettes.ts`](src/ui/palettes.ts) | Defines selectable interface color swatches |
+
+### `src/ui/controls`
+
+| File | Purpose |
+| --- | --- |
+| [`ColorField.tsx`](src/ui/controls/ColorField.tsx) | Displays color inputs and preset swatches |
+| [`controls.test.tsx`](src/ui/controls/controls.test.tsx) | Tests shared form controls |
+| [`NumberField.tsx`](src/ui/controls/NumberField.tsx) | Accepts and commits bounded numbers |
+| [`OptionFieldRenderer.tsx`](src/ui/controls/OptionFieldRenderer.tsx) | Maps declared paper options to form controls |
+| [`Section.tsx`](src/ui/controls/Section.tsx) | Displays a collapsible settings section |
+| [`SelectField.tsx`](src/ui/controls/SelectField.tsx) | Provides a select input |
+| [`SliderField.tsx`](src/ui/controls/SliderField.tsx) | Provides a range slider |
+| [`TextField.tsx`](src/ui/controls/TextField.tsx) | Provides a text input |
+| [`ToggleField.tsx`](src/ui/controls/ToggleField.tsx) | Provides a boolean toggle |
+| [`UiIcon.tsx`](src/ui/controls/UiIcon.tsx) | Draws shared interface icons |
+
+### `src/ui/export`
+
+| File | Purpose |
+| --- | --- |
+| [`download.test.ts`](src/ui/export/download.test.ts) | Tests the download module, which saves generated files through the browser |
+| [`download.ts`](src/ui/export/download.ts) | Saves generated files through the browser |
+| [`exporters.test.ts`](src/ui/export/exporters.test.ts) | Tests the exporters module, which orchestrates PDF, SVG, and PNG exports |
+| [`exporters.ts`](src/ui/export/exporters.ts) | Orchestrates PDF, SVG, and PNG exports |
+
+### `src/ui/gallery`
+
+| File | Purpose |
+| --- | --- |
+| [`TemplateGallery.tsx`](src/ui/gallery/TemplateGallery.tsx) | Displays, filters, and applies paper templates |
+
+### `src/ui/i18n`
+
+| File | Purpose |
+| --- | --- |
+| [`LocaleProvider.test.tsx`](src/ui/i18n/LocaleProvider.test.tsx) | Tests the LocaleProvider module, which stores and provides the active interface locale |
+| [`LocaleProvider.tsx`](src/ui/i18n/LocaleProvider.tsx) | Stores and provides the active interface locale |
+
+### `src/ui/layout`
+
+| File | Purpose |
+| --- | --- |
+| [`ControlPanel.tsx`](src/ui/layout/ControlPanel.tsx) | Assembles the left settings panel |
+| [`ExportBar.tsx`](src/ui/layout/ExportBar.tsx) | Provides export, resolution, and print actions |
+| [`Footer.tsx`](src/ui/layout/Footer.tsx) | Displays copyright and usage notes |
+| [`Header.tsx`](src/ui/layout/Header.tsx) | Displays the site identity, navigation, and interface actions |
+| [`InfoModal.tsx`](src/ui/layout/InfoModal.tsx) | Displays the guide and about dialogs |
+| [`Workspace.tsx`](src/ui/layout/Workspace.tsx) | Arranges responsive settings and preview panels |
+
+### `src/ui/preview`
+
+| File | Purpose |
+| --- | --- |
+| [`Preview.tsx`](src/ui/preview/Preview.tsx) | Renders paper previews and handles zoom |
+| [`useElementWidth.ts`](src/ui/preview/useElementWidth.ts) | Observes the available preview width |
+
+### `src/ui/print`
+
+| File | Purpose |
+| --- | --- |
+| [`printCss.test.ts`](src/ui/print/printCss.test.ts) | Tests the printCss module, which builds print CSS for the selected paper dimensions |
+| [`printCss.ts`](src/ui/print/printCss.ts) | Builds print CSS for the selected paper dimensions |
+
+### `src/ui/sections`
+
+| File | Purpose |
+| --- | --- |
+| [`BackgroundSection.tsx`](src/ui/sections/BackgroundSection.tsx) | Configures paper colors and textures |
+| [`DecorationSection.tsx`](src/ui/sections/DecorationSection.tsx) | Configures page borders and decorations |
+| [`LineSection.tsx`](src/ui/sections/LineSection.tsx) | Configures rule color, width, pattern, and spacing |
+| [`MarginsSection.tsx`](src/ui/sections/MarginsSection.tsx) | Configures the four paper margins |
+| [`OptionsSection.tsx`](src/ui/sections/OptionsSection.tsx) | Displays settings specific to the current paper |
+| [`PageSizeSection.tsx`](src/ui/sections/PageSizeSection.tsx) | Selects paper size and orientation |
+| [`PagesSection.tsx`](src/ui/sections/PagesSection.tsx) | Configures page count and numbering |
+| [`PaperTypeSection.tsx`](src/ui/sections/PaperTypeSection.tsx) | Groups and selects paper types |
+| [`sections.test.tsx`](src/ui/sections/sections.test.tsx) | Tests basic paper controls |
+| [`sections2.test.tsx`](src/ui/sections/sections2.test.tsx) | Tests line and margin controls |
+| [`sections3.test.tsx`](src/ui/sections/sections3.test.tsx) | Tests paper appearance controls |
+| [`sections4.test.tsx`](src/ui/sections/sections4.test.tsx) | Tests watermark and page controls |
+| [`sections5.test.tsx`](src/ui/sections/sections5.test.tsx) | Tests settings import and export |
+| [`ThemeSection.tsx`](src/ui/sections/ThemeSection.tsx) | Selects paper color and typography themes |
+| [`TransferSection.tsx`](src/ui/sections/TransferSection.tsx) | Imports and exports paper settings |
+| [`WatermarkSection.tsx`](src/ui/sections/WatermarkSection.tsx) | Configures watermark text and placement |
+
+### `src/ui/store`
+
+| File | Purpose |
+| --- | --- |
+| [`SettingsProvider.test.tsx`](src/ui/store/SettingsProvider.test.tsx) | Tests the SettingsProvider module, which provides paper settings state and update actions |
+| [`SettingsProvider.tsx`](src/ui/store/SettingsProvider.tsx) | Provides paper settings state and update actions |
+| [`settingsStorage.test.ts`](src/ui/store/settingsStorage.test.ts) | Tests the settingsStorage module, which reads and writes persisted browser settings |
+| [`settingsStorage.ts`](src/ui/store/settingsStorage.ts) | Reads and writes persisted browser settings |
+| [`urlState.test.ts`](src/ui/store/urlState.test.ts) | Tests the urlState module, which handles settings fragments from shared links |
+| [`urlState.ts`](src/ui/store/urlState.ts) | Handles settings fragments from shared links |
+
+### `./`
+
+| File | Purpose |
+| --- | --- |
+| [`vite.config.ts`](vite.config.ts) | Configures Vite builds and Vitest |
+
 ## Privacy
 
 Settings live in `localStorage`; during normal editing the address stays clean, and legacy `#s=…` links load their settings and clear the fragment; uploaded background images exist only as data URLs in local memory. There are no network requests, no analytics and no third-party fonts.

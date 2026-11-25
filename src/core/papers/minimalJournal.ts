@@ -1,4 +1,8 @@
 /**
+ * 生成简约手账纸。
+ * Draws minimalist journal paper.
+ */
+/**
  * Minimal journal paper.
  *
  * A slim header with a 40 mm date box at the top-right, ruled lines below it,

@@ -1,4 +1,8 @@
 /**
+ * 提供布尔开关。
+ * Provides a boolean toggle.
+ */
+/**
  * Controlled checkbox field with its label on the right.
  */
 import type { JSX } from 'react'

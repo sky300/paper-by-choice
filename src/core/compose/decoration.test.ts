@@ -1,3 +1,7 @@
+/**
+ * 验证 decoration 模块的 decorationDash、decorationScene: enabled switch and layer、decorationScene: simple / calligraphy 行为。
+ * Tests decoration behavior covering decorationDash, decorationScene: enabled switch and layer, decorationScene: simple / calligraphy.
+ */
 import { describe, expect, test } from 'vitest'
 import { decorationDash, decorationScene } from './decoration'
 import type { PageSize } from './document'

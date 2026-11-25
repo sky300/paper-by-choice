@@ -1,4 +1,8 @@
 /**
+ * 提供下拉选择控件。
+ * Provides a select input.
+ */
+/**
  * Controlled select field with pre-translated choices.
  */
 import { useId } from 'react'

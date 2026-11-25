@@ -1,4 +1,8 @@
 /**
+ * 切换纸张配色和字体主题。
+ * Selects paper color and typography themes.
+ */
+/**
  * Theme picker: one colour card per theme.
  *
  * Selecting a theme also repaints the line colour (handled by the store),

@@ -1,3 +1,7 @@
+/**
+ * 验证 minimalJournal 模块的 minimal_journal: declaration、minimal_journal: rendering、minimal_journal: messages 行为。
+ * Tests minimalJournal behavior covering minimal_journal: declaration, minimal_journal: rendering, minimal_journal: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import minimalJournal from './minimalJournal'
 import { paperName } from './registry'

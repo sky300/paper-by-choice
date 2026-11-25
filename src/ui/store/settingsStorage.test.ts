@@ -1,3 +1,7 @@
+/**
+ * 验证 settingsStorage 模块的行为（读写浏览器中的持久化设置）。
+ * Tests the settingsStorage module, which reads and writes persisted browser settings.
+ */
 import { describe, expect, test, vi } from 'vitest'
 import { STORAGE_KEYS, createSettings } from '../../core/settings'
 import { loadStoredSettings, storeSettings } from './settingsStorage'

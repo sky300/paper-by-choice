@@ -1,4 +1,8 @@
 /**
+ * 栅格化 PDF 中需要浏览器字体的文本。
+ * Rasterizes text that needs browser fonts in PDF.
+ */
+/**
  * Text patch rasterization for the PDF renderer.
  *
  * A `TextItem` is drawn onto a small transparent canvas at high resolution and

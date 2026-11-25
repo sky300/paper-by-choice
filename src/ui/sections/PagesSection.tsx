@@ -1,4 +1,8 @@
 /**
+ * 设置页数和页码。
+ * Configures page count and numbering.
+ */
+/**
  * Page count and optional page numbering.
  */
 import type { JSX } from 'react'

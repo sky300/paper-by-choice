@@ -1,3 +1,7 @@
+/**
+ * 验证线条和页边距配置。
+ * Tests line and margin controls.
+ */
 // @vitest-environment happy-dom
 import { cleanup, fireEvent, render, screen } from '@testing-library/react'
 import type { ReactElement } from 'react'

@@ -1,3 +1,7 @@
+/**
+ * 绘制界面通用线性图标。
+ * Draws shared interface icons.
+ */
 import type { JSX } from 'react'
 
 const icons: Readonly<Record<string, string>> = {

@@ -1,3 +1,7 @@
+/**
+ * 验证 paperSizes 模块。对应实现管理纸张规格、方向和打印单位。
+ * Tests paperSizes, whose implementation handles paper sizes, orientations, and print units.
+ */
 import type { PaperSize, PaperSizeKey } from './types'
 import { expect, test } from 'vitest'
 import {

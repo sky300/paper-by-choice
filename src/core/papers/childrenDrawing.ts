@@ -1,4 +1,8 @@
 /**
+ * 生成儿童涂鸦纸的绘画区域。
+ * Lays out drawing areas for children.
+ */
+/**
  * Children's drawing paper.
  *
  * A white drawing area with a centered title bar at the top and ten faint

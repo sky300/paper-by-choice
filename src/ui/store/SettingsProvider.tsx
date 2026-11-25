@@ -1,4 +1,8 @@
 /**
+ * 提供纸张设置状态和修改操作。
+ * Provides paper settings state and update actions.
+ */
+/**
  * Reactive settings state for the React layer.
  *
  * A single settings object is the source of truth. Actions are thin wrappers

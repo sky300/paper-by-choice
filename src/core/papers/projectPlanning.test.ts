@@ -1,3 +1,7 @@
+/**
+ * 验证 projectPlanning 模块的 projectPlanning 行为。
+ * Tests projectPlanning behavior covering projectPlanning.
+ */
 import { describe, expect, test } from 'vitest'
 import {
   expectFiniteNumbers,

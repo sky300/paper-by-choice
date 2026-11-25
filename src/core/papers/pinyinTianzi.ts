@@ -1,4 +1,9 @@
-/** Combined pinyin + tianzi practice cells. */
+/**
+ * 组合拼音行与等宽等高的田字格。
+ * Combines pinyin guides with square Tian cells.
+ *
+ * Combined pinyin + tianzi practice cells.
+ */
 import { line, rect } from '../scene/builders'
 import type { SceneItem } from '../scene/types'
 import { referenceCellCount } from './shared/grids'

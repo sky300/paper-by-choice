@@ -1,3 +1,7 @@
+/**
+ * 提供应用的英文界面文案。
+ * Supplies English interface messages.
+ */
 import type { MessageDict } from './index'
 
 /** English UI strings. Must define exactly the keys of `zh-CN.ts`; a test enforces it. */
@@ -15,6 +19,7 @@ export const en: MessageDict = {
 
   'group.basic': 'Basics',
   'group.worksheet': 'Chinese worksheets',
+  'group.english': 'English worksheets',
   'group.calligraphy': 'Calligraphy practice',
   'group.creative': 'Notes & forms',
 
@@ -233,8 +238,8 @@ export const en: MessageDict = {
   'info.guide.tip4':
     'The few labels in the PDF are high-resolution images (to avoid bundling a large CJK font): sharp in print, but not selectable.',
 
-  'info.about.open': 'About me',
-  'info.about.title': 'About me · why this site exists',
+  'info.about.open': 'About this project',
+  'info.about.title': 'About this project',
   'info.about.lead':
     'A small tool a dad built for his own primary-school kid, open-sourced for other parents and teachers who need the same thing.',
   'info.about.p1':
@@ -247,12 +252,13 @@ export const en: MessageDict = {
     'Since it was built anyway, I open-sourced it. If you are a parent, a teacher, or just someone who wants a clean sheet of graph paper, I hope it saves you a little time. Bug reports and new paper types are welcome as issues or pull requests.',
   'info.about.featuresTitle': 'What this version offers',
   'info.about.f1':
-    '41 paper types covering worksheets, calligraphy practice, notes and forms, each with sensible everyday defaults.',
+    '48 paper types covering worksheets, calligraphy practice, notes and forms, each with sensible everyday defaults.',
   'info.about.f2':
     'Chinese and English UI (including labels printed on the sheet), with adjustable colours, themes, margins and lines.',
   'info.about.f3':
     'Fully offline: the build is plain static files that run on nginx, GitHub Pages or a home NAS.',
   'info.about.f4':
     'MIT licensed; code, interface and wording are original, free to use and modify.',
-  'info.about.sign': 'Created by skyow',
+  'info.about.repository': 'GitHub repository',
+  'info.about.contact': 'Contact email',
 }

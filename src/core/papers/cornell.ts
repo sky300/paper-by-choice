@@ -1,4 +1,8 @@
 /**
+ * 布局康奈尔笔记的线索、笔记和总结区。
+ * Lays out Cornell cue, note, and summary areas.
+ */
+/**
  * Cornell notes paper.
  *
  * A cue column on the left, a wider notes column on the right and a summary

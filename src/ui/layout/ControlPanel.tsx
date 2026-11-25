@@ -1,4 +1,9 @@
-/** Left-hand control panel: the sections that configure one sheet of paper. */
+/**
+ * 组合左侧配置区块。
+ * Assembles the left settings panel.
+ *
+ * Left-hand control panel: the sections that configure one sheet of paper.
+ */
 import type { JSX, Ref } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 import { PaperTypeSection } from '../sections/PaperTypeSection'

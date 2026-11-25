@@ -1,3 +1,7 @@
+/**
+ * 提供应用的简体中文界面文案。
+ * Supplies Simplified Chinese interface messages.
+ */
 import type { MessageDict } from './index'
 
 /** Simplified Chinese UI strings. This dictionary is the source of truth for the key set; `en.ts` must mirror it. */
@@ -14,6 +18,7 @@ export const zhCN: MessageDict = {
 
   'group.basic': '基础纸型',
   'group.worksheet': '中文作业纸',
+  'group.english': '英文作业纸',
   'group.calligraphy': '书法练习纸',
   'group.creative': '笔记与表单',
 
@@ -228,8 +233,8 @@ export const zhCN: MessageDict = {
   'info.guide.tip4':
     'PDF 里的少量标签是高清图片（为了不内嵌十几兆中文字库），打印清晰但文字不可选中。',
 
-  'info.about.open': '关于我',
-  'info.about.title': '关于我 · 为什么做这个网站',
+  'info.about.open': '关于本项目',
+  'info.about.title': '关于本项目',
   'info.about.lead':
     '这是一个爸爸给自己家小学生做的打印纸工具，顺手开源出来给同样需要的家长和老师用。',
   'info.about.p1':
@@ -242,11 +247,12 @@ export const zhCN: MessageDict = {
     '既然做都做了，就顺手开源出来。如果你也是家长、老师，或者只是想要一张干净的方格纸，希望它能省下你一点时间。发现问题、想加新纸型，都欢迎提 issue 或 PR。',
   'info.about.featuresTitle': '这个版本的几个特点',
   'info.about.f1':
-    '41 种纸张类型，覆盖作业纸、书法练字格、笔记与表单，每种都有常用默认样式。',
+    '48 种纸张类型，覆盖作业纸、书法练字格、笔记与表单，每种都有常用默认样式。',
   'info.about.f2':
     '中英文界面，纸面标签也会跟着切换；配色、主题、边距、线条都能自己调。',
   'info.about.f3':
     '完全离线可用：构建产物是一堆静态文件，nginx、GitHub Pages、家里的 NAS 都能跑。',
   'info.about.f4': 'MIT 许可证，代码、界面与文案均为原创，可自由使用和修改。',
-  'info.about.sign': '创建者 skyow',
+  'info.about.repository': 'GitHub 仓库',
+  'info.about.contact': '联系邮箱',
 }

@@ -1,3 +1,7 @@
+/**
+ * 验证 vintageNote 模块的 vintage_note: declaration、vintage_note: rendering、vintage_note: messages 行为。
+ * Tests vintageNote behavior covering vintage_note: declaration, vintage_note: rendering, vintage_note: messages.
+ */
 import type { AnyPaper, OptionField } from './contract'
 import vintageNote from './vintageNote'
 import { paperName } from './registry'

@@ -1,4 +1,8 @@
 /**
+ * 组合纸型、背景、装饰和水印场景。
+ * Combines the paper, background, decorations, and watermark.
+ */
+/**
  * Whole-document composition: writing area, paper content (with optional
  * columns), page numbers and the assembly of one finished scene per page.
  * The base scene (background, paper, decoration, watermark) is built once and
@@ -39,7 +43,10 @@ const PAGE_NUMBER_BOTTOM = 2.65
 /** Dash of the two-column divider when it is dashed. */
 const DIVIDER_DASH: readonly number[] = [3, 2]
 
-/** Writing area: the page minus all four margins. */
+/**
+ * 从纸张尺寸扣除四边页边距得到可写区域。
+ * Writing area: the page minus all four margins.
+ */
 export function contentArea(pageSize: PageSize, margins: Margins): Box {
   return {
     x: margins.left,
@@ -58,7 +65,10 @@ function declaresColumns(fields: readonly OptionField[]): boolean {
   )
 }
 
-/** Paper content layer, split into two columns when the paper and options ask for it. */
+/**
+ * 生成纸型内容层，纸型支持且选项启用时拆成双栏。
+ * Paper content layer, split into two columns when the paper and options ask for it.
+ */
 export function paperScene(settings: Settings, locale: Locale): Scene {
   const paper = findPaper(settings.paperType)
   if (!paper) return []
@@ -119,7 +129,10 @@ export function paperScene(settings: Settings, locale: Locale): Scene {
   ]
 }
 
-/** The page-number item, or `null` when numbering is off. */
+/**
+ * 生成页码图元，关闭页码时返回空值。
+ * The page-number item, or `null` when numbering is off.
+ */
 export function pageNumberItem(
   settings: Settings,
   pageSize: PageSize,
@@ -154,7 +167,10 @@ export interface ComposedDocument {
   pages: Page[]
 }
 
-/** Full document: every page = background + paper + decoration + watermark (+ page number). */
+/**
+ * 按背景、纸型、装饰、水印和页码的顺序合成每一页。
+ * Full document: every page = background + paper + decoration + watermark (+ page number).
+ */
 export function buildDocument(input: ComposeInput): ComposedDocument {
   const { settings, locale } = input
   const pageSize = resolvePageSize(settings)

@@ -1,4 +1,8 @@
 /**
+ * 读写浏览器中的持久化设置。
+ * Reads and writes persisted browser settings.
+ */
+/**
  * Local persistence of the settings object.
  *
  * Reads are validated with `sanitizeSettings`, so old or hand-edited data can

@@ -1,3 +1,7 @@
+/**
+ * 验证 cornell 模块的 cornell 行为。
+ * Tests cornell behavior covering cornell.
+ */
 import cornell from './cornell'
 import { describe, expect, test } from 'vitest'
 import { expectInside, renderPaper, textsOf } from '../testing/paperTestKit'

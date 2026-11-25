@@ -1,3 +1,7 @@
+/**
+ * 验证 musicStaff 模块的 shared/musicStaff 行为。
+ * Tests musicStaff behavior covering shared/musicStaff.
+ */
 import { createInkKit } from '../kit'
 import { describe, expect, test } from 'vitest'
 import {

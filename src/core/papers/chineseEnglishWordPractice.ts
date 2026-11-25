@@ -1,4 +1,8 @@
 /**
+ * 生成汉英互译单词练习纸。
+ * Draws Chinese–English translation drills.
+ */
+/**
  * Chinese–English word practice paper: a two-column sheet where every row
  * pairs a numbered Chinese blank with a four-line English writing guide.
  */
@@ -37,7 +41,7 @@ function fourLineGuide(
 
 export default definePaper<Options>({
   type: 'chinese_english_word_practice',
-  group: 'creative',
+  group: 'english',
   messages: {
     'zh-CN': {
       name: '汉英互译单词练习纸',

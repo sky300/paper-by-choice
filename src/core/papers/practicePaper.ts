@@ -1,4 +1,9 @@
-/** General practice paper: horizontal rules with a name / date header. */
+/**
+ * 绘制通用练习纸。
+ * Draws general practice paper.
+ *
+ * General practice paper: horizontal rules with a name / date header.
+ */
 import { line, rect } from '../scene/builders'
 import { definePaper } from './define'
 import { horizontalRules } from './shared/grids'
