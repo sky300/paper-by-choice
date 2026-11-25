@@ -7,7 +7,7 @@
  * widths are the reference values; line widths are converted from CSS px to mm
  * (1 px = 25.4 / 96 mm) so printed geometry stays exact.
  */
-import type { LineStyle, Margins, PaperType, Settings, ThemeKey } from './types'
+import type { LineStyle, Margins, PaperType, ThemeKey } from './types'
 
 export interface PaperLook {
   /** Default spacing on switching to this paper (mm). May differ from the "recommended" value. */
@@ -563,27 +563,4 @@ export const PAPER_LOOKS: Record<PaperType, PaperLook> = {
       patternOpacity: 0.2,
     },
   },
-}
-
-/** Applies a paper's default look onto a settings object, keeping the shape. */
-export function withPaperLook(settings: Settings, type: PaperType): Settings {
-  const look = PAPER_LOOKS[type]
-  return {
-    ...settings,
-    line: {
-      ...settings.line,
-      color: look.lineColor,
-      width: pxToMm(look.lineWidthPx),
-      style: look.lineStyle,
-      spacing: look.spacing,
-    },
-    margins: { ...look.margins },
-    theme: look.theme,
-    background: {
-      ...settings.background,
-      color: look.background.color,
-      patternColor: look.background.patternColor,
-      patternOpacity: look.background.patternOpacity,
-    },
-  }
 }
