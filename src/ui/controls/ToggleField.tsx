@@ -19,7 +19,8 @@ export function ToggleField(props: ToggleFieldProps): JSX.Element {
   const hintId = `${id}-hint`
   return (
     <div className="ctl-field ctl-toggle-field">
-      <div className="ctl-control">
+      <label className="ctl-toggle-row" htmlFor={id}>
+        <span className="ctl-toggle-label">{label}</span>
         <input
           className="ctl-checkbox"
           id={id}
@@ -29,10 +30,8 @@ export function ToggleField(props: ToggleFieldProps): JSX.Element {
           aria-describedby={hint ? hintId : undefined}
           onChange={(event) => onChange(event.target.checked)}
         />
-        <label className="ctl-label" htmlFor={id}>
-          {label}
-        </label>
-      </div>
+        <span className="ctl-switch" aria-hidden="true" />
+      </label>
       {hint ? (
         <p className="ctl-hint" id={hintId}>
           {hint}

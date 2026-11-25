@@ -33,11 +33,11 @@ export function ColorField(props: ColorFieldProps): JSX.Element {
   const hintId = `${id}-hint`
   const pickerValue = HEX.test(value) ? value : '#000000'
   return (
-    <div className="ctl-field">
+    <div className="ctl-field ctl-color-field">
       <label className="ctl-label" htmlFor={id}>
         {label}
       </label>
-      <div className="ctl-control">
+      <div className="ctl-control ctl-color-value">
         <input
           className="ctl-color"
           id={id}
@@ -48,23 +48,24 @@ export function ColorField(props: ColorFieldProps): JSX.Element {
           onChange={(event) => onChange(event.target.value)}
         />
         <span className="ctl-hex">{value}</span>
-        {swatches ? (
-          <span className="ctl-swatches">
-            {swatches.map((swatch) => (
-              <button
-                key={swatch.value}
-                type="button"
-                className="ctl-swatch"
-                title={swatch.label}
-                aria-label={swatch.label}
-                aria-pressed={swatch.value === value}
-                disabled={disabled}
-                onClick={() => onChange(swatch.value)}
-              />
-            ))}
-          </span>
-        ) : null}
       </div>
+      {swatches ? (
+        <span className="ctl-swatches">
+          {swatches.map((swatch) => (
+            <button
+              key={swatch.value}
+              type="button"
+              className="ctl-swatch"
+              style={{ backgroundColor: swatch.value }}
+              title={swatch.label}
+              aria-label={swatch.label}
+              aria-pressed={swatch.value.toLowerCase() === value.toLowerCase()}
+              disabled={disabled}
+              onClick={() => onChange(swatch.value)}
+            />
+          ))}
+        </span>
+      ) : null}
       {hint ? (
         <p className="ctl-hint" id={hintId}>
           {hint}

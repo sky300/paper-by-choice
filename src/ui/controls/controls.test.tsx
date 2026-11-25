@@ -218,6 +218,8 @@ describe('ColorField', () => {
     )
     const buttons = screen.getAllByRole('button')
     expect(buttons).toHaveLength(2)
+    expect(buttons[0].style.backgroundColor).toBe('#112233')
+    expect(buttons[1].style.backgroundColor).toBe('#ff0000')
     expect(buttons[0].getAttribute('title')).toBe('T:ink')
     expect(buttons[0].getAttribute('aria-pressed')).toBe('true')
     expect(buttons[1].getAttribute('aria-pressed')).toBe('false')
