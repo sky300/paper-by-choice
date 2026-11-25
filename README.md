@@ -111,315 +111,238 @@ React 19 · TypeScript 5.9 · Vite 8 · pdf-lib · Vitest。运行时依赖只�
 
 ## 项目结构
 
-下表按目录列出每个 TypeScript 和 TSX 文件，包括测试。
+TypeScript 源码、测试与构建配置
 
-### `src`
-
-| 文件                               | 用途                                      |
-| ---------------------------------- | ----------------------------------------- |
-| [`App.test.tsx`](src/App.test.tsx) | 验证 App 模块的行为（挂载应用的对外入口） |
-| [`App.tsx`](src/App.tsx)           | 挂载应用的对外入口                        |
-| [`main.tsx`](src/main.tsx)         | 初始化 React 根节点并加载全局样式         |
-
-### `src/core/compose`
-
-| 文件                                                        | 用途                                                       |
-| ----------------------------------------------------------- | ---------------------------------------------------------- |
-| [`background.test.ts`](src/core/compose/background.test.ts) | 验证 background 模块的行为（生成纸张底色、纹理与背景图片） |
-| [`background.ts`](src/core/compose/background.ts)           | 生成纸张底色、纹理与背景图片                               |
-| [`decoration.test.ts`](src/core/compose/decoration.test.ts) | 验证 decoration 模块的行为（绘制边框及纸面装饰）           |
-| [`decoration.ts`](src/core/compose/decoration.ts)           | 绘制边框及纸面装饰                                         |
-| [`document.test.ts`](src/core/compose/document.test.ts)     | 验证 document 模块的行为（组合纸型、背景、装饰和水印场景） |
-| [`document.ts`](src/core/compose/document.ts)               | 组合纸型、背景、装饰和水印场景                             |
-| [`watermark.test.ts`](src/core/compose/watermark.test.ts)   | 验证 watermark 模块的行为（布局并绘制纸张水印）            |
-| [`watermark.ts`](src/core/compose/watermark.ts)             | 布局并绘制纸张水印                                         |
-
-### `src/core`
-
-| 文件                                                | 用途                                                       |
-| --------------------------------------------------- | ---------------------------------------------------------- |
-| [`encoding.test.ts`](src/core/encoding.test.ts)     | 验证 encoding 模块的行为（编解码可分享的纸张设置）         |
-| [`encoding.ts`](src/core/encoding.ts)               | 编解码可分享的纸张设置                                     |
-| [`paperLooks.ts`](src/core/paperLooks.ts)           | 集中定义各纸型的默认线条、间距和页边距                     |
-| [`paperSizes.test.ts`](src/core/paperSizes.test.ts) | 验证 paperSizes 模块的行为（管理纸张规格、方向和打印单位） |
-| [`paperSizes.ts`](src/core/paperSizes.ts)           | 管理纸张规格、方向和打印单位                               |
-| [`settings.test.ts`](src/core/settings.test.ts)     | 验证 settings 模块的行为（创建、合并与校验纸张设置）       |
-| [`settings.ts`](src/core/settings.ts)               | 创建、合并与校验纸张设置                                   |
-| [`themes.test.ts`](src/core/themes.test.ts)         | 验证 themes 模块的行为（定义纸张排版的配色及字体主题）     |
-| [`themes.ts`](src/core/themes.ts)                   | 定义纸张排版的配色及字体主题                               |
-| [`types.ts`](src/core/types.ts)                     | 定义纸张设置与页面数据类型                                 |
-
-### `src/core/papers`
-
-| 文件                                                                                       | 用途                                                                 |
-| ------------------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
-| [`arithmeticPaper.ts`](src/core/papers/arithmeticPaper.ts)                                 | 绘制带姓名栏与日期栏的算术纸                                         |
-| [`b6Declaration.test.ts`](src/core/papers/b6Declaration.test.ts)                           | 验证纸型的独立声明与注册                                             |
-| [`blank.test.ts`](src/core/papers/blank.test.ts)                                           | 验证 blank 模块的行为（生成无格线的空白纸）                          |
-| [`blank.ts`](src/core/papers/blank.ts)                                                     | 生成无格线的空白纸                                                   |
-| [`branded.test.ts`](src/core/papers/branded.test.ts)                                       | 验证 branded 模块的行为（生成带品牌信息的定制纸）                    |
-| [`branded.ts`](src/core/papers/branded.ts)                                                 | 生成带品牌信息的定制纸                                               |
-| [`calligraphy.test.ts`](src/core/papers/calligraphy.test.ts)                               | 验证 calligraphy 模块的行为（绘制基础书法练习纸）                    |
-| [`calligraphy.ts`](src/core/papers/calligraphy.ts)                                         | 绘制基础书法练习纸                                                   |
-| [`calligraphyPractice.test.ts`](src/core/papers/calligraphyPractice.test.ts)               | 验证 calligraphyPractice 模块的行为（绘制书法练字格）                |
-| [`calligraphyPractice.ts`](src/core/papers/calligraphyPractice.ts)                         | 绘制书法练字格                                                       |
-| [`childrenDrawing.test.ts`](src/core/papers/childrenDrawing.test.ts)                       | 验证 childrenDrawing 模块的行为（生成儿童涂鸦纸的绘画区域）          |
-| [`childrenDrawing.ts`](src/core/papers/childrenDrawing.ts)                                 | 生成儿童涂鸦纸的绘画区域                                             |
-| [`chineseEnglishWordPractice.test.ts`](src/core/papers/chineseEnglishWordPractice.test.ts) | 验证 chineseEnglishWordPractice 模块的行为（生成汉英互译单词练习纸） |
-| [`chineseEnglishWordPractice.ts`](src/core/papers/chineseEnglishWordPractice.ts)           | 生成汉英互译单词练习纸                                               |
-| [`chinesePreviewCard.test.ts`](src/core/papers/chinesePreviewCard.test.ts)                 | 验证 chinesePreviewCard 模块的行为（生成语文预习卡）                 |
-| [`chinesePreviewCard.ts`](src/core/papers/chinesePreviewCard.ts)                           | 生成语文预习卡                                                       |
-| [`chinesetianzi.test.ts`](src/core/papers/chinesetianzi.test.ts)                           | 验证 chinesetianzi 模块的行为（绘制田字格及内部辅助线）              |
-| [`chinesetianzi.ts`](src/core/papers/chinesetianzi.ts)                                     | 绘制田字格及内部辅助线                                               |
-| [`compositionPaper.ts`](src/core/papers/compositionPaper.ts)                               | 生成分行排列的作文方格                                               |
-| [`contract.ts`](src/core/papers/contract.ts)                                               | 声明纸型、选项、预设及渲染接口                                       |
-| [`cornell.test.ts`](src/core/papers/cornell.test.ts)                                       | 验证 cornell 模块的行为（布局康奈尔笔记的线索、笔记和总结区）        |
-| [`cornell.ts`](src/core/papers/cornell.ts)                                                 | 布局康奈尔笔记的线索、笔记和总结区                                   |
-| [`creativeLog.test.ts`](src/core/papers/creativeLog.test.ts)                               | 验证 creativeLog 模块的行为（布局创意记录区）                        |
-| [`creativeLog.ts`](src/core/papers/creativeLog.ts)                                         | 布局创意记录区                                                       |
-| [`crossgrid.test.ts`](src/core/papers/crossgrid.test.ts)                                   | 验证 crossgrid 模块的行为（绘制交叉格书写辅助线）                    |
-| [`crossgrid.ts`](src/core/papers/crossgrid.ts)                                             | 绘制交叉格书写辅助线                                                 |
-| [`define.test.ts`](src/core/papers/define.test.ts)                                         | 验证 define 模块的行为（将带具体选项类型的纸型注册为通用纸型）       |
-| [`define.ts`](src/core/papers/define.ts)                                                   | 将带具体选项类型的纸型注册为通用纸型                                 |
-| [`dot.test.ts`](src/core/papers/dot.test.ts)                                               | 验证 dot 模块的行为（绘制点阵纸）                                    |
-| [`dot.ts`](src/core/papers/dot.ts)                                                         | 绘制点阵纸                                                           |
-| [`englishDictation.ts`](src/core/papers/englishDictation.ts)                               | 布局英文听写编号和订正栏                                             |
-| [`englishDoubleLine.ts`](src/core/papers/englishDoubleLine.ts)                             | 绘制标出字母主体区域的双线定位纸                                     |
-| [`englishDrawWrite.ts`](src/core/papers/englishDrawWrite.ts)                               | 组合绘画区和英文书写区                                               |
-| [`englishPaper.ts`](src/core/papers/englishPaper.ts)                                       | 绘制四线三格及彩色、灰阶定位预设                                     |
-| [`englishPrimary.ts`](src/core/papers/englishPrimary.ts)                                   | 绘制美式三线练习格和虚线中线                                         |
-| [`englishSlanted.ts`](src/core/papers/englishSlanted.ts)                                   | 绘制带红色基线和浅色斜线的英语定位纸                                 |
-| [`englishTracing.ts`](src/core/papers/englishTracing.ts)                                   | 将示例分成示范、描红和独写行                                         |
-| [`englishVocabulary.ts`](src/core/papers/englishVocabulary.ts)                             | 绘制单词、释义和例句三栏表格                                         |
-| [`englishWorksheets.test.ts`](src/core/papers/englishWorksheets.test.ts)                   | 验证英文作业纸的分组、节距和描红                                     |
-| [`errorCorrection.test.ts`](src/core/papers/errorCorrection.test.ts)                       | 验证 errorCorrection 模块的行为（布局错题整理区）                    |
-| [`errorCorrection.ts`](src/core/papers/errorCorrection.ts)                                 | 布局错题整理区                                                       |
-| [`exportVerification.test.ts`](src/core/papers/exportVerification.test.ts)                 | 验证各纸型和预设的导出                                               |
-| [`geometryPapers.test.ts`](src/core/papers/geometryPapers.test.ts)                         | 验证几何纸型的尺寸与布局                                             |
-| [`grid.test.ts`](src/core/papers/grid.test.ts)                                             | 验证 grid 模块的行为（生成等距方格）                                 |
-| [`grid.ts`](src/core/papers/grid.ts)                                                       | 生成等距方格                                                         |
-| [`guitarStaffTab.test.ts`](src/core/papers/guitarStaffTab.test.ts)                         | 验证 guitarStaffTab 模块的行为（组合五线谱和吉他六线谱）             |
-| [`guitarStaffTab.ts`](src/core/papers/guitarStaffTab.ts)                                   | 组合五线谱和吉他六线谱                                               |
-| [`guitarTab.test.ts`](src/core/papers/guitarTab.test.ts)                                   | 验证 guitarTab 模块的行为（绘制吉他六线谱）                          |
-| [`guitarTab.ts`](src/core/papers/guitarTab.ts)                                             | 绘制吉他六线谱                                                       |
-| [`hardpenCalligraphyPaper.test.ts`](src/core/papers/hardpenCalligraphyPaper.test.ts)       | 验证 hardpenCalligraphyPaper 模块的行为（布局硬笔书法练习纸）        |
-| [`hardpenCalligraphyPaper.ts`](src/core/papers/hardpenCalligraphyPaper.ts)                 | 布局硬笔书法练习纸                                                   |
-| [`hardpenHuigongge.test.ts`](src/core/papers/hardpenHuigongge.test.ts)                     | 验证 hardpenHuigongge 模块的行为（绘制长方回宫格）                   |
-| [`hardpenHuigongge.ts`](src/core/papers/hardpenHuigongge.ts)                               | 绘制长方回宫格                                                       |
-| [`hexagonal.ts`](src/core/papers/hexagonal.ts)                                             | 绘制六边形网格                                                       |
-| [`huigongge.test.ts`](src/core/papers/huigongge.test.ts)                                   | 验证 huigongge 模块的行为（绘制回宫格）                              |
-| [`huigongge.ts`](src/core/papers/huigongge.ts)                                             | 绘制回宫格                                                           |
-| [`huimige.test.ts`](src/core/papers/huimige.test.ts)                                       | 验证 huimige 模块的行为（绘制回米格）                                |
-| [`huimige.ts`](src/core/papers/huimige.ts)                                                 | 绘制回米格                                                           |
-| [`isometric.ts`](src/core/papers/isometric.ts)                                             | 绘制等距网格                                                         |
-| [`jiugongge.test.ts`](src/core/papers/jiugongge.test.ts)                                   | 验证 jiugongge 模块的行为（绘制九宫格）                              |
-| [`jiugongge.ts`](src/core/papers/jiugongge.ts)                                             | 绘制九宫格                                                           |
-| [`kit.test.ts`](src/core/papers/kit.test.ts)                                               | 验证 kit 模块的行为（构造纸型渲染所用的线条与字体工具）              |
-| [`kit.ts`](src/core/papers/kit.ts)                                                         | 构造纸型渲染所用的线条与字体工具                                     |
-| [`lined.test.ts`](src/core/papers/lined.test.ts)                                           | 验证 lined 模块的行为（绘制横线纸）                                  |
-| [`lined.ts`](src/core/papers/lined.ts)                                                     | 绘制横线纸                                                           |
-| [`meetingNote.test.ts`](src/core/papers/meetingNote.test.ts)                               | 验证 meetingNote 模块的行为（布局会议记录区）                        |
-| [`meetingNote.ts`](src/core/papers/meetingNote.ts)                                         | 布局会议记录区                                                       |
-| [`minimalJournal.test.ts`](src/core/papers/minimalJournal.test.ts)                         | 验证 minimalJournal 模块的行为（生成简约手账纸）                     |
-| [`minimalJournal.ts`](src/core/papers/minimalJournal.ts)                                   | 生成简约手账纸                                                       |
-| [`mizige.ts`](src/core/papers/mizige.ts)                                                   | 绘制带对角辅助线的米字格                                             |
-| [`music.test.ts`](src/core/papers/music.test.ts)                                           | 验证 music 模块的行为（绘制五线谱）                                  |
-| [`music.ts`](src/core/papers/music.ts)                                                     | 绘制五线谱                                                           |
-| [`paperContract.test.ts`](src/core/papers/paperContract.test.ts)                           | 验证纸型选项及渲染约束                                               |
-| [`pinyinPaper.ts`](src/core/papers/pinyinPaper.ts)                                         | 布局汉语拼音练习行                                                   |
-| [`pinyinTianzi.ts`](src/core/papers/pinyinTianzi.ts)                                       | 组合拼音行与等宽等高的田字格                                         |
-| [`practicePaper.ts`](src/core/papers/practicePaper.ts)                                     | 绘制通用练习纸                                                       |
-| [`projectPlanning.test.ts`](src/core/papers/projectPlanning.test.ts)                       | 验证 projectPlanning 模块的行为（组合项目信息、甘特图和任务列表）    |
-| [`projectPlanning.ts`](src/core/papers/projectPlanning.ts)                                 | 组合项目信息、甘特图和任务列表                                       |
-| [`registry.test.ts`](src/core/papers/registry.test.ts)                                     | 验证 registry 模块的行为（注册全部纸型、排序并解析纸型预设）         |
-| [`registry.ts`](src/core/papers/registry.ts)                                               | 注册全部纸型、排序并解析纸型预设                                     |
-| [`seyes.ts`](src/core/papers/seyes.ts)                                                     | 绘制法式 Séyès 练习格                                                |
-| [`sketch.test.ts`](src/core/papers/sketch.test.ts)                                         | 验证 sketch 模块的行为（生成草图纸）                                 |
-| [`sketch.ts`](src/core/papers/sketch.ts)                                                   | 生成草图纸                                                           |
-| [`storyboard.ts`](src/core/papers/storyboard.ts)                                           | 布局分镜框与注释区                                                   |
-| [`studentNote.test.ts`](src/core/papers/studentNote.test.ts)                               | 验证 studentNote 模块的行为（布局学生笔记纸）                        |
-| [`studentNote.ts`](src/core/papers/studentNote.ts)                                         | 布局学生笔记纸                                                       |
-| [`svgRendering.test.ts`](src/core/papers/svgRendering.test.ts)                             | 验证各纸型的 SVG 输出                                                |
-| [`verticalLined.ts`](src/core/papers/verticalLined.ts)                                     | 绘制竖线纸                                                           |
-| [`vintageNote.test.ts`](src/core/papers/vintageNote.test.ts)                               | 验证 vintageNote 模块的行为（生成复古笔记纸）                        |
-| [`vintageNote.ts`](src/core/papers/vintageNote.ts)                                         | 生成复古笔记纸                                                       |
-| [`worksheetPapers.test.ts`](src/core/papers/worksheetPapers.test.ts)                       | 验证作业纸页眉与排版                                                 |
-
-### `src/core/papers/shared`
-
-| 文件                                                                              | 用途                                                           |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [`calligraphyLayouts.test.ts`](src/core/papers/shared/calligraphyLayouts.test.ts) | 验证 calligraphyLayouts 模块的行为（分配书法练习纸的共用布局） |
-| [`calligraphyLayouts.ts`](src/core/papers/shared/calligraphyLayouts.ts)           | 分配书法练习纸的共用布局                                       |
-| [`cjkCells.test.ts`](src/core/papers/shared/cjkCells.test.ts)                     | 验证 cjkCells 模块的行为（绘制汉字练习方格和常用辅助线）       |
-| [`cjkCells.ts`](src/core/papers/shared/cjkCells.ts)                               | 绘制汉字练习方格和常用辅助线                                   |
-| [`columns.test.ts`](src/core/papers/shared/columns.test.ts)                       | 验证 columns 模块的行为（拆分可写区域并绘制分栏线）            |
-| [`columns.ts`](src/core/papers/shared/columns.ts)                                 | 拆分可写区域并绘制分栏线                                       |
-| [`englishGuides.ts`](src/core/papers/shared/englishGuides.ts)                     | 共享英文书写格线、页眉和描红断行逻辑                           |
-| [`forms.test.ts`](src/core/papers/shared/forms.test.ts)                           | 验证 forms 模块的行为（绘制表单分区与填空线）                  |
-| [`forms.ts`](src/core/papers/shared/forms.ts)                                     | 绘制表单分区与填空线                                           |
-| [`grids.test.ts`](src/core/papers/shared/grids.test.ts)                           | 验证 grids 模块的行为（计算并绘制可复用的网格几何）            |
-| [`grids.ts`](src/core/papers/shared/grids.ts)                                     | 计算并绘制可复用的网格几何                                     |
-| [`guides.test.ts`](src/core/papers/shared/guides.test.ts)                         | 验证 guides 模块的行为（计算并绘制共用书写辅助线）             |
-| [`guides.ts`](src/core/papers/shared/guides.ts)                                   | 计算并绘制共用书写辅助线                                       |
-| [`mizigeCells.test.ts`](src/core/papers/shared/mizigeCells.test.ts)               | 验证 mizigeCells 模块的行为（绘制可复用的米字格单元）          |
-| [`mizigeCells.ts`](src/core/papers/shared/mizigeCells.ts)                         | 绘制可复用的米字格单元                                         |
-| [`musicStaff.test.ts`](src/core/papers/shared/musicStaff.test.ts)                 | 验证 musicStaff 模块的行为（绘制五线谱与吉他谱的共用线组）     |
-| [`musicStaff.ts`](src/core/papers/shared/musicStaff.ts)                           | 绘制五线谱与吉他谱的共用线组                                   |
-| [`worksheets.ts`](src/core/papers/shared/worksheets.ts)                           | 布局作业纸页眉与共用格线                                       |
-
-### `src/core/render`
-
-| 文件                                                       | 用途                                                            |
-| ---------------------------------------------------------- | --------------------------------------------------------------- |
-| [`color.test.ts`](src/core/render/color.test.ts)           | 验证 color 模块的行为（解析渲染器所需的颜色值）                 |
-| [`color.ts`](src/core/render/color.ts)                     | 解析渲染器所需的颜色值                                          |
-| [`pathData.test.ts`](src/core/render/pathData.test.ts)     | 验证 pathData 模块的行为（解析形状的矢量路径指令）              |
-| [`pathData.ts`](src/core/render/pathData.ts)               | 解析形状的矢量路径指令                                          |
-| [`pdf.test.ts`](src/core/render/pdf.test.ts)               | 验证 pdf 模块的行为（将场景渲染为 PDF 页面）                    |
-| [`pdf.ts`](src/core/render/pdf.ts)                         | 将场景渲染为 PDF 页面                                           |
-| [`raster.test.ts`](src/core/render/raster.test.ts)         | 验证 raster 模块的行为（将场景绘制到 Canvas 供 PNG 导出）       |
-| [`raster.ts`](src/core/render/raster.ts)                   | 将场景绘制到 Canvas 供 PNG 导出                                 |
-| [`svg.test.ts`](src/core/render/svg.test.ts)               | 验证 svg 模块的行为（将场景转换为 SVG）                         |
-| [`svg.ts`](src/core/render/svg.ts)                         | 将场景转换为 SVG                                                |
-| [`textRaster.test.ts`](src/core/render/textRaster.test.ts) | 验证 textRaster 模块的行为（栅格化 PDF 中需要浏览器字体的文本） |
-| [`textRaster.ts`](src/core/render/textRaster.ts)           | 栅格化 PDF 中需要浏览器字体的文本                               |
-
-### `src/core/scene`
-
-| 文件                                                  | 用途                                                 |
-| ----------------------------------------------------- | ---------------------------------------------------- |
-| [`builders.test.ts`](src/core/scene/builders.test.ts) | 验证 builders 模块的行为（创建统一的场景图元）       |
-| [`builders.ts`](src/core/scene/builders.ts)           | 创建统一的场景图元                                   |
-| [`geometry.test.ts`](src/core/scene/geometry.test.ts) | 验证 geometry 模块的行为（提供尺寸、定位和取整运算） |
-| [`geometry.ts`](src/core/scene/geometry.ts)           | 提供尺寸、定位和取整运算                             |
-| [`types.ts`](src/core/scene/types.ts)                 | 定义场景图元、坐标及绘制属性                         |
-
-### `src/core/testing`
-
-| 文件                                                            | 用途                                                                 |
-| --------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [`paperTestKit.test.ts`](src/core/testing/paperTestKit.test.ts) | 验证 paperTestKit 模块的行为（提供纸型测试的共享场景与断言辅助函数） |
-| [`paperTestKit.ts`](src/core/testing/paperTestKit.ts)           | 提供纸型测试的共享场景与断言辅助函数                                 |
-
-### `src/i18n`
-
-| 文件                                    | 用途                       |
-| --------------------------------------- | -------------------------- |
-| [`en.ts`](src/i18n/en.ts)               | 提供应用的英文界面文案     |
-| [`i18n.test.ts`](src/i18n/i18n.test.ts) | 验证翻译字典与语言回退     |
-| [`index.ts`](src/i18n/index.ts)         | 加载翻译字典并创建翻译函数 |
-| [`zh-CN.ts`](src/i18n/zh-CN.ts)         | 提供应用的简体中文界面文案 |
-
-### `src/ui`
-
-| 文件                                              | 用途                                                |
-| ------------------------------------------------- | --------------------------------------------------- |
-| [`A7c.test.tsx`](src/ui/A7c.test.tsx)             | 验证预览、模板库和导出集成                          |
-| [`App.tsx`](src/ui/App.tsx)                       | 组合编辑器、设置和预览界面                          |
-| [`InfoModal.test.tsx`](src/ui/InfoModal.test.tsx) | 验证 InfoModal 模块的行为（显示使用指南或关于信息） |
-| [`interfaceStyle.ts`](src/ui/interfaceStyle.ts)   | 定义可切换的界面风格                                |
-| [`palettes.ts`](src/ui/palettes.ts)               | 定义界面可选颜色预设                                |
-
-### `src/ui/controls`
-
-| 文件                                                                 | 用途                       |
-| -------------------------------------------------------------------- | -------------------------- |
-| [`ColorField.tsx`](src/ui/controls/ColorField.tsx)                   | 显示颜色选择器与预设色板   |
-| [`controls.test.tsx`](src/ui/controls/controls.test.tsx)             | 验证通用表单控件           |
-| [`NumberField.tsx`](src/ui/controls/NumberField.tsx)                 | 接收和提交带范围约束的数值 |
-| [`OptionFieldRenderer.tsx`](src/ui/controls/OptionFieldRenderer.tsx) | 按纸型选项声明映射控件     |
-| [`Section.tsx`](src/ui/controls/Section.tsx)                         | 显示可展开的配置区块       |
-| [`SelectField.tsx`](src/ui/controls/SelectField.tsx)                 | 提供下拉选择控件           |
-| [`SliderField.tsx`](src/ui/controls/SliderField.tsx)                 | 提供滑动范围控件           |
-| [`TextField.tsx`](src/ui/controls/TextField.tsx)                     | 提供文本输入控件           |
-| [`ToggleField.tsx`](src/ui/controls/ToggleField.tsx)                 | 提供布尔开关               |
-| [`UiIcon.tsx`](src/ui/controls/UiIcon.tsx)                           | 绘制界面通用线性图标       |
-
-### `src/ui/export`
-
-| 文件                                                   | 用途                                                             |
-| ------------------------------------------------------ | ---------------------------------------------------------------- |
-| [`download.test.ts`](src/ui/export/download.test.ts)   | 验证 download 模块的行为（通过浏览器保存导出文件）               |
-| [`download.ts`](src/ui/export/download.ts)             | 通过浏览器保存导出文件                                           |
-| [`exporters.test.ts`](src/ui/export/exporters.test.ts) | 验证 exporters 模块的行为（调用渲染器并组织 PDF、SVG、PNG 导出） |
-| [`exporters.ts`](src/ui/export/exporters.ts)           | 调用渲染器并组织 PDF、SVG、PNG 导出                              |
-
-### `src/ui/gallery`
-
-| 文件                                                        | 用途                     |
-| ----------------------------------------------------------- | ------------------------ |
-| [`TemplateGallery.tsx`](src/ui/gallery/TemplateGallery.tsx) | 显示、筛选并应用纸张模板 |
-
-### `src/ui/i18n`
-
-| 文件                                                             | 用途                                                     |
-| ---------------------------------------------------------------- | -------------------------------------------------------- |
-| [`LocaleProvider.test.tsx`](src/ui/i18n/LocaleProvider.test.tsx) | 验证 LocaleProvider 模块的行为（保存和提供当前界面语言） |
-| [`LocaleProvider.tsx`](src/ui/i18n/LocaleProvider.tsx)           | 保存和提供当前界面语言                                   |
-
-### `src/ui/layout`
-
-| 文件                                                 | 用途                           |
-| ---------------------------------------------------- | ------------------------------ |
-| [`ControlPanel.tsx`](src/ui/layout/ControlPanel.tsx) | 组合左侧配置区块               |
-| [`ExportBar.tsx`](src/ui/layout/ExportBar.tsx)       | 提供导出格式、清晰度和打印操作 |
-| [`Footer.tsx`](src/ui/layout/Footer.tsx)             | 显示版权信息及使用提示         |
-| [`Header.tsx`](src/ui/layout/Header.tsx)             | 显示站点标题、导航及界面入口   |
-| [`InfoModal.tsx`](src/ui/layout/InfoModal.tsx)       | 显示使用指南或关于信息         |
-| [`Workspace.tsx`](src/ui/layout/Workspace.tsx)       | 组织设置区与预览区的响应式布局 |
-
-### `src/ui/preview`
-
-| 文件                                                      | 用途                   |
-| --------------------------------------------------------- | ---------------------- |
-| [`Preview.tsx`](src/ui/preview/Preview.tsx)               | 生成纸页预览并处理缩放 |
-| [`useElementWidth.ts`](src/ui/preview/useElementWidth.ts) | 观察预览容器的可用宽度 |
-
-### `src/ui/print`
-
-| 文件                                                | 用途                                                   |
-| --------------------------------------------------- | ------------------------------------------------------ |
-| [`printCss.test.ts`](src/ui/print/printCss.test.ts) | 验证 printCss 模块的行为（生成适用纸张尺寸的打印样式） |
-| [`printCss.ts`](src/ui/print/printCss.ts)           | 生成适用纸张尺寸的打印样式                             |
-
-### `src/ui/sections`
-
-| 文件                                                             | 用途                           |
-| ---------------------------------------------------------------- | ------------------------------ |
-| [`BackgroundSection.tsx`](src/ui/sections/BackgroundSection.tsx) | 配置纸面底色和纹理             |
-| [`DecorationSection.tsx`](src/ui/sections/DecorationSection.tsx) | 配置纸张边框与装饰             |
-| [`LineSection.tsx`](src/ui/sections/LineSection.tsx)             | 配置格线颜色、宽度、样式和间距 |
-| [`MarginsSection.tsx`](src/ui/sections/MarginsSection.tsx)       | 配置纸张四边的页边距           |
-| [`OptionsSection.tsx`](src/ui/sections/OptionsSection.tsx)       | 展示当前纸型的专属设置         |
-| [`PageSizeSection.tsx`](src/ui/sections/PageSizeSection.tsx)     | 切换纸张尺寸和方向             |
-| [`PagesSection.tsx`](src/ui/sections/PagesSection.tsx)           | 设置页数和页码                 |
-| [`PaperTypeSection.tsx`](src/ui/sections/PaperTypeSection.tsx)   | 按分类展示并切换纸型           |
-| [`sections.test.tsx`](src/ui/sections/sections.test.tsx)         | 验证基本纸型配置               |
-| [`sections2.test.tsx`](src/ui/sections/sections2.test.tsx)       | 验证线条和页边距配置           |
-| [`sections3.test.tsx`](src/ui/sections/sections3.test.tsx)       | 验证纸面外观配置               |
-| [`sections4.test.tsx`](src/ui/sections/sections4.test.tsx)       | 验证水印和页面配置             |
-| [`sections5.test.tsx`](src/ui/sections/sections5.test.tsx)       | 验证设置导入和导出             |
-| [`ThemeSection.tsx`](src/ui/sections/ThemeSection.tsx)           | 切换纸张配色和字体主题         |
-| [`TransferSection.tsx`](src/ui/sections/TransferSection.tsx)     | 导入和导出纸张设置             |
-| [`WatermarkSection.tsx`](src/ui/sections/WatermarkSection.tsx)   | 配置水印文字与位置             |
-
-### `src/ui/store`
-
-| 文件                                                                  | 用途                                                           |
-| --------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [`SettingsProvider.test.tsx`](src/ui/store/SettingsProvider.test.tsx) | 验证 SettingsProvider 模块的行为（提供纸张设置状态和修改操作） |
-| [`SettingsProvider.tsx`](src/ui/store/SettingsProvider.tsx)           | 提供纸张设置状态和修改操作                                     |
-| [`settingsStorage.test.ts`](src/ui/store/settingsStorage.test.ts)     | 验证 settingsStorage 模块的行为（读写浏览器中的持久化设置）    |
-| [`settingsStorage.ts`](src/ui/store/settingsStorage.ts)               | 读写浏览器中的持久化设置                                       |
-| [`urlState.test.ts`](src/ui/store/urlState.test.ts)                   | 验证 urlState 模块的行为（处理旧分享链接里的设置片段）         |
-| [`urlState.ts`](src/ui/store/urlState.ts)                             | 处理旧分享链接里的设置片段                                     |
-
-### `./`
-
-| 文件                               | 用途                             |
-| ---------------------------------- | -------------------------------- |
-| [`vite.config.ts`](vite.config.ts) | 配置 Vite 应用构建及 Vitest 测试 |
+```text
+paper-by-choice/
+├── src/
+│   ├── core/
+│   │   ├── compose/
+│   │   │   ├── background.test.ts  # 验证 background 模块的行为（生成纸张底色、纹理与背景图片）
+│   │   │   ├── background.ts  # 生成纸张底色、纹理与背景图片
+│   │   │   ├── decoration.test.ts  # 验证 decoration 模块的行为（绘制边框及纸面装饰）
+│   │   │   ├── decoration.ts  # 绘制边框及纸面装饰
+│   │   │   ├── document.test.ts  # 验证 document 模块的行为（组合纸型、背景、装饰和水印场景）
+│   │   │   ├── document.ts  # 组合纸型、背景、装饰和水印场景
+│   │   │   ├── watermark.test.ts  # 验证 watermark 模块的行为（布局并绘制纸张水印）
+│   │   │   └── watermark.ts  # 布局并绘制纸张水印
+│   │   ├── papers/
+│   │   │   ├── shared/
+│   │   │   │   ├── calligraphyLayouts.test.ts  # 验证 calligraphyLayouts 模块的行为（分配书法练习纸的共用布局）
+│   │   │   │   ├── calligraphyLayouts.ts  # 分配书法练习纸的共用布局
+│   │   │   │   ├── cjkCells.test.ts  # 验证 cjkCells 模块的行为（绘制汉字练习方格和常用辅助线）
+│   │   │   │   ├── cjkCells.ts  # 绘制汉字练习方格和常用辅助线
+│   │   │   │   ├── columns.test.ts  # 验证 columns 模块的行为（拆分可写区域并绘制分栏线）
+│   │   │   │   ├── columns.ts  # 拆分可写区域并绘制分栏线
+│   │   │   │   ├── englishGuides.ts  # 共享英文书写格线、页眉和描红断行逻辑
+│   │   │   │   ├── forms.test.ts  # 验证 forms 模块的行为（绘制表单分区与填空线）
+│   │   │   │   ├── forms.ts  # 绘制表单分区与填空线
+│   │   │   │   ├── grids.test.ts  # 验证 grids 模块的行为（计算并绘制可复用的网格几何）
+│   │   │   │   ├── grids.ts  # 计算并绘制可复用的网格几何
+│   │   │   │   ├── guides.test.ts  # 验证 guides 模块的行为（计算并绘制共用书写辅助线）
+│   │   │   │   ├── guides.ts  # 计算并绘制共用书写辅助线
+│   │   │   │   ├── mizigeCells.test.ts  # 验证 mizigeCells 模块的行为（绘制可复用的米字格单元）
+│   │   │   │   ├── mizigeCells.ts  # 绘制可复用的米字格单元
+│   │   │   │   ├── musicStaff.test.ts  # 验证 musicStaff 模块的行为（绘制五线谱与吉他谱的共用线组）
+│   │   │   │   ├── musicStaff.ts  # 绘制五线谱与吉他谱的共用线组
+│   │   │   │   └── worksheets.ts  # 布局作业纸页眉与共用格线
+│   │   │   ├── arithmeticPaper.ts  # 绘制带姓名栏与日期栏的算术纸
+│   │   │   ├── b6Declaration.test.ts  # 验证纸型的独立声明与注册
+│   │   │   ├── blank.test.ts  # 验证 blank 模块的行为（生成无格线的空白纸）
+│   │   │   ├── blank.ts  # 生成无格线的空白纸
+│   │   │   ├── branded.test.ts  # 验证 branded 模块的行为（生成带品牌信息的定制纸）
+│   │   │   ├── branded.ts  # 生成带品牌信息的定制纸
+│   │   │   ├── calligraphy.test.ts  # 验证 calligraphy 模块的行为（绘制基础书法练习纸）
+│   │   │   ├── calligraphy.ts  # 绘制基础书法练习纸
+│   │   │   ├── calligraphyPractice.test.ts  # 验证 calligraphyPractice 模块的行为（绘制书法练字格）
+│   │   │   ├── calligraphyPractice.ts  # 绘制书法练字格
+│   │   │   ├── childrenDrawing.test.ts  # 验证 childrenDrawing 模块的行为（生成儿童涂鸦纸的绘画区域）
+│   │   │   ├── childrenDrawing.ts  # 生成儿童涂鸦纸的绘画区域
+│   │   │   ├── chineseEnglishWordPractice.test.ts  # 验证 chineseEnglishWordPractice 模块的行为（生成汉英互译单词练习纸）
+│   │   │   ├── chineseEnglishWordPractice.ts  # 生成汉英互译单词练习纸
+│   │   │   ├── chinesePreviewCard.test.ts  # 验证 chinesePreviewCard 模块的行为（生成语文预习卡）
+│   │   │   ├── chinesePreviewCard.ts  # 生成语文预习卡
+│   │   │   ├── chinesetianzi.test.ts  # 验证 chinesetianzi 模块的行为（绘制田字格及内部辅助线）
+│   │   │   ├── chinesetianzi.ts  # 绘制田字格及内部辅助线
+│   │   │   ├── compositionPaper.ts  # 生成分行排列的作文方格
+│   │   │   ├── contract.ts  # 声明纸型、选项、预设及渲染接口
+│   │   │   ├── cornell.test.ts  # 验证 cornell 模块的行为（布局康奈尔笔记的线索、笔记和总结区）
+│   │   │   ├── cornell.ts  # 布局康奈尔笔记的线索、笔记和总结区
+│   │   │   ├── creativeLog.test.ts  # 验证 creativeLog 模块的行为（布局创意记录区）
+│   │   │   ├── creativeLog.ts  # 布局创意记录区
+│   │   │   ├── crossgrid.test.ts  # 验证 crossgrid 模块的行为（绘制交叉格书写辅助线）
+│   │   │   ├── crossgrid.ts  # 绘制交叉格书写辅助线
+│   │   │   ├── define.test.ts  # 验证 define 模块的行为（将带具体选项类型的纸型注册为通用纸型）
+│   │   │   ├── define.ts  # 将带具体选项类型的纸型注册为通用纸型
+│   │   │   ├── dot.test.ts  # 验证 dot 模块的行为（绘制点阵纸）
+│   │   │   ├── dot.ts  # 绘制点阵纸
+│   │   │   ├── englishDictation.ts  # 布局英文听写编号和订正栏
+│   │   │   ├── englishDoubleLine.ts  # 绘制标出字母主体区域的双线定位纸
+│   │   │   ├── englishDrawWrite.ts  # 组合绘画区和英文书写区
+│   │   │   ├── englishPaper.ts  # 绘制四线三格及彩色、灰阶定位预设
+│   │   │   ├── englishPrimary.ts  # 绘制美式三线练习格和虚线中线
+│   │   │   ├── englishSlanted.ts  # 绘制带红色基线和浅色斜线的英语定位纸
+│   │   │   ├── englishTracing.ts  # 将示例分成示范、描红和独写行
+│   │   │   ├── englishVocabulary.ts  # 绘制单词、释义和例句三栏表格
+│   │   │   ├── englishWorksheets.test.ts  # 验证英文作业纸的分组、节距和描红
+│   │   │   ├── errorCorrection.test.ts  # 验证 errorCorrection 模块的行为（布局错题整理区）
+│   │   │   ├── errorCorrection.ts  # 布局错题整理区
+│   │   │   ├── exportVerification.test.ts  # 验证各纸型和预设的导出
+│   │   │   ├── geometryPapers.test.ts  # 验证几何纸型的尺寸与布局
+│   │   │   ├── grid.test.ts  # 验证 grid 模块的行为（生成等距方格）
+│   │   │   ├── grid.ts  # 生成等距方格
+│   │   │   ├── guitarStaffTab.test.ts  # 验证 guitarStaffTab 模块的行为（组合五线谱和吉他六线谱）
+│   │   │   ├── guitarStaffTab.ts  # 组合五线谱和吉他六线谱
+│   │   │   ├── guitarTab.test.ts  # 验证 guitarTab 模块的行为（绘制吉他六线谱）
+│   │   │   ├── guitarTab.ts  # 绘制吉他六线谱
+│   │   │   ├── hardpenCalligraphyPaper.test.ts  # 验证 hardpenCalligraphyPaper 模块的行为（布局硬笔书法练习纸）
+│   │   │   ├── hardpenCalligraphyPaper.ts  # 布局硬笔书法练习纸
+│   │   │   ├── hardpenHuigongge.test.ts  # 验证 hardpenHuigongge 模块的行为（绘制长方回宫格）
+│   │   │   ├── hardpenHuigongge.ts  # 绘制长方回宫格
+│   │   │   ├── hexagonal.ts  # 绘制六边形网格
+│   │   │   ├── huigongge.test.ts  # 验证 huigongge 模块的行为（绘制回宫格）
+│   │   │   ├── huigongge.ts  # 绘制回宫格
+│   │   │   ├── huimige.test.ts  # 验证 huimige 模块的行为（绘制回米格）
+│   │   │   ├── huimige.ts  # 绘制回米格
+│   │   │   ├── isometric.ts  # 绘制等距网格
+│   │   │   ├── jiugongge.test.ts  # 验证 jiugongge 模块的行为（绘制九宫格）
+│   │   │   ├── jiugongge.ts  # 绘制九宫格
+│   │   │   ├── kit.test.ts  # 验证 kit 模块的行为（构造纸型渲染所用的线条与字体工具）
+│   │   │   ├── kit.ts  # 构造纸型渲染所用的线条与字体工具
+│   │   │   ├── lined.test.ts  # 验证 lined 模块的行为（绘制横线纸）
+│   │   │   ├── lined.ts  # 绘制横线纸
+│   │   │   ├── meetingNote.test.ts  # 验证 meetingNote 模块的行为（布局会议记录区）
+│   │   │   ├── meetingNote.ts  # 布局会议记录区
+│   │   │   ├── minimalJournal.test.ts  # 验证 minimalJournal 模块的行为（生成简约手账纸）
+│   │   │   ├── minimalJournal.ts  # 生成简约手账纸
+│   │   │   ├── mizige.ts  # 绘制带对角辅助线的米字格
+│   │   │   ├── music.test.ts  # 验证 music 模块的行为（绘制五线谱）
+│   │   │   ├── music.ts  # 绘制五线谱
+│   │   │   ├── paperContract.test.ts  # 验证纸型选项及渲染约束
+│   │   │   ├── pinyinPaper.ts  # 布局汉语拼音练习行
+│   │   │   ├── pinyinTianzi.ts  # 组合拼音行与等宽等高的田字格
+│   │   │   ├── practicePaper.ts  # 绘制通用练习纸
+│   │   │   ├── projectPlanning.test.ts  # 验证 projectPlanning 模块的行为（组合项目信息、甘特图和任务列表）
+│   │   │   ├── projectPlanning.ts  # 组合项目信息、甘特图和任务列表
+│   │   │   ├── registry.test.ts  # 验证 registry 模块的行为（注册全部纸型、排序并解析纸型预设）
+│   │   │   ├── registry.ts  # 注册全部纸型、排序并解析纸型预设
+│   │   │   ├── seyes.ts  # 绘制法式 Séyès 练习格
+│   │   │   ├── sketch.test.ts  # 验证 sketch 模块的行为（生成草图纸）
+│   │   │   ├── sketch.ts  # 生成草图纸
+│   │   │   ├── storyboard.ts  # 布局分镜框与注释区
+│   │   │   ├── studentNote.test.ts  # 验证 studentNote 模块的行为（布局学生笔记纸）
+│   │   │   ├── studentNote.ts  # 布局学生笔记纸
+│   │   │   ├── svgRendering.test.ts  # 验证各纸型的 SVG 输出
+│   │   │   ├── verticalLined.ts  # 绘制竖线纸
+│   │   │   ├── vintageNote.test.ts  # 验证 vintageNote 模块的行为（生成复古笔记纸）
+│   │   │   ├── vintageNote.ts  # 生成复古笔记纸
+│   │   │   └── worksheetPapers.test.ts  # 验证作业纸页眉与排版
+│   │   ├── render/
+│   │   │   ├── color.test.ts  # 验证 color 模块的行为（解析渲染器所需的颜色值）
+│   │   │   ├── color.ts  # 解析渲染器所需的颜色值
+│   │   │   ├── pathData.test.ts  # 验证 pathData 模块的行为（解析形状的矢量路径指令）
+│   │   │   ├── pathData.ts  # 解析形状的矢量路径指令
+│   │   │   ├── pdf.test.ts  # 验证 pdf 模块的行为（将场景渲染为 PDF 页面）
+│   │   │   ├── pdf.ts  # 将场景渲染为 PDF 页面
+│   │   │   ├── raster.test.ts  # 验证 raster 模块的行为（将场景绘制到 Canvas 供 PNG 导出）
+│   │   │   ├── raster.ts  # 将场景绘制到 Canvas 供 PNG 导出
+│   │   │   ├── svg.test.ts  # 验证 svg 模块的行为（将场景转换为 SVG）
+│   │   │   ├── svg.ts  # 将场景转换为 SVG
+│   │   │   ├── textRaster.test.ts  # 验证 textRaster 模块的行为（栅格化 PDF 中需要浏览器字体的文本）
+│   │   │   └── textRaster.ts  # 栅格化 PDF 中需要浏览器字体的文本
+│   │   ├── scene/
+│   │   │   ├── builders.test.ts  # 验证 builders 模块的行为（创建统一的场景图元）
+│   │   │   ├── builders.ts  # 创建统一的场景图元
+│   │   │   ├── geometry.test.ts  # 验证 geometry 模块的行为（提供尺寸、定位和取整运算）
+│   │   │   ├── geometry.ts  # 提供尺寸、定位和取整运算
+│   │   │   └── types.ts  # 定义场景图元、坐标及绘制属性
+│   │   ├── testing/
+│   │   │   ├── paperTestKit.test.ts  # 验证 paperTestKit 模块的行为（提供纸型测试的共享场景与断言辅助函数）
+│   │   │   └── paperTestKit.ts  # 提供纸型测试的共享场景与断言辅助函数
+│   │   ├── encoding.test.ts  # 验证 encoding 模块的行为（编解码可分享的纸张设置）
+│   │   ├── encoding.ts  # 编解码可分享的纸张设置
+│   │   ├── paperLooks.ts  # 集中定义各纸型的默认线条、间距和页边距
+│   │   ├── paperSizes.test.ts  # 验证 paperSizes 模块的行为（管理纸张规格、方向和打印单位）
+│   │   ├── paperSizes.ts  # 管理纸张规格、方向和打印单位
+│   │   ├── settings.test.ts  # 验证 settings 模块的行为（创建、合并与校验纸张设置）
+│   │   ├── settings.ts  # 创建、合并与校验纸张设置
+│   │   ├── themes.test.ts  # 验证 themes 模块的行为（定义纸张排版的配色及字体主题）
+│   │   ├── themes.ts  # 定义纸张排版的配色及字体主题
+│   │   └── types.ts  # 定义纸张设置与页面数据类型
+│   ├── i18n/
+│   │   ├── en.ts  # 提供应用的英文界面文案
+│   │   ├── i18n.test.ts  # 验证翻译字典与语言回退
+│   │   ├── index.ts  # 加载翻译字典并创建翻译函数
+│   │   └── zh-CN.ts  # 提供应用的简体中文界面文案
+│   ├── ui/
+│   │   ├── controls/
+│   │   │   ├── ColorField.tsx  # 显示颜色选择器与预设色板
+│   │   │   ├── controls.test.tsx  # 验证通用表单控件
+│   │   │   ├── NumberField.tsx  # 接收和提交带范围约束的数值
+│   │   │   ├── OptionFieldRenderer.tsx  # 按纸型选项声明映射控件
+│   │   │   ├── Section.tsx  # 显示可展开的配置区块
+│   │   │   ├── SelectField.tsx  # 提供下拉选择控件
+│   │   │   ├── SliderField.tsx  # 提供滑动范围控件
+│   │   │   ├── TextField.tsx  # 提供文本输入控件
+│   │   │   ├── ToggleField.tsx  # 提供布尔开关
+│   │   │   └── UiIcon.tsx  # 绘制界面通用线性图标
+│   │   ├── export/
+│   │   │   ├── download.test.ts  # 验证 download 模块的行为（通过浏览器保存导出文件）
+│   │   │   ├── download.ts  # 通过浏览器保存导出文件
+│   │   │   ├── exporters.test.ts  # 验证 exporters 模块的行为（调用渲染器并组织 PDF、SVG、PNG 导出）
+│   │   │   └── exporters.ts  # 调用渲染器并组织 PDF、SVG、PNG 导出
+│   │   ├── gallery/
+│   │   │   └── TemplateGallery.tsx  # 显示、筛选并应用纸张模板
+│   │   ├── i18n/
+│   │   │   ├── LocaleProvider.test.tsx  # 验证 LocaleProvider 模块的行为（保存和提供当前界面语言）
+│   │   │   └── LocaleProvider.tsx  # 保存和提供当前界面语言
+│   │   ├── layout/
+│   │   │   ├── ControlPanel.tsx  # 组合左侧配置区块
+│   │   │   ├── ExportBar.tsx  # 提供导出格式、清晰度和打印操作
+│   │   │   ├── Footer.tsx  # 显示版权信息及使用提示
+│   │   │   ├── Header.tsx  # 显示站点标题、导航及界面入口
+│   │   │   ├── InfoModal.tsx  # 显示使用指南或关于信息
+│   │   │   └── Workspace.tsx  # 组织设置区与预览区的响应式布局
+│   │   ├── preview/
+│   │   │   ├── Preview.tsx  # 生成纸页预览并处理缩放
+│   │   │   └── useElementWidth.ts  # 观察预览容器的可用宽度
+│   │   ├── print/
+│   │   │   ├── printCss.test.ts  # 验证 printCss 模块的行为（生成适用纸张尺寸的打印样式）
+│   │   │   └── printCss.ts  # 生成适用纸张尺寸的打印样式
+│   │   ├── sections/
+│   │   │   ├── BackgroundSection.tsx  # 配置纸面底色和纹理
+│   │   │   ├── DecorationSection.tsx  # 配置纸张边框与装饰
+│   │   │   ├── LineSection.tsx  # 配置格线颜色、宽度、样式和间距
+│   │   │   ├── MarginsSection.tsx  # 配置纸张四边的页边距
+│   │   │   ├── OptionsSection.tsx  # 展示当前纸型的专属设置
+│   │   │   ├── PageSizeSection.tsx  # 切换纸张尺寸和方向
+│   │   │   ├── PagesSection.tsx  # 设置页数和页码
+│   │   │   ├── PaperTypeSection.tsx  # 按分类展示并切换纸型
+│   │   │   ├── sections.test.tsx  # 验证基本纸型配置
+│   │   │   ├── sections2.test.tsx  # 验证线条和页边距配置
+│   │   │   ├── sections3.test.tsx  # 验证纸面外观配置
+│   │   │   ├── sections4.test.tsx  # 验证水印和页面配置
+│   │   │   ├── sections5.test.tsx  # 验证设置导入和导出
+│   │   │   ├── ThemeSection.tsx  # 切换纸张配色和字体主题
+│   │   │   ├── TransferSection.tsx  # 导入和导出纸张设置
+│   │   │   └── WatermarkSection.tsx  # 配置水印文字与位置
+│   │   ├── store/
+│   │   │   ├── SettingsProvider.test.tsx  # 验证 SettingsProvider 模块的行为（提供纸张设置状态和修改操作）
+│   │   │   ├── SettingsProvider.tsx  # 提供纸张设置状态和修改操作
+│   │   │   ├── settingsStorage.test.ts  # 验证 settingsStorage 模块的行为（读写浏览器中的持久化设置）
+│   │   │   ├── settingsStorage.ts  # 读写浏览器中的持久化设置
+│   │   │   ├── urlState.test.ts  # 验证 urlState 模块的行为（处理旧分享链接里的设置片段）
+│   │   │   └── urlState.ts  # 处理旧分享链接里的设置片段
+│   │   ├── A7c.test.tsx  # 验证预览、模板库和导出集成
+│   │   ├── App.tsx  # 组合编辑器、设置和预览界面
+│   │   ├── InfoModal.test.tsx  # 验证 InfoModal 模块的行为（显示使用指南或关于信息）
+│   │   ├── interfaceStyle.ts  # 定义可切换的界面风格
+│   │   └── palettes.ts  # 定义界面可选颜色预设
+│   ├── App.test.tsx  # 验证 App 模块的行为（挂载应用的对外入口）
+│   ├── App.tsx  # 挂载应用的对外入口
+│   └── main.tsx  # 初始化 React 根节点并加载全局样式
+└── vite.config.ts  # 配置 Vite 应用构建及 Vitest 测试
+```
 
 ## 隐私
 
