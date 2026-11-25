@@ -28,3 +28,11 @@ Thumbs.db
 # Local development workspace: process notes, behavioural specs and third-party
 # reference material. Never commit this directory.
 .dev/
+
+# Local attachments and credentials
+.codex-attachments/
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+.wrangler/

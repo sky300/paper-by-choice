@@ -55,6 +55,8 @@ pnpm preview --host 127.0.0.1
 2. 输入项目名，上传 `dist/`。已有项目直接在项目中创建生产部署，无需重建项目。
 3. 发布后访问面板给出的 `*.pages.dev` 地址，检查纸张预览和 PDF 导出。
 
+**GitHub Actions 自动发布**：现有直接上传项目可通过 [发布工作流](.github/workflows/deploy-cloudflare.yml) 随 `main` 更新自动构建并部署。到仓库 **Settings → Secrets and variables → Actions** 添加 `CLOUDFLARE_ACCOUNT_ID` 和 `CLOUDFLARE_API_TOKEN`。令牌只需目标 Cloudflare 账户的 **Cloudflare Pages: Edit** 权限。凭证只保存在 GitHub Secrets。也可在 **Actions → Deploy to Cloudflare Pages** 手动运行。
+
 也可以使用 Wrangler。以下命令在项目根目录运行；创建项目的命令只需首次运行：
 
 ```bash

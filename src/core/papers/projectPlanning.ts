@@ -19,7 +19,6 @@ const FIELD_OFFSET = 18.5
 const FIELD_LEN = 21.2
 const NAME_COL = 21.2
 const BOX_SIZE = 2.6
-const BOX_RISE = 2.6
 const GANTT_ROWS = 5
 const GANTT_COLS = 14
 
@@ -126,7 +125,7 @@ export default definePaper({
       [a.x + half + INSET, ctx.t('text.due')],
     ]
     fieldPairs.forEach(([x, label], i) => {
-      const y = j + (i % 2 === 0 ? ROW1 : ROW2)
+      const y = j + (i < 2 ? ROW1 : ROW2)
       items.push(text(x, y, label, labelFont, color))
       items.push(
         line(
@@ -193,7 +192,9 @@ export default definePaper({
         if (y > bottom) break
         items.push(line(a.x, y, a.x + a.w, y, main))
         if (k >= 1) {
-          items.push(checkbox(a.x + 1.3, y - BOX_RISE, BOX_SIZE, thin))
+          items.push(
+            checkbox(a.x + 1.3, y - (S + BOX_SIZE) / 2, BOX_SIZE, thin),
+          )
         }
       }
     }

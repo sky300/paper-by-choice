@@ -110,7 +110,7 @@ describe('Workspace', () => {
     expect(
       screen.getByRole('link', { name: '纸随心' }).getAttribute('href'),
     ).toBe(import.meta.env.BASE_URL)
-    expect(screen.getByText('Powered by skyow')).toBeDefined()
+    expect(screen.getByText('© 2026 · Powered by skyow')).toBeDefined()
     fireEvent.click(screen.getByRole('button', { name: '关于我' }))
     expect(screen.getByText('创建者 skyow')).toBeDefined()
   })

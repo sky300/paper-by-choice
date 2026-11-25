@@ -2,7 +2,7 @@ import type { MessageDict } from './index'
 
 /** Simplified Chinese UI strings. This dictionary is the source of truth for the key set; `en.ts` must mirror it. */
 export const zhCN: MessageDict = {
-  'app.credit': 'Powered by skyow',
+  'app.credit': '© 2026 · Powered by skyow',
   'app.name': '纸随心',
   'app.tagline': '自定义打印纸生成器',
   'app.privacy': '一切都在你的浏览器里完成，不会上传任何数据。',

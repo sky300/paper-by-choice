@@ -53,6 +53,8 @@ Publish the complete contents of `dist/`, keeping `index.html`, `favicon.svg` an
 2. Choose a project name and upload `dist/`. For an existing project, create a new production deployment in that project.
 3. Open the `*.pages.dev` URL shown in the dashboard. Check the paper preview and PDF export.
 
+**Automatic deployment with GitHub Actions.** The [deployment workflow](.github/workflows/deploy-cloudflare.yml) builds and uploads the site when `main` changes. Add `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_API_TOKEN` under **Settings → Secrets and variables → Actions**. Use a token with **Cloudflare Pages: Edit** on the target account. Keep credentials in GitHub Secrets. You can also run the workflow from **Actions → Deploy to Cloudflare Pages**.
+
 You can also deploy with Wrangler. Run these commands from the repository root. Create the project only once:
 
 ```bash

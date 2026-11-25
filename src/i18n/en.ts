@@ -2,7 +2,7 @@ import type { MessageDict } from './index'
 
 /** English UI strings. Must define exactly the keys of `zh-CN.ts`; a test enforces it. */
 export const en: MessageDict = {
-  'app.credit': 'Powered by skyow',
+  'app.credit': '© 2026 · Powered by skyow',
   'app.name': 'Paper by Choice',
   'app.tagline': 'Custom printable paper generator',
   'app.privacy':
