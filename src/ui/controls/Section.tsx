@@ -5,6 +5,7 @@
  * action buttons stop propagation and prevent the summary's default toggle.
  */
 import type { JSX, ReactNode } from 'react'
+import { UiIcon } from './UiIcon'
 
 export interface SectionProps {
   /** Stable identifier used to generate the element id. */
@@ -23,7 +24,10 @@ export function Section(props: SectionProps): JSX.Element {
   return (
     <details className="ctl-section" id={props.id} open={open}>
       <summary className="ctl-section-summary">
-        <span className="ctl-section-title">{props.title}</span>
+        <span className="ctl-section-title">
+          <UiIcon name={props.id.replace(/^section-/, '')} />
+          {props.title}
+        </span>
         <span
           className="ctl-section-actions"
           onClick={(event) => {

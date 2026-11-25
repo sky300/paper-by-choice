@@ -76,7 +76,7 @@ export default definePaper({
         ctx.area,
         [ctx.t('text.name'), ctx.t('text.date')],
         ctx.fonts.body(3.2),
-        main,
+        ctx.ink.make(ctx.theme.text, 0.13),
       ),
       rect({ x: L, y: gy, w: AW, h: rows * rh }, main),
     ]

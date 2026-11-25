@@ -107,7 +107,7 @@ describe('clampSpacing', () => {
 })
 
 describe('switchPaperType', () => {
-  test('keeps pages, watermark and decoration but resets spacing and margins', () => {
+  test('keeps pages and watermark but resets decoration, spacing and margins', () => {
     const base = createSettings('lined')
     const current = {
       ...base,
@@ -122,14 +122,14 @@ describe('switchPaperType', () => {
     expect(next.pages).toEqual({ count: 3, numbering: true, startNumber: 1 })
     expect(next.watermark.enabled).toBe(true)
     expect(next.watermark.text).toBe('draft')
-    expect(next.decoration.enabled).toBe(true)
+    expect(next.decoration.enabled).toBe(false)
     expect(next.line.spacing).toBe(8)
     expect(next.margins).toEqual({ top: 25, right: 20, bottom: 25, left: 20 })
   })
 })
 
 describe('applyPreset', () => {
-  test('applies the preset while keeping pages, watermark and decoration', () => {
+  test('applies the preset defaults while keeping pages and watermark', () => {
     const base = createSettings('lined')
     const current = {
       ...base,
@@ -144,7 +144,7 @@ describe('applyPreset', () => {
     expect((next.options.columns as { count: string }).count).toBe('2')
     expect(next.pages.count).toBe(5)
     expect(next.watermark.enabled).toBe(true)
-    expect(next.decoration.enabled).toBe(true)
+    expect(next.decoration.enabled).toBe(false)
     expect(resolvePageSize(next)).toEqual({ width: 420, height: 297 })
   })
 })

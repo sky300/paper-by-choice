@@ -198,9 +198,17 @@ function asObject(value: unknown): Record<string, unknown> {
 /* Building settings                                                   */
 /* ------------------------------------------------------------------ */
 
+/** Returns editable bounds that also include the paper switch default. */
+export function spacingBounds(type: PaperType) {
+  const { min, max } = getPaper(type).spacing
+  const initial = PAPER_LOOKS[type].spacing
+  return { min: Math.min(min, initial), max: Math.max(max, initial) }
+}
+
 /** Snaps a spacing value to the paper's step and clamps it into the paper's range. */
 export function clampSpacing(type: PaperType, value: number): number {
-  const { min, max, step } = getPaper(type).spacing
+  const { min, max } = spacingBounds(type)
+  const { step } = getPaper(type).spacing
   return snapToStep(value, min, max, step)
 }
 
@@ -243,26 +251,21 @@ function buildSettings(
   return built
 }
 
-/** Complete settings of a paper under a preset; unknown ids use the first preset. */
+/** Complete settings of a paper, optionally applying a named preset. */
 export function createSettings(type: PaperType, presetId?: string): Settings {
   const paper = getPaper(type)
   const found = presetId
     ? paper.presets.find((preset) => preset.id === presetId)
     : undefined
-  const patch = (found ?? paper.presets[0])?.patch ?? {}
-  return buildSettings(type, paper, patch)
+  return buildSettings(type, paper, found?.patch ?? {})
 }
 
-/** Carries the user's explicit pages, watermark and decoration onto a fresh base. */
+/** Carries the user's page count and watermark onto a fresh base. */
 function preserve(base: Settings, current: Settings): Settings {
   return {
     ...base,
     pages: { ...current.pages },
     watermark: { ...current.watermark },
-    decoration: {
-      ...current.decoration,
-      sides: { ...current.decoration.sides },
-    },
   }
 }
 
@@ -346,12 +349,10 @@ export function sanitizeSettings(raw: unknown): Settings {
   const rPages = asObject(raw.pages)
 
   const texture = oneOf(rBackground.texture, TEXTURES, d.background.texture)
-  const spacing = numberIn(
-    rLine.spacing,
-    lineDefaults.spacing,
-    paper.spacing.min,
-    paper.spacing.max,
-  )
+  const spacing =
+    typeof rLine.spacing === 'number' && Number.isFinite(rLine.spacing)
+      ? rLine.spacing
+      : lineDefaults.spacing
 
   return {
     version: 1,

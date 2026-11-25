@@ -9,7 +9,7 @@ Fully client-side. No backend, no account, no telemetry. **Everything runs in yo
 - **40+ paper types**: basic grids, music and guitar tablature, Chinese school worksheets (pinyin, tianzi, composition, arithmetic, English four-line), calligraphy practice grids (mizige, huigongge, jiugongge and a parametric practice sheet with many presets), plus notes and forms (Cornell, meeting notes, project planning, error correction, bilingual vocabulary drills).
 - **Page setup**: A4 / A5 / A3 / B4 / B5 / Letter / Legal / Tabloid / Executive / custom size; portrait and landscape; two-column layout for selected papers; 1–100 pages.
 - **Appearance**: 13 themes, line colour / style / width / spacing, four independent margins, 7 background textures, a custom background image, 5 border decorations (including scalloped borders and a calligraphy frame), tiled watermark, page numbering.
-- **Template gallery**: every paper ships with presets; settings can be exported to JSON, imported later, or shared via a link.
+- **Template gallery**: every paper ships with presets; settings can be exported to JSON, imported later, or shared with others.
 - **Export**: SVG (all pages merged into one vector file), PNG (one file per page, 150 / 300 / 600 DPI), PDF (**vector lines**, losslessly scalable in any reader). Printing produces true vector pages with real text.
 - **Bilingual UI**: Chinese and English, including the labels printed on the paper.
 - **Works offline**: the build is plain static files. Host it anywhere — GitHub Pages, a NAS, or a sub-folder of an existing site.
@@ -54,7 +54,7 @@ React 19 · TypeScript 5.9 · Vite 8 · pdf-lib · Vitest. The only runtime depe
 
 ## Privacy
 
-Settings live in `localStorage`; link sharing encodes them in the URL fragment (`#s=…`, which is never sent to a server); uploaded background images exist only as data URLs in local memory. There are no network requests, no analytics and no third-party fonts.
+Settings live in `localStorage`; during normal editing the address stays clean, and legacy `#s=…` links load their settings and clear the fragment; uploaded background images exist only as data URLs in local memory. There are no network requests, no analytics and no third-party fonts.
 
 ## License
 

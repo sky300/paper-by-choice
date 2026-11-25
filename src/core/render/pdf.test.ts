@@ -405,6 +405,12 @@ function graphicsStates(page: PDFPage): string[] {
 }
 
 describe('buildPdf', () => {
+  test('requests actual-size printing in PDF viewers that support it', async () => {
+    const pdf = await PDFDocument.load(await buildPdf([a4([])], pdfOptions))
+    expect(pdf.catalog.getOrCreateViewerPreferences().getPrintScaling()).toBe(
+      'None',
+    )
+  })
   test('writes a two-page A4 document of the exact physical size', async () => {
     const bytes = await buildPdf(
       [a4([line(10, 20, 30, 20, ink)]), a4([])],

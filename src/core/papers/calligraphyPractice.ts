@@ -991,10 +991,10 @@ const FIELDS: readonly OptionField[] = [
   numberField('columns', 1, 30, 1, 4, forStyles(...GRID_STYLES)),
   numberField(
     'rows',
-    1,
+    0,
     30,
     1,
-    7,
+    0,
     forStyles('horizontal_lines', ...GRID_STYLES),
   ),
   toggleField(
@@ -1056,6 +1056,7 @@ const DEFAULT_OPTIONS: Options = {
     ...DEFAULT_CALLIGRAPHY_LAYOUT,
     gridStyle: 'horizontal_lines',
     presetId: 'cp_hline_15',
+    rows: 0,
   },
 }
 
@@ -1068,7 +1069,16 @@ function buildPresets(): Preset[] {
     patch: {
       line: { spacing: row.spacing },
       ...(row.margins ? { margins: row.margins } : {}),
-      options: { layout: { ...row.layout, presetId: row.id } },
+      options: {
+        layout: {
+          rows:
+            row.layout.gridStyle === 'horizontal_lines'
+              ? 0
+              : DEFAULT_CALLIGRAPHY_LAYOUT.rows,
+          ...row.layout,
+          presetId: row.id,
+        },
+      },
     },
   }))
 }

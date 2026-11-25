@@ -6,6 +6,11 @@ export const zhCN: MessageDict = {
   'app.tagline': '自定义打印纸生成器',
   'app.privacy': '一切都在你的浏览器里完成，不会上传任何数据。',
 
+  'interface.style': '界面风格',
+  'interface.style.violet': 'A · 紫白',
+  'interface.style.warm': 'B · 暖色',
+  'interface.style.teal': 'C · 青绿',
+
   'group.basic': '基础纸型',
   'group.worksheet': '中文作业纸',
   'group.calligraphy': '书法练习纸',

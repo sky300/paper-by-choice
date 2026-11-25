@@ -43,7 +43,7 @@ import type {
 } from '../../core/types'
 import type { AnyPaper } from '../../core/papers/contract'
 import { loadStoredSettings, storeSettings } from './settingsStorage'
-import { formatSettingsHash, parseSettingsHash } from './urlState'
+import { SETTINGS_HASH_PREFIX, parseSettingsHash } from './urlState'
 
 /** How long after the last change the archive and address bar are updated. */
 const PERSIST_DELAY_MS = 250
@@ -82,8 +82,10 @@ const SettingsContext = createContext<SettingsContextValue | null>(null)
 
 /** Injectable browser objects, used by tests and by the real app alike. */
 export interface SettingsProviderDependencies {
-  location?: Pick<Location, 'hash'>
+  location?: Pick<Location, 'hash'> &
+    Partial<Pick<Location, 'pathname' | 'search'>>
   history?: {
+    readonly state?: unknown
     replaceState(state: unknown, title: string, url: string | null): void
   }
   storage?: Pick<Storage, 'getItem' | 'setItem'>
@@ -132,14 +134,6 @@ export function SettingsProvider(props: SettingsProviderProps): JSX.Element {
   useEffect(() => {
     settingsRef.current = settings
   }, [settings])
-
-  const resolve = useCallback(
-    (deps: SettingsProviderDependencies | undefined) => ({
-      history: deps?.history ?? browser('history'),
-      storage: deps?.storage ?? browser('localStorage'),
-    }),
-    [],
-  )
 
   /* Actions ------------------------------------------------------------ */
 
@@ -247,35 +241,53 @@ export function SettingsProvider(props: SettingsProviderProps): JSX.Element {
   /* Persistence -------------------------------------------------------- */
 
   useEffect(() => {
-    const { history, storage } = resolve(props.dependencies)
-    const timer = setTimeout(() => {
-      storeSettings(settings, storage)
-      try {
-        history?.replaceState(null, '', formatSettingsHash(settings))
-      } catch {
-        // A restricted history object must not break the app.
-      }
-    }, PERSIST_DELAY_MS)
+    const storage = props.dependencies?.storage ?? browser('localStorage')
+    const timer = setTimeout(
+      () => storeSettings(settings, storage),
+      PERSIST_DELAY_MS,
+    )
     return () => clearTimeout(timer)
-  }, [settings, props.dependencies, resolve])
+  }, [settings, props.dependencies])
 
   /* Link reaction ------------------------------------------------------ */
 
   useEffect(() => {
     const location = props.dependencies?.location ?? browser('location')
+    const history = props.dependencies?.history ?? browser('history')
+    const storage = props.dependencies?.storage ?? browser('localStorage')
+
+    function consumeSettingsLink(next: Settings | null) {
+      if (!location?.hash.startsWith(`#${SETTINGS_HASH_PREFIX}`)) return
+      if (next) storeSettings(next, storage)
+      try {
+        history?.replaceState(
+          history.state ?? null,
+          '',
+          (location.pathname ?? browser('location')?.pathname ?? '/') +
+            (location.search ?? browser('location')?.search ?? ''),
+        )
+      } catch {
+        // Reading a link still works when the browser restricts history.
+      }
+    }
+
+    if (!props.initial)
+      consumeSettingsLink(parseSettingsHash(location?.hash ?? ''))
+
     function onHashChange() {
       const next = parseSettingsHash(location?.hash ?? '')
-      if (!next) return
-      if (JSON.stringify(next) === JSON.stringify(settingsRef.current)) return
-      setSettings(next)
+      consumeSettingsLink(next)
+      if (
+        next &&
+        JSON.stringify(next) !== JSON.stringify(settingsRef.current)
+      ) {
+        setSettings(next)
+      }
     }
-    try {
-      window.addEventListener('hashchange', onHashChange)
-      return () => window.removeEventListener('hashchange', onHashChange)
-    } catch {
-      return undefined
-    }
-  }, [props.dependencies])
+
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [props.dependencies, props.initial])
 
   /* Context value ------------------------------------------------------ */
 

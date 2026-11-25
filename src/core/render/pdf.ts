@@ -12,6 +12,7 @@
  */
 import {
   PDFDocument,
+  PrintScaling,
   clip,
   closePath,
   degrees,
@@ -527,6 +528,7 @@ export async function buildPdf(
   doc.setTitle(opts.title ?? 'Paper by Choice')
   doc.setCreator(opts.creator ?? 'paper-by-choice')
   doc.setProducer('paper-by-choice')
+  doc.catalog.getOrCreateViewerPreferences().setPrintScaling(PrintScaling.None)
   const embedded = new Map<Uint8Array, Promise<PDFImage>>()
   const textCache = new Map<string, TextPatch | null>()
   const decodeImage: PaintOptions['decodeImage'] =

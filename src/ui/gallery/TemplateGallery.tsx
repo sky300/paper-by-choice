@@ -53,6 +53,7 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
   const { locale, t } = useLocale()
   const { settings, update } = useSettings()
   const [query, setQuery] = useState('')
+  const { onClose } = props
   const dialogRef = useRef<HTMLDivElement>(null)
   const previousFocus = useRef<HTMLElement | null>(null)
 
@@ -60,14 +61,14 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
     previousFocus.current = document.activeElement as HTMLElement | null
     dialogRef.current?.focus()
     const onKey = (e: KeyboardEvent): void => {
-      if (e.key === 'Escape') props.onClose()
+      if (e.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onKey)
     return () => {
       window.removeEventListener('keydown', onKey)
       previousFocus.current?.focus()
     }
-  }, [props.onClose])
+  }, [onClose])
 
   const entries = useMemo(() => collectGalleryEntries(), [])
   const needle = query.trim().toLowerCase()
@@ -79,17 +80,6 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
         return `${name} ${paper}`.toLowerCase().includes(needle)
       })
     : entries
-
-  const groups = useMemo(() => {
-    const map = new Map<string, GalleryEntry[]>()
-    for (const entry of filtered) {
-      const key = entry.paper.type
-      const list = map.get(key)
-      if (list) list.push(entry)
-      else map.set(key, [entry])
-    }
-    return [...map.entries()]
-  }, [filtered])
 
   const choose = (entry: GalleryEntry): void => {
     update((s) =>
@@ -126,52 +116,42 @@ export function TemplateGallery(props: TemplateGalleryProps): JSX.Element {
             {t('common.close')}
           </button>
         </div>
-        {groups.length === 0 ? (
+        {filtered.length === 0 ? (
           <p className="gallery-empty">{t('gallery.empty')}</p>
         ) : (
           <div className="gallery-grid">
-            {groups.map(([type, list]) => (
-              <div key={type} className="gallery-group">
-                <h3 className="gallery-group-title">
-                  {paperName(list[0].paper, locale)}
-                </h3>
-                {list.map((entry) => {
-                  const active =
-                    settings.paperType === entry.paper.type &&
-                    entry.preset.id === entry.paper.presets[0].id
-                  return (
-                    <button
-                      key={entry.preset.id}
-                      type="button"
-                      className="gallery-card"
-                      aria-current={active || undefined}
-                      onClick={() => choose(entry)}
-                    >
-                      <span
-                        className="gallery-thumb"
-                        dangerouslySetInnerHTML={{
-                          __html: thumbnail(entry, locale),
-                        }}
-                      />
-                      <span className="gallery-meta">
-                        <strong>
-                          {paperTranslator(
-                            entry.paper,
-                            locale,
-                          )(entry.preset.name)}
-                        </strong>
-                        <small>
-                          {paperTranslator(
-                            entry.paper,
-                            locale,
-                          )(entry.preset.description)}
-                        </small>
-                      </span>
-                    </button>
-                  )
-                })}
-              </div>
-            ))}
+            {filtered.map((entry) => {
+              const active =
+                settings.paperType === entry.paper.type &&
+                entry.preset.id === entry.paper.presets[0].id
+              return (
+                <button
+                  key={`${entry.paper.type}:${entry.preset.id}`}
+                  type="button"
+                  className="gallery-card"
+                  aria-current={active || undefined}
+                  onClick={() => choose(entry)}
+                >
+                  <span
+                    className="gallery-thumb"
+                    dangerouslySetInnerHTML={{
+                      __html: thumbnail(entry, locale),
+                    }}
+                  />
+                  <span className="gallery-meta">
+                    <strong>
+                      {paperTranslator(entry.paper, locale)(entry.preset.name)}
+                    </strong>
+                    <small>
+                      {paperTranslator(
+                        entry.paper,
+                        locale,
+                      )(entry.preset.description)}
+                    </small>
+                  </span>
+                </button>
+              )
+            })}
           </div>
         )}
       </div>

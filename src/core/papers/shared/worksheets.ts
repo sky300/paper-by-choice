@@ -12,16 +12,23 @@ export function twoFieldHeader(
   font: Font,
   ink: Stroke,
 ): SceneItem[] {
-  const baseline = area.y + 4
-  const fieldW = 40
+  const baseline = area.y + 10
+  const fieldW = Math.min(40, area.w / 2)
   const cx = area.x + area.w / 2
   const items: SceneItem[] = []
-  const centres = [cx - fieldW, cx + fieldW]
+  const offset = Math.min(50, (area.w - fieldW) / 2)
+  const centres = [cx - offset, cx + offset]
   labels.forEach((label, i) => {
     const x = centres[i] - fieldW / 2
     items.push(text(x, baseline, label, font, ink.color))
     items.push(
-      line(x + 8, baseline + 1.3, centres[i] + fieldW / 2, baseline + 1.3, ink),
+      line(
+        x + Math.min(8, fieldW / 2),
+        baseline + 1.3,
+        centres[i] + fieldW / 2,
+        baseline + 1.3,
+        ink,
+      ),
     )
   })
   return items

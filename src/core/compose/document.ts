@@ -16,7 +16,7 @@ import { resolveTheme } from '../themes'
 import type { Box } from '../scene/types'
 import type { Locale, Margins, Settings } from '../types'
 import { backgroundScene } from './background'
-import { decorationScene } from './decoration'
+import { decorationScene, framedContentArea } from './decoration'
 import { watermarkScene } from './watermark'
 
 /** Page size in millimetres. */
@@ -67,7 +67,12 @@ export function paperScene(settings: Settings, locale: Locale): Scene {
   const spacing = clampSpacing(settings.paperType, settings.line.spacing)
   const theme = resolveTheme(settings.theme)
   const page = resolvePageSize(settings)
-  const area = contentArea(page, settings.margins)
+  const area = framedContentArea(
+    settings,
+    page,
+    contentArea(page, settings.margins),
+  )
+  if (area.w <= 0 || area.h <= 0) return []
   const common = {
     type: settings.paperType,
     page,

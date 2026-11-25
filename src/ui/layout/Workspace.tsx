@@ -12,11 +12,14 @@ import { ExportBar } from './ExportBar'
 import { Preview } from '../preview/Preview'
 import { TemplateGallery } from '../gallery/TemplateGallery'
 import { InfoModal, type InfoPage } from './InfoModal'
+import { readInterfaceStyle, saveInterfaceStyle } from '../interfaceStyle'
 import { buildPrintCss } from '../print/printCss'
 
 export function Workspace(): JSX.Element {
   const { settings } = useSettings()
   const { locale, t } = useLocale()
+  const [interfaceStyle, setInterfaceStyle] = useState(readInterfaceStyle)
+  useEffect(() => saveInterfaceStyle(interfaceStyle), [interfaceStyle])
   const [panelOpen, setPanelOpen] = useState(false)
   const [galleryOpen, setGalleryOpen] = useState(false)
   const [infoPage, setInfoPage] = useState<InfoPage | null>(null)
@@ -43,9 +46,11 @@ export function Workspace(): JSX.Element {
   }
 
   return (
-    <>
+    <div className="interface-style" data-interface-style={interfaceStyle}>
       <div className="app-shell">
         <Header
+          interfaceStyle={interfaceStyle}
+          onInterfaceStyle={setInterfaceStyle}
           onOpenGallery={() => setGalleryOpen(true)}
           onOpenInfo={(page) => setInfoPage(page)}
           onTogglePanel={() => setPanelOpen((open) => !open)}
@@ -88,6 +93,6 @@ export function Workspace(): JSX.Element {
       {infoPage ? (
         <InfoModal page={infoPage} onClose={() => setInfoPage(null)} />
       ) : null}
-    </>
+    </div>
   )
 }

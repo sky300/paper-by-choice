@@ -147,6 +147,32 @@ describe('pageNumberItem', () => {
 })
 
 describe('buildDocument', () => {
+  test('keeps default pinyin guides and header inside the inset content frame', () => {
+    const base = createSettings('pinyin_paper')
+    const [page] = buildDocument(
+      input({
+        ...base,
+        decoration: { ...base.decoration, enabled: true },
+      }),
+    ).pages
+    const frame = page.scene.filter((item) => item.op === 'g').at(-1)!
+    const [top, right, bottom, left] = shapesOf(frame.items, 'line')
+    const guides = page.scene.filter((item) => item.op === 'line')
+    expect(guides.length).toBeGreaterThan(10)
+    expect(
+      guides.every(
+        (guide) =>
+          [guide.x1, guide.x2].every((x) => x > left.x1 && x < right.x1) &&
+          [guide.y1, guide.y2].every((y) => y > top.y1 && y < bottom.y1),
+      ),
+    ).toBe(true)
+    expect(
+      shapesOf(page.scene, 'text').every(
+        (label) => label.y - label.font.size > top.y1,
+      ),
+    ).toBe(true)
+  })
+
   test('reports the resolved page size and one page per requested count', () => {
     const settings = lined({
       pages: { count: 3, numbering: false, startNumber: 1 },

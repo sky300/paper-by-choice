@@ -7,6 +7,11 @@ export const en: MessageDict = {
   'app.privacy':
     'Everything happens in your browser. Nothing you make is ever uploaded.',
 
+  'interface.style': 'Interface style',
+  'interface.style.violet': 'A · Violet',
+  'interface.style.warm': 'B · Warm',
+  'interface.style.teal': 'C · Teal',
+
   'group.basic': 'Basics',
   'group.worksheet': 'Chinese worksheets',
   'group.calligraphy': 'Calligraphy practice',

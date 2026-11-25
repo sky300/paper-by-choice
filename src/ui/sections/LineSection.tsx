@@ -5,7 +5,7 @@
  * the "recommended" button jumps back to the paper's default spacing.
  */
 import type { JSX } from 'react'
-import { LIMITS } from '../../core/settings'
+import { LIMITS, spacingBounds } from '../../core/settings'
 import { paperTranslator } from '../../i18n'
 import type { LineStyle } from '../../core/types'
 import { ColorField } from '../controls/ColorField'
@@ -22,6 +22,7 @@ export function LineSection(): JSX.Element {
   const { locale, t } = useLocale()
   const pt = paperTranslator(paper, locale)
   const { spacing } = paper
+  const { min, max } = spacingBounds(paper.type)
   const recommended = spacing.default === settings.line.spacing
 
   const styles: readonly LineStyle[] = ['solid', 'dashed', 'dotted']
@@ -45,8 +46,8 @@ export function LineSection(): JSX.Element {
         label={pt(spacing.label)}
         hint={pt(spacing.hint)}
         value={settings.line.spacing}
-        min={spacing.min}
-        max={spacing.max}
+        min={min}
+        max={max}
         step={spacing.step}
         unit={t('unit.mm')}
         onCommit={setSpacing}

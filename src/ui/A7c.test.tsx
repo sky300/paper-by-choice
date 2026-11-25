@@ -83,6 +83,15 @@ describe('TemplateGallery', () => {
     expect(onClose).toHaveBeenCalled()
   })
 
+  test('places every template card directly in the shared grid', () => {
+    const { container } = wrap(
+      <TemplateGallery onChoose={() => {}} onClose={() => {}} />,
+    )
+    expect(
+      container.querySelectorAll('.gallery-grid > .gallery-card'),
+    ).toHaveLength(collectGalleryEntries().length)
+  })
+
   test('filters cards by search text', () => {
     const { container } = wrap(
       <TemplateGallery onChoose={() => {}} onClose={() => {}} />,
@@ -96,6 +105,35 @@ describe('TemplateGallery', () => {
 })
 
 describe('Workspace', () => {
+  test('persists interface styles independently of the paper preview', () => {
+    const first = wrap(<Workspace />)
+    const select = screen.getByRole('combobox', { name: '界面风格' })
+    expect(
+      first.container.querySelector('[data-interface-style="teal"]'),
+    ).not.toBeNull()
+    const paper = first.container.querySelector('.sheet')?.innerHTML
+    try {
+      for (const style of ['violet', 'warm']) {
+        fireEvent.change(select, { target: { value: style } })
+        expect(
+          first.container.querySelector(`[data-interface-style="${style}"]`),
+        ).not.toBeNull()
+        expect(first.container.querySelector('.sheet')?.innerHTML).toBe(paper)
+      }
+      first.unmount()
+      wrap(<Workspace />)
+      expect(
+        (
+          screen.getByRole('combobox', {
+            name: '界面风格',
+          }) as HTMLSelectElement
+        ).value,
+      ).toBe('warm')
+    } finally {
+      localStorage.removeItem('paper-by-choice.interface-style')
+    }
+  })
+
   test('renders header, control panel and a preview', () => {
     const { container } = wrap(<Workspace />)
     expect(container.querySelector('.app-header')).not.toBeNull()

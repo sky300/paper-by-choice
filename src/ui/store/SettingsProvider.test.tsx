@@ -21,7 +21,11 @@ type ProviderProps = Omit<Parameters<typeof SettingsProvider>[0], 'children'>
 /** Injectable, isolated stand-ins for the three browser objects. */
 function makeDeps() {
   const store = new Map<string, string>()
-  const location = { hash: '' }
+  const location = {
+    hash: '',
+    pathname: '/paper-by-choice/',
+    search: '?lang=zh',
+  }
   const history = {
     replaceState: vi.fn(
       (_state: unknown, _title: string, _url: string | null) => {},
@@ -105,7 +109,7 @@ describe('SettingsProvider: actions', () => {
     return { h, ...renderWith({ initial, dependencies: h.deps }) }
   }
 
-  test('switchPaperType changes the type and keeps pages, watermark and decoration', () => {
+  test('switchPaperType changes the type, keeps pages and watermark, and resets decoration', () => {
     const base = createSettings('lined')
     const initial: Settings = {
       ...base,
@@ -121,7 +125,9 @@ describe('SettingsProvider: actions', () => {
     expect(result.current.settings.paperType).toBe(target)
     expect(result.current.settings.pages).toEqual(initial.pages)
     expect(result.current.settings.watermark).toEqual(initial.watermark)
-    expect(result.current.settings.decoration).toEqual(initial.decoration)
+    expect(result.current.settings.decoration).toEqual(
+      createSettings(target).decoration,
+    )
   })
 
   test('applyPreset(exam-two-column) gives A3 landscape with two columns', () => {
@@ -192,7 +198,7 @@ describe('SettingsProvider: actions', () => {
 })
 
 describe('SettingsProvider: persistence and link reaction', () => {
-  test('writes once after 250 ms and updates the address bar with #s=', () => {
+  test('persists settings after 250 ms without adding a URL fragment', () => {
     vi.useFakeTimers()
     const h = makeDeps()
     const { result } = renderWith({ dependencies: h.deps })
@@ -201,15 +207,31 @@ describe('SettingsProvider: persistence and link reaction', () => {
       result.current.setMargins({ top: 31 })
     })
     act(() => vi.advanceTimersByTime(250))
-    expect(h.history.replaceState).toHaveBeenCalledTimes(1)
-    expect(h.history.replaceState).toHaveBeenCalledWith(
-      null,
-      '',
-      formatSettingsHash(result.current.settings),
-    )
+    expect(h.history.replaceState).not.toHaveBeenCalled()
     expect(h.store.get(STORAGE_KEYS.settings)).toBe(
       JSON.stringify(result.current.settings),
     )
+  })
+
+  test('consumes a shared link and removes only its fragment', () => {
+    const h = makeDeps()
+    const linked = createSettings('cornell')
+    h.location.hash = formatSettingsHash(linked)
+    const { result } = renderWith({ dependencies: h.deps })
+    expect(result.current.settings).toEqual(linked)
+    expect(h.history.replaceState).toHaveBeenCalledWith(
+      null,
+      '',
+      '/paper-by-choice/?lang=zh',
+    )
+    expect(h.store.get(STORAGE_KEYS.settings)).toBe(JSON.stringify(linked))
+  })
+
+  test('leaves non-settings fragments alone', () => {
+    const h = makeDeps()
+    h.location.hash = '#guide'
+    renderWith({ dependencies: h.deps })
+    expect(h.history.replaceState).not.toHaveBeenCalled()
   })
 
   test('hashchange with different settings replaces the state', () => {

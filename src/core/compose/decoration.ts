@@ -84,6 +84,49 @@ function scopeBox(
   }
 }
 
+/** Reserves space for the enabled frame edges before the paper is laid out. */
+export function framedContentArea(
+  settings: Settings,
+  pageSize: PageSize,
+  area: Box,
+): Box {
+  const d = settings.decoration
+  if (!d.enabled) return area
+
+  const frame = scopeBox(settings, pageSize, area)
+  if (frame.w <= 0 || frame.h <= 0) return area
+
+  let clearance = 1 + (d.width + settings.line.width) / 2
+  if (
+    d.style === 'double' &&
+    frame.w > 2 * DOUBLE_INSET &&
+    frame.h > 2 * DOUBLE_INSET
+  ) {
+    clearance += DOUBLE_INSET
+  }
+  if (d.style === 'scalloped') {
+    const amplitude = Math.max(1, 0.15 * d.inset)
+    clearance += d.scallopPattern === 'meander' ? 1.6 * amplitude : amplitude
+  }
+
+  const hasCorners = d.style === 'corner' && d.cornerOrnaments
+  const left =
+    d.sides.left || hasCorners ? Math.max(area.x, frame.x + clearance) : area.x
+  const top =
+    d.sides.top || hasCorners ? Math.max(area.y, frame.y + clearance) : area.y
+  const right = area.x + area.w
+  const bottom = area.y + area.h
+  const innerRight =
+    d.sides.right || hasCorners
+      ? Math.min(right, frame.x + frame.w - clearance)
+      : right
+  const innerBottom =
+    d.sides.bottom || hasCorners
+      ? Math.min(bottom, frame.y + frame.h - clearance)
+      : bottom
+  return { x: left, y: top, w: innerRight - left, h: innerBottom - top }
+}
+
 /** The four independent edges of `b`, each only when its side is enabled. */
 function frameLines(
   b: Box,
