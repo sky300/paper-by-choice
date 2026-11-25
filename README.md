@@ -1,6 +1,6 @@
 # 纸随心 Paper by Choice
 
-[English](README.en.md) · [在线使用](https://paper-by-choice.pages.dev/) · 创建者 **skyow**
+[English](README.en.md) · [在线使用](https://sky300.github.io/paper-by-choice/) · 创建者 **skyow**
 
 **在浏览器里生成你想要的打印纸。** 横线纸、方格纸、点阵纸、乐谱纸、书法练字格、中文作业纸、康奈尔笔记……选一种纸，调好尺寸、颜色、间距、边距，实时预览，然后导出 SVG / PNG / PDF 或直接打印。
 
@@ -71,7 +71,7 @@ pnpm dlx wrangler pages deploy dist --project-name paper-by-choice --branch main
 
 ### GitHub Pages
 
-在仓库 **Settings → Pages → Build and deployment** 中将来源设为 **GitHub Actions**。在发布工作流中签出源码，配置 Node.js 和 pnpm，运行 `pnpm install --frozen-lockfile` 与 `pnpm build`。使用 `actions/upload-pages-artifact` 上传 `dist/`，再用 `actions/deploy-pages` 发布。部署作业需有 `pages: write` 和 `id-token: write` 权限，并使用 `github-pages` 环境。现有 CI 工作流只负责检查。Vite 使用相对资源路径，项目网站可部署在 `/<仓库名>/` 下。
+在仓库 **Settings → Pages → Build and deployment** 中将来源设为 **GitHub Actions**。仓库自带的 [GitHub Pages 发布工作流](.github/workflows/deploy-github-pages.yml) 会在推送到 `main` 后自动构建并发布 `dist/`，也可以在 **Actions → Deploy to GitHub Pages → Run workflow** 手动触发。Vite 使用相对资源路径，可直接部署到 `/<仓库名>/`。
 
 [GitHub Pages 自定义工作流文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 

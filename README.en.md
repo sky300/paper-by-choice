@@ -1,6 +1,6 @@
 # Paper by Choice
 
-[简体中文](README.md) · [Live site](https://paper-by-choice.pages.dev/) · Created by **skyow**
+[简体中文](README.md) · [Live site](https://sky300.github.io/paper-by-choice/) · Created by **skyow**
 
 **Generate the printable paper you want, right in your browser.** Ruled, grid, dot, music staves, calligraphy practice grids, Chinese handwriting worksheets, Cornell notes and more. Pick a paper, adjust size, colours, spacing and margins, see a live preview, then export SVG / PNG / PDF or print.
 
@@ -69,7 +69,7 @@ For **automatic builds from Git**, create a separate Git-connected Pages project
 
 ### GitHub Pages
 
-In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. In a deployment workflow, check out the source, set up Node.js and pnpm, then run `pnpm install --frozen-lockfile` and `pnpm build`. Upload `dist/` with `actions/upload-pages-artifact` and publish it with `actions/deploy-pages`. Give the deployment job `pages: write` and `id-token: write` permissions and use the `github-pages` environment. The existing CI workflow runs project checks. Vite emits relative asset paths, so a project site can be hosted at `/<repository>/`.
+In **Settings → Pages → Build and deployment**, select **GitHub Actions** as the source. The included [GitHub Pages deployment workflow](.github/workflows/deploy-github-pages.yml) builds and publishes `dist/` on pushes to `main`. You can also trigger it from **Actions → Deploy to GitHub Pages → Run workflow**. Vite emits relative asset paths for project sites hosted under `/<repository>/`.
 
 [GitHub Pages custom workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
