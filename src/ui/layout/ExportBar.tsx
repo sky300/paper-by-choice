@@ -1,5 +1,6 @@
 /** Export bar: PDF / SVG / PNG / print, with a PNG resolution selector. */
 import { useEffect, useState, type JSX } from 'react'
+import { UiIcon } from '../controls/UiIcon'
 import { useLocale } from '../i18n/LocaleProvider'
 import { useSettings } from '../store/SettingsProvider'
 import { exportPdf, exportPng, exportSvg } from '../export/exporters'
@@ -50,28 +51,31 @@ export function ExportBar(props: ExportBarProps): JSX.Element {
     <div className="export-bar">
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn export-action export-pdf"
         disabled={busy}
         onClick={() => void run('pdf')}
       >
+        <UiIcon name="download" />
         {t('export.pdf')}
       </button>
       <button
         type="button"
-        className="btn"
+        className="btn export-action export-svg"
         disabled={busy}
         title={t('export.svgNote')}
         onClick={() => void run('svg')}
       >
+        <UiIcon name="type" />
         {t('export.svg')}
       </button>
       <button
         type="button"
-        className="btn"
+        className="btn export-action export-png"
         disabled={busy}
         title={t('export.pngNote')}
         onClick={() => void run('png')}
       >
+        <UiIcon name="background" />
         {t('export.png')}
       </button>
       <label className="export-dpi">
@@ -88,10 +92,11 @@ export function ExportBar(props: ExportBarProps): JSX.Element {
       </label>
       <button
         type="button"
-        className="btn"
+        className="btn export-action export-print"
         disabled={busy}
         onClick={props.onPrint}
       >
+        <UiIcon name="print" />
         {t('export.print')}
       </button>
       <div

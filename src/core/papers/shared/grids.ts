@@ -8,6 +8,17 @@ import { layoutGrid, repeatPositions } from '../../scene/geometry'
 import type { GridLayout } from '../../scene/geometry'
 import type { Box, EllipseItem, LineItem, Stroke } from '../../scene/types'
 
+const PX_PER_MM = 96 / 25.4
+
+/** Counts whole cells using the reference's pixel fit and the printable millimetre limit. */
+export function referenceCellCount(width: number, pitch: number): number {
+  const pixelPitch = Math.max(1, Math.round(pitch * PX_PER_MM))
+  return Math.min(
+    Math.floor(width / pitch),
+    Math.floor(Math.round(width * PX_PER_MM) / pixelPitch),
+  )
+}
+
 /**
  * Horizontal rules: the first one `offset` below the top edge of `area` (one
  * pitch by default), then one every `pitch`, never one on the bottom edge.
@@ -52,8 +63,9 @@ export function cellGrid(
   cell: number,
   stroke: Stroke,
   align: 'start' | 'center' = 'center',
+  fitted?: GridLayout,
 ): CellGrid {
-  const layout = layoutGrid(area.w, area.h, cell, align)
+  const layout = fitted ?? layoutGrid(area.w, area.h, cell, align)
   if (layout.cols === 0 || layout.rows === 0) return { items: [], layout }
 
   const left = area.x + layout.offsetX

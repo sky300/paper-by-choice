@@ -6,10 +6,11 @@ import { line, rect, text } from '../scene/builders'
 import type { Scene, SceneItem, Stroke } from '../scene/types'
 import { definePaper } from './define'
 
-const TITLE_FONT = 6
-const INFO_FONT = 4
-const ROW_FONT = 4
-const FOOT_FONT = 3.5
+const PX = 25.4 / 96
+const TITLE_FONT = 24 * PX
+const INFO_FONT = 16 * PX
+const ROW_FONT = 16 * PX
+const FOOT_FONT = 14 * PX
 
 interface Options {
   wordsPerPage: number
@@ -118,22 +119,27 @@ export default definePaper<Options>({
     if (a.w <= 0 || a.h <= 0) return []
     const color = ctx.ink.main().color
     const lw = ctx.ink.main().width
-    const main = ctx.ink.main()
+    const main = ctx.ink.make(color, lw)
     const frame = ctx.ink.make(color, lw * 1.2, undefined)
-    const inner = ctx.ink.make(color, lw * 0.8, [4, 3])
+    const inner = ctx.ink.make(
+      color,
+      lw * 0.8,
+      ctx.ink.main().dash ?? [4 * PX, 3 * PX],
+    )
     const textColor = ctx.theme.text
     const titleColor = ctx.theme.primary
     const ncol = Math.max(1, Math.floor(ctx.options.wordsPerColumn))
     const items: SceneItem[] = []
 
-    // Vertical layout, all proportional to the area so it never overflows.
-    const titleY = a.y + a.h * 0.035
-    const infoY = a.y + a.h * 0.085
-    const frameTop = a.y + a.h * 0.12
-    const frameBottom = a.y + a.h * 0.93
-    const rowTop = a.y + a.h * 0.16
-    const rowBottom = a.y + a.h * 0.88
-    const footerY = a.y + a.h * 0.97
+    // Keep the fixed header and footer proportions on smaller formats.
+    const unit = Math.min(PX, a.h / 160, a.w / 300)
+    const titleY = a.y + 30 * unit
+    const infoY = a.y + 70 * unit
+    const frameTop = a.y + 90 * unit
+    const frameBottom = a.y + a.h - 30 * unit
+    const rowTop = a.y + 120 * unit
+    const rowBottom = frameBottom
+    const footerY = a.y + a.h - 10 * unit
 
     // 1. Centred title.
     items.push(
@@ -156,13 +162,19 @@ export default definePaper<Options>({
       'text.number',
       'text.date',
     ] as const
-    const colW = a.w / 4
+    const colW = (a.w - 40 * unit) / 4
     const infoFont = ctx.fonts.body(INFO_FONT)
     infoKeys.forEach((key, i) => {
-      const x = a.x + i * colW
+      const x = a.x + 20 * unit + i * colW
       items.push(text(x, infoY, ctx.t(key), infoFont, textColor))
       items.push(
-        line(x + colW * 0.35, infoY + 1.3, x + colW * 0.9, infoY + 1.3, main),
+        line(
+          x + 50 * unit,
+          infoY + 5 * unit,
+          x + 50 * unit + Math.min(90 * unit, colW - 60 * unit),
+          infoY + 5 * unit,
+          main,
+        ),
       )
     })
 
@@ -182,13 +194,18 @@ export default definePaper<Options>({
       for (let k = 0; k < ncol; k++) {
         const cy = rowTop + k * rh + rh / 2
         const num = col * ncol + k + 1
-        items.push(text(left + 2, cy + 1.5, `${num}.`, rowFont, textColor))
+        items.push(
+          text(left + 20 * unit, cy + 5 * unit, `${num}.`, rowFont, textColor),
+        )
         // Chinese blank line.
-        items.push(line(left + colW * 0.22, cy, left + colW * 0.58, cy, main))
+        items.push(line(left + 45 * unit, cy, left + 120 * unit, cy, main))
         // English four-line guide.
-        const gh = Math.max(9, Math.min(16, 0.8 * rh))
-        const gx1 = left + colW * 0.62
-        const gx2 = right - 2
+        const gh = Math.min(
+          rh,
+          Math.max(35 * unit, Math.min(60 * unit, 0.8 * rh)),
+        )
+        const gx1 = left + 130 * unit
+        const gx2 = right - 20 * unit
         if (gx2 > gx1) {
           items.push(...fourLineGuide(gx1, gx2, cy - gh / 2, gh, main, inner))
         }
@@ -197,8 +214,8 @@ export default definePaper<Options>({
 
     // 5. Footer: year / month / day.
     const footFont = ctx.fonts.body(FOOT_FONT)
-    const ds = Math.min(a.w * 0.12, 30)
-    const q = a.x + a.w - (2 * ds + 16)
+    const ds = Math.min(a.w / 8, 45 * unit)
+    const q = a.x + a.w - (2 * ds + 60 * unit)
     const footKeys = ['text.year', 'text.month', 'text.day'] as const
     footKeys.forEach((key, i) => {
       items.push(text(q + i * ds, footerY, ctx.t(key), footFont, textColor))

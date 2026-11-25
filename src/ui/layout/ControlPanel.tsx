@@ -1,5 +1,5 @@
 /** Left-hand control panel: the sections that configure one sheet of paper. */
-import type { JSX } from 'react'
+import type { JSX, Ref } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 import { PaperTypeSection } from '../sections/PaperTypeSection'
 import { PageSizeSection } from '../sections/PageSizeSection'
@@ -16,6 +16,7 @@ import { TransferSection } from '../sections/TransferSection'
 export interface ControlPanelProps {
   open?: boolean
   onClose?: () => void
+  closeRef?: Ref<HTMLButtonElement>
 }
 
 export function ControlPanel(props: ControlPanelProps): JSX.Element {
@@ -23,6 +24,7 @@ export function ControlPanel(props: ControlPanelProps): JSX.Element {
   return (
     <aside
       className="control-panel"
+      id="paper-settings"
       data-open={props.open ?? true}
       aria-label={t('common.settings')}
     >
@@ -33,6 +35,7 @@ export function ControlPanel(props: ControlPanelProps): JSX.Element {
             type="button"
             className="btn btn-quiet"
             onClick={props.onClose}
+            ref={props.closeRef}
             aria-label={t('common.close')}
           >
             ×

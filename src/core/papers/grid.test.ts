@@ -29,9 +29,9 @@ describe('grid', () => {
     expect(grid.presets[0].id).toBe('math')
   })
 
-  test('lays out 34 × 51 centred cells of 5 mm on A4', () => {
+  test('lays out 33 × 51 centred cells of 5 mm on A4', () => {
     const { shapes, ctx } = renderPaper('grid')
-    expect(verticalPositions(shapes)).toHaveLength(35)
+    expect(verticalPositions(shapes)).toHaveLength(34)
     expect(horizontalPositions(shapes)).toHaveLength(52)
     expect(horizontalPositions(shapes)[0]).toBe(21)
     expect(() => expectInside(shapes, ctx.area)).not.toThrow()

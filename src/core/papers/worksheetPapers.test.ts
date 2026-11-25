@@ -6,6 +6,8 @@ import {
   shapesOf,
   textsOf,
 } from '../testing/paperTestKit'
+import { paperScene } from '../compose/document'
+import { createSettings } from '../settings'
 import { box } from '../scene/builders'
 
 const worksheetTypes = [
@@ -68,6 +70,25 @@ describe('worksheet papers', () => {
   test('composition_paper and arithmetic_paper show name/date labels', () => {
     for (const type of ['composition_paper', 'arithmetic_paper'] as const) {
       expect(textsOf(renderPaper(type).scene).length).toBeGreaterThan(0)
+    }
+  })
+
+  test('A4 arithmetic grid starts 20 mm below the header baseline', () => {
+    const scene = paperScene(createSettings('arithmetic_paper'), 'zh-CN')
+    const frame = shapesOf(scene, 'rect')[0]
+    expect(frame.box).toEqual({ x: 25, y: 55, w: 160, h: 217 })
+    expect(shapesOf(scene, 'text')[0].y).toBe(35)
+  })
+
+  test('default A4 pinyin-tianzi has seven equally centred rows of eight cells', () => {
+    const cells = shapesOf(
+      paperScene(createSettings('pinyin_tianzi'), 'zh-CN'),
+      'rect',
+    )
+    expect(cells).toHaveLength(56)
+    for (let row = 0; row < 7; row++) {
+      expect(cells[row * 8].box.x).toBe(25)
+      expect(cells[row * 8 + 7].box).toMatchObject({ x: 165, w: 20 })
     }
   })
 

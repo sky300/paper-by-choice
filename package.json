@@ -5,6 +5,7 @@
   "description": "纸随心 paper-by-choice: generate custom printable paper in your browser - ruled, grid, dot, calligraphy practice sheets, worksheets and more. Fully client-side, exports SVG / PNG / PDF.",
   "type": "module",
   "license": "MIT",
+  "author": "skyow",
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },

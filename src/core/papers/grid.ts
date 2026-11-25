@@ -12,7 +12,7 @@ import {
   COLUMNS_FIELDS,
   COLUMNS_MESSAGES,
 } from './shared/columns'
-import { cellGrid } from './shared/grids'
+import { cellGrid, referenceCellCount } from './shared/grids'
 
 export default definePaper({
   type: 'grid',
@@ -56,5 +56,15 @@ export default definePaper({
       patch: {},
     },
   ],
-  render: (ctx) => cellGrid(ctx.area, ctx.spacing, ctx.ink.main()).items,
+  render: (ctx) => {
+    const { area, spacing } = ctx
+    const cols = referenceCellCount(area.w, spacing)
+    const rows = referenceCellCount(area.h, spacing)
+    return cellGrid(area, spacing, ctx.ink.main(), 'center', {
+      cols,
+      rows,
+      offsetX: (area.w - cols * spacing) / 2,
+      offsetY: (area.h - rows * spacing) / 2,
+    }).items
+  },
 })

@@ -1,6 +1,7 @@
 /** Vertical ruled paper: the portrait sibling of `lined`. */
 import { definePaper } from './define'
-import { verticalRules } from './shared/grids'
+import { line } from '../scene/builders'
+import { countThatFit } from '../scene/geometry'
 
 export default definePaper({
   type: 'vertical_lined',
@@ -42,5 +43,12 @@ export default definePaper({
       patch: {},
     },
   ],
-  render: (ctx) => verticalRules(ctx.area, ctx.spacing, ctx.ink.main()),
+  render: (ctx) => {
+    const { x, y, w, h } = ctx.area
+    const ink = ctx.ink.main()
+    return Array.from({ length: countThatFit(w, ctx.spacing) + 1 }, (_, i) => {
+      const column = x + i * ctx.spacing
+      return line(column, y, column, y + h, ink)
+    })
+  },
 })

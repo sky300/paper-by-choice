@@ -12,7 +12,7 @@ const FIELD_ROWS = 7
 const LEFT_RATIO = 0.35
 const CIRCLE_R = 1.3
 const CIRCLE_GAP = 4
-const BOTTOM_LINES_GAP = 1.3
+const BOTTOM_LINES_GAP = 5
 
 export default definePaper({
   type: 'error_correction',
@@ -77,7 +77,8 @@ export default definePaper({
     const color = ctx.ink.main().color
     const lw = ctx.ink.main().width
     const main = ctx.ink.main()
-    const dashed = ctx.ink.make(color, lw, [3, 2])
+    const dashed = ctx.ink.make(color, lw, [0.8, 0.53])
+    const rating = ctx.ink.make(color, 25.4 / 96)
     const strong = ctx.ink.make(color, lw * 1.5, undefined)
     const medium = ctx.ink.make(color, lw * 1.2, undefined)
     const font = ctx.fonts.body(LABEL_PX)
@@ -86,7 +87,7 @@ export default definePaper({
     const hh = a.h / 2
     const leftW = a.w * LEFT_RATIO
     const XL = a.x + leftW
-    const rowH = hh / (FIELD_ROWS + 2)
+    const rowH = Math.min(8, hh / FIELD_ROWS)
 
     const rowLabels: readonly [string, string | null][] = [
       [ctx.t('text.code'), ctx.t('text.topic')],
@@ -120,10 +121,10 @@ export default definePaper({
           for (let k = 0; k < 5; k++) {
             items.push(
               circle(
-                a.x + leftW * 0.6 + k * CIRCLE_GAP,
+                a.x + Math.min(20 + k * CIRCLE_GAP, leftW * (0.4 + k / 9)),
                 mid,
                 CIRCLE_R,
-                main,
+                rating,
                 undefined,
               ),
             )
@@ -134,11 +135,11 @@ export default definePaper({
       const extraTop = y0 + FIELD_ROWS * rowH
       for (const dy of repeatPositions(
         y1 - extraTop,
-        BOTTOM_LINES_GAP * 4,
+        BOTTOM_LINES_GAP,
         BOTTOM_LINES_GAP,
       )) {
         const y = extraTop + dy
-        if (y < y1 - 0.5) {
+        if (y < y1 - 2) {
           items.push(line(a.x, y, XL, y, dashed))
         }
       }

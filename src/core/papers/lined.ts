@@ -12,7 +12,8 @@ import {
   COLUMNS_FIELDS,
   COLUMNS_MESSAGES,
 } from './shared/columns'
-import { horizontalRules } from './shared/grids'
+import { line } from '../scene/builders'
+import { countThatFit } from '../scene/geometry'
 
 export default definePaper({
   type: 'lined',
@@ -72,5 +73,12 @@ export default definePaper({
     },
   ],
   suggestsCalligraphyFrame: true,
-  render: (ctx) => horizontalRules(ctx.area, ctx.spacing, ctx.ink.main()),
+  render: (ctx) => {
+    const { x, y, w, h } = ctx.area
+    const ink = ctx.ink.main()
+    return Array.from({ length: countThatFit(h, ctx.spacing) + 1 }, (_, i) => {
+      const row = y + i * ctx.spacing
+      return line(x, row, x + w, row, ink)
+    })
+  },
 })

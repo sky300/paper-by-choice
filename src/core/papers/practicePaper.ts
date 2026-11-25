@@ -1,4 +1,5 @@
 /** General practice paper: horizontal rules with a name / date header. */
+import { line, rect } from '../scene/builders'
 import { definePaper } from './define'
 import { horizontalRules } from './shared/grids'
 import { twoFieldHeader } from './shared/worksheets'
@@ -47,17 +48,30 @@ export default definePaper({
       patch: {},
     },
   ],
-  render: (ctx) => [
-    ...twoFieldHeader(
-      ctx.area,
-      [ctx.t('text.name'), ctx.t('text.date')],
-      ctx.fonts.body(3.2),
-      ctx.ink.main(),
-    ),
-    ...horizontalRules(
-      { ...ctx.area, y: ctx.area.y + 10, h: ctx.area.h - 10 },
-      ctx.spacing,
-      ctx.ink.main(),
-    ),
-  ],
+  render: (ctx) => {
+    const { x, y, w, h } = ctx.area
+    const top = y + 25
+    const bottom = y + h
+    if (bottom <= top) return []
+    const main = ctx.ink.main()
+    const dashed = ctx.ink.make(main.color, main.width * 0.8, [0.8, 0.8])
+    return [
+      rect(
+        { x, y: top, w, h: bottom - top },
+        ctx.ink.make(main.color, main.width),
+      ),
+      line(x + w / 2, top, x + w / 2, bottom, dashed),
+      ...twoFieldHeader(
+        ctx.area,
+        [ctx.t('text.name'), ctx.t('text.date')],
+        ctx.fonts.body(3.2),
+        ctx.ink.main(),
+      ),
+      ...horizontalRules(
+        { x, y: top, w, h: bottom - top },
+        ctx.spacing,
+        dashed,
+      ),
+    ]
+  },
 })

@@ -1,8 +1,7 @@
 /**
  * Dot matrix paper.
  *
- * A centred lattice of small filled dots whose diameter scales gently with
- * the user's line width. The column layout is declared but applied by the
+ * The lattice starts at the top-left margin; dots scale with line width. The column layout is declared but applied by the
  * compose layer, which calls `render()` once per column.
  */
 import { definePaper } from './define'
@@ -11,11 +10,12 @@ import {
   COLUMNS_FIELDS,
   COLUMNS_MESSAGES,
 } from './shared/columns'
-import { dotGrid } from './shared/grids'
+import { circle } from '../scene/builders'
+import { referenceCellCount } from './shared/grids'
 
-/** Dot radius for a line width: a little wider than the line, never thinner than 0.3 mm. */
+/** Dot radius for a line width: the line width or half a reference pixel. */
 function dotRadius(width: number): number {
-  return Math.max(0.3, width * 1.2)
+  return Math.max((0.5 * 25.4) / 96, width)
 }
 
 export default definePaper({
@@ -59,11 +59,18 @@ export default definePaper({
       patch: {},
     },
   ],
-  render: (ctx) =>
-    dotGrid(
-      ctx.area,
-      ctx.spacing,
-      ctx.ink.main().color,
-      dotRadius(ctx.ink.main().width),
-    ),
+  render: (ctx) => {
+    const { x, y, w, h } = ctx.area
+    const { spacing } = ctx
+    const ink = ctx.ink.main()
+    const fill = { color: ink.color }
+    const radius = dotRadius(ink.width)
+    const cols = referenceCellCount(w, spacing)
+    const rows = referenceCellCount(h, spacing)
+    return Array.from({ length: rows + 1 }, (_, row) =>
+      Array.from({ length: cols + 1 }, (_, col) =>
+        circle(x + col * spacing, y + row * spacing, radius, undefined, fill),
+      ),
+    ).flat()
+  },
 })

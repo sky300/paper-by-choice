@@ -270,7 +270,7 @@ export default definePaper<GuitarStaffTabOptions>({
     const count = Math.max(1, Math.floor((area.h + o.systemGapMm) / height))
     const top =
       area.y +
-      Math.max(0, centeredStart(area.h, height, count) - o.systemGapMm / 2)
+      Math.max(0, centeredStart(area.h, height, count) + o.systemGapMm / 2)
     const main = ink.main()
     const strokes = {
       main,

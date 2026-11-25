@@ -2,6 +2,7 @@
 import { line, rect } from '../scene/builders'
 import type { SceneItem } from '../scene/types'
 import { definePaper } from './define'
+import { referenceCellCount } from './shared/grids'
 import { twoFieldHeader } from './shared/worksheets'
 
 export default definePaper({
@@ -51,9 +52,17 @@ export default definePaper({
   render: (ctx) => {
     const { x: L, y: T, w: AW, h: AH } = ctx.area
     const pitch = ctx.spacing + 2
-    const cy = T + 12
+    const cy = T + 30
     const ch = T + AH - cy
-    const rows = Math.floor(ch / pitch)
+    if (ch <= 0) return []
+    // The reference rounds the row spacing and the 2 mm gap separately.
+    const pxPerMm = 96 / 25.4
+    const referencePitch =
+      (Math.round(ctx.spacing * pxPerMm) + Math.round(2 * pxPerMm)) / pxPerMm
+    const rows = Math.min(
+      Math.floor(ch / pitch),
+      referenceCellCount(ch, referencePitch),
+    )
     const main = ctx.ink.main()
     const thin = ctx.ink.main({ width: main.width * 0.8 })
     const items: SceneItem[] = [

@@ -24,12 +24,13 @@ describe('dot', () => {
     expect(dot.presets[0].id).toBe('dot-paper')
   })
 
-  test('draws a centred 34 × 51 lattice of 0.3 mm dots at 5 mm on A4', () => {
+  test('draws a 34 × 52 lattice starting at the top-left margin at 5 mm on A4', () => {
     const { shapes, ctx } = renderPaper('dot')
     const dots = shapesOf(shapes, 'ellipse')
     expect(dots).toHaveLength(shapes.length)
-    expect(dots).toHaveLength(34 * 51)
-    expect(dots[0].rx).toBeCloseTo(0.3)
+    expect(dots).toHaveLength(34 * 52)
+    expect(dots[0]).toMatchObject({ cx: 20, cy: 20 })
+    expect(dots[0].rx).toBeCloseTo((0.5 * 25.4) / 96)
     expect(() => expectInside(shapes, ctx.area)).not.toThrow()
   })
 

@@ -2,6 +2,7 @@ import type { MessageDict } from './index'
 
 /** English UI strings. Must define exactly the keys of `zh-CN.ts`; a test enforces it. */
 export const en: MessageDict = {
+  'app.credit': 'Powered by skyow',
   'app.name': 'Paper by Choice',
   'app.tagline': 'Custom printable paper generator',
   'app.privacy':
@@ -253,6 +254,5 @@ export const en: MessageDict = {
     'Fully offline: the build is plain static files that run on nginx, GitHub Pages or a home NAS.',
   'info.about.f4':
     'MIT licensed; code, interface and wording are original, free to use and modify.',
-  'info.about.sign':
-    '— from a parent who got tired of hunting for printable paper',
+  'info.about.sign': 'Created by skyow',
 }

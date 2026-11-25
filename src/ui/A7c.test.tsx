@@ -105,6 +105,29 @@ describe('TemplateGallery', () => {
 })
 
 describe('Workspace', () => {
+  test('links the brand to the app home and credits its creator', () => {
+    wrap(<Workspace />)
+    expect(
+      screen.getByRole('link', { name: '纸随心' }).getAttribute('href'),
+    ).toBe(import.meta.env.BASE_URL)
+    expect(screen.getByText('Powered by skyow')).toBeDefined()
+    fireEvent.click(screen.getByRole('button', { name: '关于我' }))
+    expect(screen.getByText('创建者 skyow')).toBeDefined()
+  })
+
+  test('opens the paper settings drawer and closes it with Escape', () => {
+    const { container } = wrap(<Workspace />)
+    const toggle = container.querySelector<HTMLButtonElement>('.panel-toggle')!
+    const panel = container.querySelector('.control-panel')!
+    expect(toggle.getAttribute('aria-expanded')).toBe('false')
+    fireEvent.click(toggle)
+    expect(toggle.getAttribute('aria-controls')).toBe(panel.id)
+    expect(panel.getAttribute('data-open')).toBe('true')
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(panel.getAttribute('data-open')).toBe('false')
+    expect(document.activeElement).toBe(toggle)
+  })
+
   test('persists interface styles independently of the paper preview', () => {
     const first = wrap(<Workspace />)
     const select = screen.getByRole('combobox', { name: '界面风格' })

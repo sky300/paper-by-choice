@@ -1,5 +1,7 @@
 # 纸随心 Paper by Choice
 
+[English](README.en.md) · [在线使用](https://paper-by-choice.pages.dev/) · 创建者 **skyow**
+
 **在浏览器里生成你想要的打印纸。** 横线纸、方格纸、点阵纸、乐谱纸、书法练字格、中文作业纸、康奈尔笔记……选一种纸，调好尺寸、颜色、间距、边距，实时预览，然后导出 SVG / PNG / PDF 或直接打印。
 
 纯前端、零后端、零账号、零遥测。**所有计算都在你的浏览器里完成，你输入的文字和上传的图片不会离开本机。**
@@ -31,12 +33,54 @@ pnpm preview      # 本地预览构建产物
 pnpm check        # lint + typecheck + test + build
 ```
 
-自托管（Docker）：
+## 部署
+
+### 构建静态站点
+
+使用 Node.js 20.19+（20.x）或 22.12+、pnpm 10+。在仓库根目录运行：
+
+```bash
+pnpm install --frozen-lockfile
+pnpm build
+pnpm preview --host 127.0.0.1
+```
+
+发布整个 `dist/` 的内容，保留 `index.html`、`favicon.svg` 和 `assets/` 的相对位置。每次更新都重新构建并上传完整目录。应用只需要静态 HTTP 托管，无需数据库、环境密钥或运行时 Node.js。
+
+### Cloudflare Pages
+
+**直接上传**（本项目线上采用此方式）：
+
+1. 构建后在 Cloudflare 控制台打开 **Workers & Pages → Create application → Pages → Upload assets**。
+2. 输入项目名，上传 `dist/`。已有项目直接在项目中创建生产部署，无需重建项目。
+3. 发布后访问面板给出的 `*.pages.dev` 地址，检查纸张预览和 PDF 导出。
+
+也可以使用 Wrangler。以下命令在项目根目录运行；创建项目的命令只需首次运行：
+
+```bash
+pnpm dlx wrangler login
+pnpm dlx wrangler pages project create paper-by-choice --production-branch main
+pnpm dlx wrangler pages deploy dist --project-name paper-by-choice --branch main
+```
+
+**从 Git 自动构建**：需新建一个连接 Git 的 Pages 项目。连接 GitHub 仓库后，设置生产分支为 `main`、根目录为仓库根目录、构建命令为 `pnpm build`、输出目录为 `dist`。在构建环境选用匹配的 Node.js 与 pnpm 版本。已有的直接上传项目可以继续通过 Wrangler 更新。
+
+[Cloudflare Pages 直接上传文档](https://developers.cloudflare.com/pages/get-started/direct-upload/) · [Git 集成文档](https://developers.cloudflare.com/pages/get-started/git-integration/)
+
+### GitHub Pages
+
+在仓库 **Settings → Pages → Build and deployment** 中将来源设为 **GitHub Actions**。在发布工作流中签出源码，配置 Node.js 和 pnpm，运行 `pnpm install --frozen-lockfile` 与 `pnpm build`。使用 `actions/upload-pages-artifact` 上传 `dist/`，再用 `actions/deploy-pages` 发布。部署作业需有 `pages: write` 和 `id-token: write` 权限，并使用 `github-pages` 环境。现有 CI 工作流只负责检查。Vite 使用相对资源路径，项目网站可部署在 `/<仓库名>/` 下。
+
+[GitHub Pages 自定义工作流文档](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+
+### Docker、NAS 或现有网站
 
 ```bash
 docker build -t paper-by-choice .
-docker run -p 8080:80 paper-by-choice
+docker run -d --name paper-by-choice --restart unless-stopped -p 8080:80 paper-by-choice
 ```
+
+访问 `http://localhost:8080/`。在 NAS 上用 NAS 的 IP 替换 `localhost`，并确保 8080 端口可访问。升级时重建镜像并重建容器。也可以直接把 `dist/` 里的文件放到 Nginx、Apache 或 NAS 的静态目录。若部署到子目录，例如 `/paper-by-choice/`，用带末尾斜杠的地址访问。
 
 ## 打印建议
 
@@ -60,7 +104,7 @@ React 19 · TypeScript 5.9 · Vite 8 · pdf-lib · Vitest。运行时依赖只�
 
 ## 许可证
 
-[MIT](LICENSE) · 版权行里的 `<YOUR NAME>` 由发布者自行替换。
+[MIT](LICENSE) · © 2026 skyow。
 
 ## 致谢与说明
 

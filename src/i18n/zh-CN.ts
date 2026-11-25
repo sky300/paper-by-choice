@@ -2,6 +2,7 @@ import type { MessageDict } from './index'
 
 /** Simplified Chinese UI strings. This dictionary is the source of truth for the key set; `en.ts` must mirror it. */
 export const zhCN: MessageDict = {
+  'app.credit': 'Powered by skyow',
   'app.name': '纸随心',
   'app.tagline': '自定义打印纸生成器',
   'app.privacy': '一切都在你的浏览器里完成，不会上传任何数据。',
@@ -247,5 +248,5 @@ export const zhCN: MessageDict = {
   'info.about.f3':
     '完全离线可用：构建产物是一堆静态文件，nginx、GitHub Pages、家里的 NAS 都能跑。',
   'info.about.f4': 'MIT 许可证，代码、界面与文案均为原创，可自由使用和修改。',
-  'info.about.sign': '—— 一个不想再到处找打印纸的家长',
+  'info.about.sign': '创建者 skyow',
 }

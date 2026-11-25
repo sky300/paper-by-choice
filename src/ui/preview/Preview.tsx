@@ -1,5 +1,6 @@
 /** Live preview of the composed pages, with a zoom control. */
 import { useMemo, useState, type JSX } from 'react'
+import { UiIcon } from '../controls/UiIcon'
 import { useLocale } from '../i18n/LocaleProvider'
 import { useElementWidth } from './useElementWidth'
 import { sceneToSvg } from '../../core/render/svg'
@@ -41,26 +42,32 @@ export function Preview(props: PreviewProps): JSX.Element {
 
   return (
     <div className="preview-pane" ref={ref}>
-      <div className="zoom-bar" role="group" aria-label={t('preview.label')}>
-        <button
-          type="button"
-          className="btn btn-quiet zoom-option"
-          aria-pressed={zoom === 'fit'}
-          onClick={() => setZoom('fit')}
-        >
-          {t('preview.zoomFit')}
-        </button>
-        {ZOOMS.map((z) => (
+      <div className="preview-tools">
+        <div className="zoom-bar" role="group" aria-label={t('preview.label')}>
           <button
-            key={z}
             type="button"
             className="btn btn-quiet zoom-option"
-            aria-pressed={zoom === z}
-            onClick={() => setZoom(z)}
+            aria-pressed={zoom === 'fit'}
+            onClick={() => setZoom('fit')}
           >
-            {Math.round(z * 100)}%
+            {t('preview.zoomFit')}
           </button>
-        ))}
+          {ZOOMS.map((z) => (
+            <button
+              key={z}
+              type="button"
+              className="btn btn-quiet zoom-option"
+              aria-pressed={zoom === z}
+              onClick={() => setZoom(z)}
+            >
+              {Math.round(z * 100)}%
+            </button>
+          ))}
+        </div>
+        <div className="preview-size">
+          <UiIcon name="type" />
+          {pageWidth} × {props.doc.pageSize.height} {t('unit.mm')}
+        </div>
       </div>
       <div className="sheets">
         {svgStrings.slice(0, shown).map((svg, i) => (

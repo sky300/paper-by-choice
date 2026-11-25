@@ -1,6 +1,7 @@
 /** Combined pinyin + tianzi practice cells. */
 import { line, rect } from '../scene/builders'
 import type { SceneItem } from '../scene/types'
+import { referenceCellCount } from './shared/grids'
 import { definePaper } from './define'
 
 export default definePaper({
@@ -48,12 +49,15 @@ export default definePaper({
     const a = 0.6 * g
     const uh = a + g
     const gap = 4
-    const cols = Math.floor(AW / g)
+    const cols = referenceCellCount(AW, g)
     const rows = Math.floor(AH / (uh + gap))
     const gx = L + (AW - cols * g) / 2
     const gy = T + (AH - (rows * (uh + gap) - gap)) / 2
     const main = ctx.ink.main()
-    const guide = ctx.ink.guide({ width: main.width * 0.8 })
+    const px = 25.4 / 96
+    const ink = '#888888'
+    const pinyinGuide = ctx.ink.make(ink, main.width * 0.7, [4 * px, 2 * px])
+    const guide = ctx.ink.make(ink, main.width * 0.8, [5 * px, 2 * px])
     const items: SceneItem[] = []
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
@@ -62,8 +66,10 @@ export default definePaper({
         const ty = y0 + a
         items.push(rect({ x: x0, y: y0, w: g, h: uh }, main))
         items.push(line(x0, ty, x0 + g, ty, main))
-        items.push(line(x0, y0 + a / 3, x0 + g, y0 + a / 3, guide))
-        items.push(line(x0, y0 + (2 * a) / 3, x0 + g, y0 + (2 * a) / 3, guide))
+        items.push(line(x0, y0 + a / 3, x0 + g, y0 + a / 3, pinyinGuide))
+        items.push(
+          line(x0, y0 + (2 * a) / 3, x0 + g, y0 + (2 * a) / 3, pinyinGuide),
+        )
         items.push(line(x0 + g / 2, ty, x0 + g / 2, ty + g, guide))
         items.push(line(x0, ty + g / 2, x0 + g, ty + g / 2, guide))
       }

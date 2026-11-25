@@ -1,5 +1,5 @@
 /** Top bar: brand, language switch, template gallery and the mobile panel toggle. */
-import type { JSX } from 'react'
+import type { JSX, Ref } from 'react'
 import { useLocale } from '../i18n/LocaleProvider'
 import { UiIcon } from '../controls/UiIcon'
 import { INTERFACE_STYLES, type InterfaceStyle } from '../interfaceStyle'
@@ -12,24 +12,43 @@ export interface HeaderProps {
   onOpenInfo?: (page: InfoPage) => void
   onTogglePanel?: () => void
   panelOpen?: boolean
+  panelToggleRef?: Ref<HTMLButtonElement>
 }
 
 export function Header(props: HeaderProps): JSX.Element {
   const { locale, setLocale, t } = useLocale()
   return (
     <header className="app-header">
-      <div className="app-brand">
+      <a
+        className="app-brand"
+        href={import.meta.env.BASE_URL}
+        aria-label={t('app.name')}
+        onClick={(event) => {
+          const home = new URL(event.currentTarget.href)
+          if (
+            home.href !== window.location.href ||
+            event.button !== 0 ||
+            event.ctrlKey ||
+            event.metaKey ||
+            event.shiftKey ||
+            event.altKey
+          )
+            return
+          event.preventDefault()
+          window.scrollTo(0, 0)
+        }}
+      >
         <span className="app-brand-mark" aria-hidden="true">
           <UiIcon name="type" />
         </span>
         <span className="app-brand-name">{t('app.name')}</span>
         <span className="app-brand-tagline">{t('app.tagline')}</span>
-      </div>
+      </a>
       <div className="app-header-actions">
         {props.onOpenGallery ? (
           <button
             type="button"
-            className="btn btn-quiet header-link"
+            className="btn header-link header-gallery"
             onClick={props.onOpenGallery}
           >
             <UiIcon name="gallery" />
@@ -40,7 +59,7 @@ export function Header(props: HeaderProps): JSX.Element {
           <>
             <button
               type="button"
-              className="btn btn-quiet header-link"
+              className="btn header-link header-guide"
               onClick={() => props.onOpenInfo?.('guide')}
             >
               <UiIcon name="guide" />
@@ -48,7 +67,7 @@ export function Header(props: HeaderProps): JSX.Element {
             </button>
             <button
               type="button"
-              className="btn btn-quiet header-link"
+              className="btn header-link header-about"
               onClick={() => props.onOpenInfo?.('about')}
             >
               <UiIcon name="info" />
@@ -98,7 +117,11 @@ export function Header(props: HeaderProps): JSX.Element {
             type="button"
             className="btn btn-quiet panel-toggle"
             onClick={props.onTogglePanel}
+            ref={props.panelToggleRef}
+            aria-controls="paper-settings"
+            aria-expanded={props.panelOpen ?? false}
           >
+            <UiIcon name="options" />
             {props.panelOpen ? t('common.close') : t('common.settings')}
           </button>
         ) : null}

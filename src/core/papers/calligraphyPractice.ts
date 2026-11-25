@@ -83,7 +83,7 @@ const W_ROWS: PresetRow[] = [
     name: ['横线格', 'Ruled lines'],
     description: [
       '横线格，格径 15 mm',
-      'A full page of evenly spaced horizontal lines',
+      'Evenly spaced horizontal lines for brush practice',
     ],
     spacing: 15,
     layout: {
@@ -1056,7 +1056,6 @@ const DEFAULT_OPTIONS: Options = {
     ...DEFAULT_CALLIGRAPHY_LAYOUT,
     gridStyle: 'horizontal_lines',
     presetId: 'cp_hline_15',
-    rows: 0,
   },
 }
 
@@ -1071,10 +1070,6 @@ function buildPresets(): Preset[] {
       ...(row.margins ? { margins: row.margins } : {}),
       options: {
         layout: {
-          rows:
-            row.layout.gridStyle === 'horizontal_lines'
-              ? 0
-              : DEFAULT_CALLIGRAPHY_LAYOUT.rows,
           ...row.layout,
           presetId: row.id,
         },

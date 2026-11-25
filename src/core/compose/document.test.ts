@@ -47,8 +47,8 @@ describe('paperScene: single column', () => {
   test('draws only horizontal rules spanning the writing area', () => {
     const scene = paperScene(lined(), 'zh-CN')
     const lines = shapesOf(scene, 'line')
-    expect(lines).toHaveLength(32)
-    expect(scene).toHaveLength(32)
+    expect(lines).toHaveLength(33)
+    expect(scene).toHaveLength(33)
     expect(lines.every((item) => item.y1 === item.y2)).toBe(true)
     expect(lines.every((item) => item.x1 === 20 && item.x2 === 190)).toBe(true)
     expect(shapesOf(scene, 'text')).toHaveLength(0)
@@ -69,9 +69,9 @@ describe('paperScene: two columns', () => {
     // 20 mm margins leave 170 mm; column width = (170 − 8) / 2 = 81 mm.
     const left = horizontal.filter((item) => item.x1 === 20)
     const right = horizontal.filter((item) => item.x1 === 109)
-    expect(horizontal).toHaveLength(64)
-    expect(left).toHaveLength(32)
-    expect(right).toHaveLength(32)
+    expect(horizontal).toHaveLength(66)
+    expect(left).toHaveLength(33)
+    expect(right).toHaveLength(33)
     expect(left.every((item) => item.x2 === 101)).toBe(true)
     expect(right.every((item) => item.x2 === 190)).toBe(true)
     expect(Math.max(...left.map((item) => item.x2))).toBeLessThan(

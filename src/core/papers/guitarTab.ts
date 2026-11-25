@@ -161,7 +161,7 @@ export default definePaper<GuitarTabOptions>({
     const period = spacing + CHORD_BAND
     const layout = layoutCells(area.h, period, 'center')
     if (!layout) return []
-    const firstTop = area.y + layout.start + (CHORD_BAND - spacing) / 2
+    const firstTop = area.y + layout.start + CHORD_BAND / 2
     const main = ink.main()
     const nut = ink.main({ width: main.width * 2.2 })
     const thin = ink.main({ width: main.width * 0.75 })

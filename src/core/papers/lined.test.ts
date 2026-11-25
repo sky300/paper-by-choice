@@ -114,12 +114,12 @@ describe('lined: rendering', () => {
     expect(() => expectInside(shapes, ctx.area)).not.toThrow()
   })
 
-  test('draws 32 rules at 8 mm on A4, the first one 8 mm below the top edge', () => {
-    // A4 portrait with 20 mm margins leaves 257 mm: floor(257 / 8) = 32 rules.
+  test('draws 33 rules at 8 mm on A4, starting at the top margin', () => {
+    // A4 portrait with 20 mm margins leaves 257 mm: floor(257 / 8) + 1 = 33 rules.
     const { shapes } = renderPaper('lined')
     const ys = horizontalPositions(shapes)
-    expect(ys).toHaveLength(32)
-    expect(ys[0]).toBe(28)
+    expect(ys).toHaveLength(33)
+    expect(ys[0]).toBe(20)
     expect(ys.at(-1)).toBe(276)
   })
 
@@ -130,18 +130,18 @@ describe('lined: rendering', () => {
     expect(verticalPositions(shapes)).toEqual([])
   })
 
-  test('draws 25 rules at 10 mm, the first one at y = 30', () => {
+  test('draws 26 rules at 10 mm, the first one at y = 20', () => {
     const { shapes } = renderPaper('lined', { spacing: 10 })
     const ys = horizontalPositions(shapes)
-    expect(ys).toHaveLength(25)
-    expect(ys[0]).toBe(30)
+    expect(ys).toHaveLength(26)
+    expect(ys[0]).toBe(20)
   })
 
   test('draws more rules at the smallest spacing and fewer at the largest', () => {
     const narrow = renderPaper('lined', { spacing: 4 })
     const wide = renderPaper('lined', { spacing: 20 })
-    expect(horizontalPositions(narrow.shapes)).toHaveLength(64)
-    expect(horizontalPositions(wide.shapes)).toHaveLength(12)
+    expect(horizontalPositions(narrow.shapes)).toHaveLength(65)
+    expect(horizontalPositions(wide.shapes)).toHaveLength(13)
     expect(() => expectInside(narrow.shapes, narrow.ctx.area)).not.toThrow()
     expect(() => expectInside(wide.shapes, wide.ctx.area)).not.toThrow()
   })

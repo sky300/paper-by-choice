@@ -72,7 +72,7 @@ export default definePaper<Options>({
     const thin = ctx.ink.main({ width: main.width * 0.8 })
     const items: SceneItem[] = []
     const showHeader = ctx.options.englishPaper.showHeader !== false
-    const top = showHeader ? T + 13 : T
+    const top = showHeader ? T + 35 : T
 
     if (showHeader) {
       const cw = AW / 4
@@ -80,13 +80,25 @@ export default definePaper<Options>({
       const font = ctx.fonts.body(4.2)
       keys.forEach((key, i) => {
         const label = ctx.t(key)
-        const lx = L + i * cw + 1.3
-        items.push(text(lx, T + 4, label, font, main.color))
-        items.push(line(lx + 4, T + 5.3, L + (i + 1) * cw - 2.6, T + 5.3, main))
+        const lx = L + i * cw + Math.min(5, cw / 8)
+        items.push(text(lx, T + 15, label, font, main.color))
+        if (cw > 25) {
+          const y = T + 15 + (5 * 25.4) / 96
+          items.push(
+            line(
+              lx + 15,
+              y,
+              lx + cw - 10,
+              y,
+              ctx.ink.make(main.color, 25.4 / 96),
+            ),
+          )
+        }
       })
     }
 
     const height = T + AH - top
+    if (height < 3 * b) return items
     const groups = Math.max(1, Math.floor(height / (5 * b)))
     const gap =
       groups > 1
