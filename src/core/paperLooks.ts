@@ -42,7 +42,11 @@ function englishLook(spacing: number): PaperLook {
     lineStyle: 'solid',
     margins: { top: 18, right: 18, bottom: 18, left: 18 },
     theme: 'default',
-    background: { color: '#ffffff', patternColor: '#e0e0e0', patternOpacity: 0.2 },
+    background: {
+      color: '#ffffff',
+      patternColor: '#e0e0e0',
+      patternOpacity: 0.2,
+    },
   }
 }
 

@@ -26,7 +26,8 @@ export type Translator = (
 /* Paper catalogue                                                     */
 /* ------------------------------------------------------------------ */
 
-export type PaperGroup = 'basic' | 'worksheet' | 'english' | 'calligraphy' | 'creative'
+export type PaperGroup =
+  'basic' | 'worksheet' | 'english' | 'calligraphy' | 'creative'
 
 export type PaperType =
   // basic

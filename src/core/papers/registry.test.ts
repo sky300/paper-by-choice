@@ -116,7 +116,13 @@ describe('papersByGroup', () => {
   })
 
   test('splits the registry between the five groups', () => {
-    const groups = ['basic', 'worksheet', 'english', 'calligraphy', 'creative'] as const
+    const groups = [
+      'basic',
+      'worksheet',
+      'english',
+      'calligraphy',
+      'creative',
+    ] as const
     const counted = groups.reduce(
       (sum, group) => sum + papersByGroup(group).length,
       0,
