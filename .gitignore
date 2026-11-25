@@ -1,0 +1,30 @@
+# dependencies
+node_modules
+
+# build output
+dist
+dist-ssr
+*.local
+
+# logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# test coverage
+coverage
+
+# editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Local development workspace: process notes, behavioural specs and third-party
+# reference material. Never commit this directory.
+.dev/

@@ -1,0 +1,8 @@
+node_modules
+dist
+coverage
+*.tsbuildinfo
+.dev
+.github
+pnpm-lock.yaml
+Dockerfile
